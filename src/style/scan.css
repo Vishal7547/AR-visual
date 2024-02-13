@@ -1,0 +1,21 @@
+.scanHeading p {
+    color: white;
+    font-weight: 600;
+
+}
+
+.cameraOpenRequest {
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.requestToOpen {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: rgba(145, 139, 139, 0.582);
+    padding: 50px;
+}

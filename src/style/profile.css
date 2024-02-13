@@ -1,0 +1,144 @@
+.profile {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(145, 139, 139, 0.582);
+}
+
+.parentWork {
+    margin: auto;
+    height: 8vh;
+
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.work1 {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* margin: 20px 10px; */
+}
+
+.work1 .sample1 {
+    margin: 0 10px;
+}
+
+.work2 button {
+    margin: 0 10px;
+    border-radius: 0 !important;
+}
+
+.sample1 .iconsSet {
+    font-size: 30px;
+}
+
+.sample1 .workInfo {
+    font-size: 20px !important;
+}
+
+.sample1 form input {
+    border: 0.7px solid black;
+    align-self: center;
+    border-radius: 0;
+
+}
+
+.parentUpload {
+    display: flex;
+    margin: 10px auto;
+    justify-content: space-between;
+    align-items: center;
+    height: 87vh;
+    width: 100%;
+}
+
+.parentUpload .upload1,
+.upload2 {
+    width: 50%;
+    height: 100%;
+    margin: 0 10px;
+    background-color: white;
+}
+
+.upload1,
+.upload2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload1 .img1,
+.upload2 .img1 {
+    margin: 5px 0;
+}
+
+.img1 button {
+    border-radius: 0;
+}
+
+.buildProject {
+    height: 100%;
+    width: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: relative;
+    /* top: 100%; */
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+
+.projectSetUp {
+    position: absolute;
+    /* background-color: aquamarine; */
+    height: 270px;
+    width: 300px;
+
+}
+
+/* .projectSetUp p {
+    color: red;
+} */
+
+
+.projectSetUp img {
+    height: 100%;
+    width: 100% !important;
+}
+
+.projectSetUp video,
+.w-set {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100% !important;
+    width: 100% !important;
+
+}
+
+.cross p {
+    font-size: 20px;
+    color: white;
+}
+
+.closedThis {
+    cursor: pointer;
+}
+
+.workBuild {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60vh;
+    width: 100%;
+}
+
+.leftWork,
+.rightWork {
+    width: 50% !important;
+
+}
