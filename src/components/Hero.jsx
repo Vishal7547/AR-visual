@@ -1,9 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import HomeHeader from "./HomeHeader";
 const Hero = () => {
   const navigate = useNavigate();
   return (
     <div className="backgroundSet">
+      <div className="homeHeader">
+        <HomeHeader />
+      </div>
       <video autoPlay muted loop id="bgVideo" className="video">
         <source
           src="https://artivive.com/assets/uploads/2023/10/creatives-desktop.mp4"
@@ -14,17 +18,18 @@ const Hero = () => {
       <div className="bg_set"></div>
       <div className="content">
         <h1>
-          Create With <br /> Artivive
+          Create With <br /> Godspeed
         </h1>
         <p>
           An Easy-To-Use Augmented Reality Tool For Enhancing Creative
           Experiences
         </p>
+
         <button
-          className="btn bride px-4 py-2"
-          onClick={() => navigate("/profile")}
+          class="custom-btn btn-10 btn"
+          onClick={() => navigate("/project")}
         >
-          Go To Bride
+          ARtify
         </button>
       </div>
     </div>

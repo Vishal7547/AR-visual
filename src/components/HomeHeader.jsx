@@ -4,11 +4,11 @@ import { LuHome } from "react-icons/lu";
 import { MdOutlineHelpOutline, MdOutlineAddBox } from "react-icons/md";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { AiOutlineLogout } from "react-icons/ai";
-const Header = () => {
+const HomeHeader = () => {
   return (
     // <div>
-    <nav className="navbar navbar-expand-lg navbar-light  px-2">
-      <NavLink className="navbar-brand" to="/">
+    <nav className="navbar navbar-expand-lg navbar-light  px-2" id="mainHeader">
+      <NavLink className="navbar-brand secondHeader_logo" to="/">
         Godspeed
       </NavLink>
       <button
@@ -24,30 +24,30 @@ const Header = () => {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav   w-100 d-flex justify-content-end">
+        <ul className="navbar-nav   w-100 d-flex justify-content-end align-items-center">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/" exact>
-              <LuHome fontSize={25} />
+            <NavLink className="nav-link secondHeader" to="/" exact>
+              Contact
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/project">
-              <MdOutlineAddBox fontSize={30} />
+            <NavLink className="nav-link secondHeader" to="/link">
+              Pricing
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/link">
-              <MdOutlineHelpOutline fontSize={30} />
+            <NavLink className="nav-link secondHeader_btn" to="/link">
+              <button className="btn custom-btn btn-10" id="header_btn">
+                Sign In
+              </button>
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="#">
-              <FaRegCircleUser fontSize={25} />
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="#">
-              <AiOutlineLogout fontSize={25} />
+            <NavLink className="nav-link secondHeader_btn" to="#">
+              <button className="btn custom-btn btn-10" id="header_btn">
+                {" "}
+                Register
+              </button>
             </NavLink>
           </li>
         </ul>
@@ -57,4 +57,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HomeHeader;

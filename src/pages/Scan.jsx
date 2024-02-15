@@ -9,7 +9,7 @@ const Scan = () => {
       <div className="container-fluid">
         <div className="row text-center py-2 bg-danger scanHeading">
           <p>
-            This AR effect was designed with pictarize.com - AR studio. Create
+            This AR effect was designed with Godspeed.com - AR studio. Create
             your effect now for free.
             <span
               className="btn btn-success mx-2"

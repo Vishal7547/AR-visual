@@ -4,6 +4,7 @@ import { MdPausePresentation } from "react-icons/md";
 import { CiSquareInfo, CiImageOn } from "react-icons/ci";
 import { GoVideo } from "react-icons/go";
 import Build from "../components/model/Build";
+import ArtWorkInfo from "../components/model/ArtWorkInfo";
 
 const Project = () => {
   const [imgPreview, setImgPreview] = useState(null);
@@ -15,6 +16,11 @@ const Project = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [open2, setOpen2] = React.useState(false);
+  const handleOpen2 = () => setOpen2(true);
+  const handleClose2 = () => setOpen2(false);
+
   const fileInputRef = useRef(null);
   const videoInputRef = useRef(null);
   useEffect(() => {
@@ -99,7 +105,7 @@ const Project = () => {
                   )}
                 </span>
               </div>
-              <div className="sample1">
+              <div className="sample1" onClick={handleOpen2}>
                 <span className="iconsSet ">
                   <CiSquareInfo fontFamily={30} />
                 </span>
@@ -237,6 +243,11 @@ const Project = () => {
         handleOpen={handleOpen}
         handleClose={handleClose}
         imgPreview={imgPreview}
+      />
+      <ArtWorkInfo
+        open2={open2}
+        handleClose2={handleClose2}
+        handleOpen2={handleOpen2}
       />
     </div>
   );
