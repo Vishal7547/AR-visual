@@ -1,0 +1,72 @@
+.outerSignin{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+}
+.logUpper{
+  margin-top:80px;
+}
+.outerdivlog{
+    height:500px;
+    width:400px; 
+    margin-left:-800px;
+    margin-top:80px;
+    border:1px solid #EEEEEE;
+    display:flex;
+    flex-direction:column;
+}
+.headerupperlogin{
+    padding:30px;
+    font-weight:700;
+}
+.outerdivlogin{
+    border-radius:20px;
+    border:5px solid black;
+    height: 80%;
+    width: 100%;
+}
+.namelogin{
+    margin-left:40px;
+    margin-bottom:20px;   
+}
+.emailogin{
+margin-left:40px;
+margin-bottom:20px;
+}
+.insidemailog{
+width:250px;
+}
+.passwordlogin{
+    margin-left:40px;
+   
+}
+.insidepasslog{
+    width:250px;
+}
+.forgotlogin{
+    margin-left:40px;
+    font-size:0.7rem;
+    font-weight:700;
+    margin-top:-5px;
+}
+.btnlogin{
+    margin-left:40px;
+    border:none;
+    cursor:pointer;
+    padding:5px;
+    font-size:0.8rem;
+    font-weight:600;
+    color:#fff;
+    background-color:#000;
+    width:250px;
+    border-radius:7px;  
+    margin-top:20px;
+}
+.signuplog span{
+    font-size:0.8rem;
+    font-weight:500;
+    color:#000;
+    margin-left:42px;
+}

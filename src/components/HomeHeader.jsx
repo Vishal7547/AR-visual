@@ -4,7 +4,10 @@ import { LuHome } from "react-icons/lu";
 import { MdOutlineHelpOutline, MdOutlineAddBox } from "react-icons/md";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { AiOutlineLogout } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+
 const HomeHeader = () => {
+  const navigate = useNavigate();
   return (
     // <div>
     <nav className="navbar navbar-expand-lg navbar-light  px-2" id="mainHeader">
@@ -36,7 +39,7 @@ const HomeHeader = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link secondHeader_btn" to="/link">
+            <NavLink className="nav-link secondHeader_btn" to="/signin">
               <button className="btn custom-btn btn-10" id="header_btn">
                 Sign In
               </button>
