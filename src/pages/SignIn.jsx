@@ -24,32 +24,32 @@ const SignIn = () => {
         <div className="logUpper">
         <video id="videoElement-1" src="https://fast.artivive.com/assets/uploads/2022/03/debadc9efc030d2093a265d50ccb0fd5.mp4" playsinline="true" autoplay="autoplay" loop="true" muted class="outerdivlogin"></video>
         </div>
-     <div className="outerdivlog">
+     <div className="outerdivlog mx-5 px-4">
        <span className="headerupperlogin">Welcome to Godspeed!</span>      
-        <form action="">
+        <form className="row m-0 p-0 g-0">
             <div className="emailogin">
             <TextField
                 label="Email"
                 multiline
                 maxRows={1}
                 variant="filled"
-                className="insidemailog"
+                className="insidemailog w-100"
               />
             </div>
-            <div className="passwordlogin">
+            <div className="passwordlogin my-2">
             <TextField
                 id="filled-multiline-flexible"
                 label="Password"
                 multiline
                 maxRows={4}
                 variant="filled"
-                className="insidepasslog"
+                className="insidepasslog w-100"
               />
 
             </div>
             <span className="forgotlogin" onClick={()=>navigate('/forgot-password')}>Forgot Password?</span>
-            <button className="btnlogin">LogIn</button>
-            <div className="signuplog">
+            <button className="btn m-auto btnlogin my-2">LogIn</button>
+            <div className="signuplog " >
             <span onClick={()=>navigate('/register')}> Register here</span>
             </div>
      

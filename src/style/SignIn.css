@@ -3,19 +3,21 @@
     width:100vw;
     display: flex;
     flex-direction:row;
-    justify-content:space-around;
+    justify-content:center;
 }
 .logUpper{
   margin-top:80px;
 }
 .outerdivlog{
-    height:500px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height:450px;
     width:400px; 
-    margin-left:-800px;
-    margin-top:80px;
+    align-self: center;
+    margin-bottom: 40px;
     border:1px solid #EEEEEE;
-    display:flex;
-    flex-direction:column;
 }
 .headerupperlogin{
     padding:30px;
@@ -31,27 +33,35 @@
     margin-left:40px;
     margin-bottom:20px;   
 }
-.emailogin{
+.btnlogin{
+    background-color:#000;
+    color:#fff;
+}
+.btnlogin:hover{
+    background-color:#000;
+    color:#fff;  
+}
+/* .emailogin{
 margin-left:40px;
 margin-bottom:20px;
-}
-.insidemailog{
+} */
+/* .insidemailog{
 width:250px;
-}
-.passwordlogin{
+} */
+/* .passwordlogin{
     margin-left:40px;
    
-}
-.insidepasslog{
+} */
+/* .insidepasslog{
     width:250px;
-}
+} */
 .forgotlogin{
-    margin-left:40px;
+
     font-size:0.7rem;
     font-weight:700;
-    margin-top:-5px;
+
 }
-.btnlogin{
+/* .btnlogin{
     margin-left:40px;
     border:none;
     cursor:pointer;
@@ -63,10 +73,10 @@ width:250px;
     width:250px;
     border-radius:7px;  
     margin-top:20px;
-}
+} */
 .signuplog span{
     font-size:0.8rem;
     font-weight:500;
     color:#000;
-    margin-left:42px;
+    
 }
