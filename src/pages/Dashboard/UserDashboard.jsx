@@ -11,32 +11,26 @@ const UserDashboard = () => {
       <div className="row outerdashboardsearch">
  
     <div className="uppersearch" >
-      
-      
         <div className="innersearch">
-      <>
+    
         <div className="textfield">
-    < TextField 
+    <TextField 
     id="outlined-basic" 
     label="Search in GodSpeed" 
     variant="outlined" 
-    className='textOutsearch'
+    className='textOutsearch '
    
      />
       </div>      
-  <div className="searchicon">
-  <IoSearchOutline fontSize={25}
- className='textOutsearchicon'
-/>
-  </div>
-  </>
+  
+
         </div>
 
 
    </div> 
   
-      
-  <div className="lower mx-5">
+     <h1>hello</h1> 
+  <div className="lowersearch mx-5 p-0 m-0">
     <div className="boxlower">
         <div className="icon">
         <CiSquarePlus fontSize={30} onClick={()=>navigate('/project')}/>
