@@ -5,24 +5,42 @@ import { CiSquareInfo, CiImageOn } from "react-icons/ci";
 import { GoVideo } from "react-icons/go";
 import Build from "../components/model/Build";
 import ArtWorkInfo from "../components/model/ArtWorkInfo";
-
+import ArtWorkName from "../components/model/ArtWorkName";
+import useModal from "../components/hooks/useModel";
 const Project = () => {
+  const {
+    open: modal1Open,
+    handleOpen: handleOpen1,
+    handleClose: handleClose1,
+  } = useModal();
+  const {
+    open: modal2Open,
+    handleOpen: handleOpen2,
+    handleClose: handleClose2,
+  } = useModal();
+  const {
+    open: modal3Open,
+    handleOpen: handleOpen3,
+    handleClose: handleClose3,
+  } = useModal();
   const [imgPreview, setImgPreview] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
+  const [artWorkName, setArtWorkName] = useState(null);
+
   const [videoShow, setVideoShow] = useState(false);
   const [imageShow, setImageShow] = useState(false);
   const [bothUpload, setBothUplaod] = useState(false);
   const [videoKey, setVideoKey] = useState(0);
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const [open2, setOpen2] = React.useState(false);
-  const handleOpen2 = () => setOpen2(true);
-  const handleClose2 = () => setOpen2(false);
 
   const fileInputRef = useRef(null);
   const videoInputRef = useRef(null);
+  const handlePublish = () => {
+    if (artWorkName) {
+      handleOpen3();
+    } else {
+      handleOpen2();
+    }
+  };
   useEffect(() => {
     if (imgPreview && videoKey) {
       setBothUplaod(true);
@@ -105,7 +123,7 @@ const Project = () => {
                   )}
                 </span>
               </div>
-              <div className="sample1" onClick={handleOpen2}>
+              <div className="sample1" onClick={handleOpen1}>
                 <span className="iconsSet ">
                   <CiSquareInfo fontFamily={30} />
                 </span>
@@ -117,6 +135,7 @@ const Project = () => {
                     type="text"
                     className="form-control "
                     placeholder="Artwork Name"
+                    onChange={(e) => setArtWorkName(e.target.value)}
                   />
                 </form>
               </div>
@@ -126,7 +145,7 @@ const Project = () => {
               <button
                 className="btn btn-danger"
                 disabled={!bothUpload}
-                onClick={handleOpen}
+                onClick={handlePublish}
               >
                 Publish
               </button>
@@ -239,15 +258,23 @@ const Project = () => {
         </div>
       </div>
       <Build
-        open={open}
-        handleOpen={handleOpen}
-        handleClose={handleClose}
+        open={modal3Open}
+        handleClose={handleClose3}
+        handleOpen={handleOpen3}
         imgPreview={imgPreview}
       />
       <ArtWorkInfo
-        open2={open2}
-        handleClose2={handleClose2}
-        handleOpen2={handleOpen2}
+        open={modal1Open}
+        handleClose={handleClose1}
+        handleOpen={handleOpen1}
+      />
+      <ArtWorkName
+        setArtWorkName={setArtWorkName}
+        artWorkName={artWorkName}
+        open={modal2Open}
+        handleOpen={handleOpen2}
+        handleClose={handleClose2}
+        handleOpen3={handleOpen3}
       />
     </div>
   );

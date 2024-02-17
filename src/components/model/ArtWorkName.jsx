@@ -15,13 +15,28 @@ const style = {
   transition: "transform 0.3s ease-in-out",
 };
 
-const ArtWorkName = ({ open2, handleClose2, handleOpen2 }) => {
+const ArtWorkName = ({
+  setArtWorkName,
+  open,
+  handleClose,
+  handleOpen,
+  artWorkName,
+  handleOpen3,
+}) => {
+  const [error, setError] = useState(false);
+  const handleSave = () => {
+    if (artWorkName) {
+      handleClose();
+      handleOpen3();
+    }
+    setError(true);
+  };
   return (
     <div>
       {" "}
       <Modal
-        open={open2}
-        onClose={handleClose2}
+        open={open}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -32,17 +47,22 @@ const ArtWorkName = ({ open2, handleClose2, handleOpen2 }) => {
             </div>
             <div className="row text-center p-2">
               <TextField
+                error={error}
                 id="filled-basic"
                 className="w-100"
                 label="Artwork Name"
                 variant="filled"
+                helperText={error && "Enter Artwork name"}
+                onChange={(e) => setArtWorkName(e.target.value)}
               />
             </div>
             <div className="d-flex justify-content-end align-items-center ">
-              <button className="btn btn-danger mx-2" onClick={handleClose2}>
+              <button className="btn btn-danger mx-2" onClick={handleClose}>
                 Cancel
               </button>
-              <button className="btn btn-success ">Save</button>
+              <button className="btn btn-success " onClick={handleSave}>
+                Save
+              </button>
             </div>
           </div>
         </Box>

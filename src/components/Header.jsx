@@ -4,7 +4,10 @@ import { LuHome } from "react-icons/lu";
 import { MdOutlineHelpOutline, MdOutlineAddBox } from "react-icons/md";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { AiOutlineLogout } from "react-icons/ai";
+import useModal from "./hooks/useModel";
+import AreYouSure from "./model/AreYouSure";
 const Header = () => {
+  const { open, handleOpen, handleClose, setOpen, sureStyle } = useModal();
   return (
     // <div>
     <nav className="navbar navbar-expand-lg navbar-light  px-2">
@@ -45,14 +48,22 @@ const Header = () => {
               <FaRegCircleUser fontSize={25} />
             </NavLink>
           </li>
-          <li className="nav-item">
+          <li className="nav-item" onClick={handleOpen}>
             <NavLink className="nav-link" to="#">
               <AiOutlineLogout fontSize={25} />
             </NavLink>
           </li>
         </ul>
       </div>
+      <AreYouSure
+        handleClose={handleClose}
+        style={sureStyle}
+        setOpen={setOpen}
+        open={open}
+        message="logged Out ?"
+      />
     </nav>
+
     // </div>
   );
 };

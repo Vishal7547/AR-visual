@@ -15,13 +15,13 @@ const style = {
   transition: "transform 0.3s ease-in-out",
 };
 
-const ArtWorkInfo = ({ open2, handleClose2, handleOpen2 }) => {
+const ArtWorkInfo = ({ open, handleClose, handleOpen }) => {
   return (
     <div>
       {" "}
       <Modal
-        open={open2}
-        onClose={handleClose2}
+        open={open}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -97,7 +97,7 @@ const ArtWorkInfo = ({ open2, handleClose2, handleOpen2 }) => {
               />
             </div>
             <div className="d-flex justify-content-end align-items-center ">
-              <button className="btn btn-danger mx-2" onClick={handleClose2}>
+              <button className="btn btn-danger mx-2" onClick={handleClose}>
                 Cancel
               </button>
               <button className="btn btn-success ">Save</button>
