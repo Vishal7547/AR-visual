@@ -26,7 +26,7 @@ const Header = () => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav   w-100 d-flex justify-content-end">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/" exact>
+            <NavLink className="nav-link" to="/userDashborad" exact>
               <LuHome fontSize={25} />
             </NavLink>
           </li>

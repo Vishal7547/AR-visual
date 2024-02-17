@@ -11,6 +11,7 @@ import "./style/scan.css";
 import "./style/artWork.css";
 import Register from "./pages/Register.jsx";
 import Forget from "./pages/Forget.jsx";
+import UserDashboard from "./pages/Dashboard/UserDashboard.jsx";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function AppContent() {
         <Route path="/register" element={<Register/>} />
         <Route path="/forgot-password" element={<Forget/>}/>
         <Route path="/scan/:projectid" element={<Scan />} />
+        <Route path="/userDashborad"  element={<UserDashboard/>}/>
       </Routes>
     </>
   );
