@@ -43,11 +43,11 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project" element={<Profile />} />
-        <Route path="/signin" element={<SignIn/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/forgot-password" element={<Forget/>}/>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<Forget />} />
         <Route path="/scan/:projectid" element={<Scan />} />
-        <Route path="/userDashborad"  element={<UserDashboard/>}/>
+        <Route path="/userdashboard" element={<UserDashboard />} />
       </Routes>
     </>
   );
