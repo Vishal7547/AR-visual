@@ -1,15 +1,31 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
-
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 const Dashboard = () => {
   return (
     <div>
-      <div className="container-fluid">
+      <div className=" sidebarcontainer container-fluid">
         <div className="row">
-          <div className="col-3">
+          <div className="sidebaroption col-3 ">
             <Sidebar />
           </div>
-          <div className="col-8 mx-1">{/* your code  */}</div>
+          <div className="sidebarcontent col-8 mx-1 my-4">
+            {/* your code  */}
+            <Container maxWidth="l">
+      
+        <Box sx={{ bgcolor: '#fff', height: '100vh' }}>
+          
+          <h1>hello</h1>
+
+        </Box>
+        
+    
+        
+      
+
+      </Container>
+            </div>
         </div>
       </div>
     </div>
