@@ -44,7 +44,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="#">
+            <NavLink className="nav-link" to="/dashboard">
               <FaRegCircleUser fontSize={25} />
             </NavLink>
           </li>
