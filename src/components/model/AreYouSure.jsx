@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import { UserContext } from "../../context/MyContext";
+import { useContext } from "react";
 const AreYouSure = ({ open, handleClose, style, message = "delete" }) => {
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
+  const { loLogOut } = useContext(UserContext);
+  const handleLogout = async () => {
+    await loLogOut();
+  };
   return (
     <div>
       <Modal
@@ -26,7 +29,9 @@ const AreYouSure = ({ open, handleClose, style, message = "delete" }) => {
               </button>
             </div>
             <div className="col-sm-6">
-              <button className="w-100 btn btn-dark">Yes</button>
+              <button className="w-100 btn btn-dark" onClick={handleLogout}>
+                Yes
+              </button>
             </div>
           </div>
         </Box>

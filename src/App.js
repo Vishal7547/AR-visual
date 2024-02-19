@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+
 import Header from "./components/Header";
 import Home from "./pages/Home.jsx";
 import Profile from "./pages/Project.jsx";
@@ -16,8 +18,17 @@ import Forget from "./pages/Forget.jsx";
 import UserDashboard from "./pages/Dashboard/UserDashboard.jsx";
 import Dashboard from "./pages/user/Dashboard.jsx";
 import Profilesetting from "./pages/user/Profilesetting.jsx";
-
+import UserProvider from "./context/UserProvider.js";
+import { UserContext } from "./context/MyContext.js";
+import ResetPassword from "./pages/ResetPassword.jsx";
 function App() {
+  const { handleLoad, authenticate } = useContext(UserContext);
+  useEffect(() => {
+    const loadData = async () => {
+      await handleLoad();
+    };
+    loadData();
+  }, []);
   return (
     <>
       <BrowserRouter>
@@ -29,6 +40,7 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
+  const [showHeader, setShowHeader] = useState(false);
 
   // Array of paths where the header should not be shown
   const pathsWithoutHeader = [
@@ -41,9 +53,14 @@ function AppContent() {
   ];
   const shouldShowHeader = !pathsWithoutHeader.includes(location.pathname);
 
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    setShowHeader(!pathname.startsWith("/resetpassword/"));
+  }, [location]);
+  const combinedShowHeader = shouldShowHeader && showHeader;
   return (
     <>
-      {shouldShowHeader && <Header />}
+      {combinedShowHeader && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project" element={<Profile />} />
@@ -52,8 +69,9 @@ function AppContent() {
         <Route path="/forgot-password" element={<Forget />} />
         <Route path="/scan/:projectid" element={<Scan />} />
         <Route path="/userdashboard" element={<UserDashboard />} />
-        <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/profilesetting" element={<Profilesetting/>} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profilesetting" element={<Profilesetting />} />
+        <Route path="/resetpassword/:token" element={<ResetPassword />} />
       </Routes>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { MdOutlineSmartDisplay } from "react-icons/md";
 import { MdPausePresentation } from "react-icons/md";
 import { CiSquareInfo, CiImageOn } from "react-icons/ci";
@@ -7,7 +7,12 @@ import Build from "../components/model/Build";
 import ArtWorkInfo from "../components/model/ArtWorkInfo";
 import ArtWorkName from "../components/model/ArtWorkName";
 import useModal from "../components/hooks/useModel";
+import { UserContext } from "../context/MyContext";
+import ArtWorkNameSave from "../components/model/ArtWorkNameSave";
+import { useNavigate } from "react-router-dom";
 const Project = () => {
+  const { handleProjectSave } = useContext(UserContext);
+  const navigate = useNavigate();
   const {
     open: modal1Open,
     handleOpen: handleOpen1,
@@ -23,9 +28,17 @@ const Project = () => {
     handleOpen: handleOpen3,
     handleClose: handleClose3,
   } = useModal();
+  const {
+    open: modal4Open,
+    handleOpen: handleOpen4,
+    handleClose: handleClose4,
+  } = useModal();
   const [imgPreview, setImgPreview] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
   const [artWorkName, setArtWorkName] = useState(null);
+  const [image, setImage] = useState(null);
+  const [video, setVideo] = useState(null);
+  const [isSave, setIsSave] = useState(false);
 
   const [videoShow, setVideoShow] = useState(false);
   const [imageShow, setImageShow] = useState(false);
@@ -39,6 +52,21 @@ const Project = () => {
       handleOpen3();
     } else {
       handleOpen2();
+    }
+  };
+  const handleSave = async () => {
+    if (artWorkName) {
+      const formData = new FormData();
+      formData.append("artWorkName", artWorkName);
+      formData.append("file2", image);
+      formData.append("file1", video);
+      const data = await handleProjectSave(formData);
+      if (data.success) {
+        return navigate("/userdashboard");
+      }
+      console.log("data", data);
+    } else {
+      handleOpen4();
     }
   };
   useEffect(() => {
@@ -68,6 +96,7 @@ const Project = () => {
     if (selectedFile) {
       const maxFileSize = 1048576;
       if (selectedFile.size <= maxFileSize) {
+        setImage(selectedFile);
         console.log(URL.createObjectURL(selectedFile));
         setImgPreview(URL.createObjectURL(selectedFile));
         setImageShow(true);
@@ -95,6 +124,7 @@ const Project = () => {
     if (selectedFile) {
       const maxFileSize = 10485760;
       if (selectedFile.size <= maxFileSize) {
+        setVideo(selectedFile);
         const videoURL = URL.createObjectURL(selectedFile);
         console.log(videoURL);
         setVideoPreview(videoURL);
@@ -130,18 +160,25 @@ const Project = () => {
                 <span className="workInfo">Artwork Info</span>
               </div>
               <div className="sample1">
-                <form className=" row ">
+                <div className=" row ">
                   <input
                     type="text"
                     className="form-control "
                     placeholder="Artwork Name"
+                    value={artWorkName}
                     onChange={(e) => setArtWorkName(e.target.value)}
                   />
-                </form>
+                </div>
               </div>
             </div>
             <div className="work2">
-              <button className="btn btn-success">Save</button>
+              <button
+                className="btn btn-success"
+                disabled={!bothUpload}
+                onClick={handleSave}
+              >
+                Save
+              </button>
               <button
                 className="btn btn-danger"
                 disabled={!bothUpload}
@@ -275,6 +312,15 @@ const Project = () => {
         handleOpen={handleOpen2}
         handleClose={handleClose2}
         handleOpen3={handleOpen3}
+      />
+      <ArtWorkNameSave
+        setArtWorkName={setArtWorkName}
+        artWorkName={artWorkName}
+        open={modal4Open}
+        handleOpen={handleOpen4}
+        handleClose={handleClose4}
+        video={video}
+        image={image}
       />
     </div>
   );
