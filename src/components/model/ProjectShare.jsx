@@ -68,19 +68,19 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, imgPreview }) => {
                 <p>Preview Url</p>
                 <a
                   key={buildId}
-                  href={`ar-visual.vercel.app/scan/${buildId}`}
+                  href={`https://ar-visual.vercel.app/scan/${buildId}`}
                   target="_blank"
                   className="my-2"
                   rel="noopener noreferrer"
                 >
-                  {`ar-visual.vercel.app/scan/${buildId}`}
+                  {`https://ar-visual.vercel.app/scan/${buildId}`}
                 </a>
 
                 <div id="qrcode" className="my-3" ref={qrCodeRef}>
                   <QRCode
                     size={256}
                     style={{ height: "250px", maxWidth: "100%", width: "100%" }}
-                    value={`ar-visual.vercel.app/scan/${buildId}`}
+                    value={`https://ar-visual.vercel.app/scan/${buildId}`}
                     viewBox={`0 0 256 256`}
                   />
                 </div>

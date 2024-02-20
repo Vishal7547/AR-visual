@@ -79,12 +79,12 @@ function AppContent() {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          <Route path="/scan/:projectid" element={<Scan />} />
           <Route path="/userdashboard" element={<UserDashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profilesetting" element={<Profilesetting />} />
           <Route path="/project" element={<Profile />} />
         </Route>
+        <Route path="/scan/:projectid" element={<Scan />} />
       </Routes>
     </>
   );
