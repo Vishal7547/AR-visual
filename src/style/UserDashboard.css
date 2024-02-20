@@ -1,37 +1,128 @@
-.outerdashboardsearch{
-  height:100vh;
-  width:100vw;
-}
-.uppersearch{
-    width:100%;
-    height:10vh;
-    background-color:#F4F4F4;
-}
-.innersearch{
-    display: flex;
-    justify-content:right;
-}
-.textfield{
-  background-color:#fff;
+.outerdashboardsearch {
+    min-height: 100vh;
+    width: 100vw;
 }
 
-.textOutsearch{
-    width:350px;
- 
+
+.upperSearch {
+    height: 10vh;
+    background-color: #F4F4F4;
+    border-top: 1px solid black;
 }
 
-.lowersearch{
-    width:300px;
-    height:300px;
+
+
+
+.textOutsearch {
+    width: 25%;
+
+}
+
+
+
+.lowersearch {
+    width: 300px;
+    height: 300px;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
-    border:2px solid #E5E5E5;
-    background-color:#F4F4F4;
+    background-color: #F4F4F4;
 }
-.boxlower{
+
+.boxlower {
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     justify-content: center;
+}
+
+.parentWorking {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.childWork {
+    height: 270px;
+    width: 300px;
+    margin: 10px;
+    border: 1px solid white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.imgVideoWorking {
+    height: 70%;
+    width: 100%;
+    background-color: white;
+    position: relative;
+}
+
+.imgVideoWorking img,
+.imgVideoWorking video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+#aboveWork {
+    z-index: 1;
+
+}
+
+#innerWork {
+    z-index: -1;
+}
+
+.playerWorking {
+    height: 30%;
+    width: 100%;
+
+}
+
+.artWorkNameWorking span {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.iconWorking span {
+    font-size: 29px;
+    cursor: pointer;
+}
+
+.menuWorkingParent {
+    position: relative;
+}
+
+.menuWorkingParent span {
+    font-size: 29px;
+    cursor: pointer;
+}
+
+.workingDate span {
+    font-size: x-small;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.iconWorking .menuWorking {
+    position: absolute;
+    top: 10px;
+    height: auto;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.iconWork1 span {
+    font-size: 1.2rem;
+    margin: 3px 10px;
+    font-weight: 500;
+    cursor: pointer;
 }

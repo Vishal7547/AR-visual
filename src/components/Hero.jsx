@@ -1,11 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HomeHeader from "./HomeHeader";
 import { useContext } from "react";
 import { UserContext } from "../context/MyContext";
 const Hero = () => {
   const navigate = useNavigate();
-  const { authenticate } = useContext(UserContext);
+  const { authenticate, project } = useContext(UserContext);
   return (
     <div className="backgroundSet">
       <div className="homeHeader">
@@ -28,11 +28,27 @@ const Hero = () => {
           Experiences
         </p>
 
-        <button
+        {/* <button
           class="custom-btn btn-10 btn"
           onClick={() =>
-            authenticate ? navigate("/project") : navigate("/signin")
+            authenticate
+              ? !project.length > 0
+                ? navigate("/project")
+                : navigate("/userdashboard")
+              : navigate("/signin")
           }
+        >
+          ARtify
+        </button> */}
+        <button
+          onClick={() =>
+            authenticate
+              ? !project.length > 0
+                ? navigate("/project")
+                : navigate("/userdashboard")
+              : navigate("/signin")
+          }
+          class="button"
         >
           ARtify
         </button>

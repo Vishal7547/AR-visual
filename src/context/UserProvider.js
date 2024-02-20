@@ -4,6 +4,9 @@ import { UserContext } from "./MyContext";
 const UserProvider = ({ children }) => {
   const [authenticate, setAuthenticate] = useState(false);
   const [user, setUser] = useState(null);
+  const [project, setProject] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [isUpload, setIsUpload] = useState(false);
 
   const handleLoad = async () => {
     try {
@@ -120,6 +123,7 @@ const UserProvider = ({ children }) => {
   };
   const handleProjectSave = async (formData) => {
     try {
+      setIsUpload(true);
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_KEY}/user/uploadproject`,
         formData,
@@ -131,12 +135,56 @@ const UserProvider = ({ children }) => {
           withCredentials: true,
         }
       );
+      if (data?.success) {
+        console.log("kar diya", data);
+        setIsUpload(false);
+
+        return data;
+      }
+    } catch (e) {
+      console.log(e.response.data);
+      const error = e.response.data;
+      setIsUpload(false);
+
+      return error;
+    }
+  };
+  const getAllProjectController = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_KEY}/user/allproject`,
+
+        {
+          withCredentials: true,
+        }
+      );
       if (data.success) {
         console.log("kar diya", data);
+        setProject(data?.project?.project_report);
         return data;
       }
     } catch (e) {
       console.log(e);
+    }
+  };
+  const deleteProject = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `${process.env.REACT_APP_API_KEY}/user/deletepropject/${id}`,
+
+        {
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        console.log("kar diya", data);
+        setIsUpdate(!isUpdate);
+        return data;
+      }
+    } catch (e) {
+      console.log(e);
+      const error = e.response.data;
+      return error;
     }
   };
   return (
@@ -153,6 +201,13 @@ const UserProvider = ({ children }) => {
         handleResetPassword,
         updateProfile,
         handleProjectSave,
+        project,
+        setProject,
+        getAllProjectController,
+        deleteProject,
+        isUpdate,
+        setIsUpdate,
+        isUpload,
       }}
     >
       {children}

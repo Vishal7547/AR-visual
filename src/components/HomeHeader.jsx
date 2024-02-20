@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const HomeHeader = () => {
   return (
@@ -34,14 +34,14 @@ const HomeHeader = () => {
           </li>
           <li className="nav-item">
             <NavLink className="nav-link secondHeader_btn" to="/signin">
-              <button className="btn custom-btn btn-10" id="header_btn">
+              <button className="button" id="header_btn">
                 Sign In
               </button>
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link secondHeader_btn" to="/register">
-              <button className="btn custom-btn btn-10" id="header_btn">
+              <button className="button" id="header_btn">
                 {" "}
                 Register
               </button>

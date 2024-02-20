@@ -29,7 +29,7 @@ const ArtWorkNameSave = ({
 }) => {
   const navigate = useNavigate();
 
-  const { handleProjectSave } = useContext(UserContext);
+  const { handleProjectSave, project, setProject } = useContext(UserContext);
   const [error, setError] = useState(false);
   const handleSave = async () => {
     if (artWorkName) {
@@ -38,10 +38,13 @@ const ArtWorkNameSave = ({
       formData.append("artWorkName", artWorkName);
       formData.append("file2", image);
       formData.append("file1", video);
+
       const data = await handleProjectSave(formData);
       console.log("data", data);
       if (data.success) {
         return navigate("/userdashboard");
+      } else {
+        console.log(data);
       }
     }
     setError(true);

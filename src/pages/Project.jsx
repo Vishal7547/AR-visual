@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { MdOutlineSmartDisplay } from "react-icons/md";
 import { MdPausePresentation } from "react-icons/md";
+
 import { CiSquareInfo, CiImageOn } from "react-icons/ci";
 import { GoVideo } from "react-icons/go";
 import Build from "../components/model/Build";
@@ -11,7 +12,8 @@ import { UserContext } from "../context/MyContext";
 import ArtWorkNameSave from "../components/model/ArtWorkNameSave";
 import { useNavigate } from "react-router-dom";
 const Project = () => {
-  const { handleProjectSave } = useContext(UserContext);
+  const { handleProjectSave, setProject, project, isUpload } =
+    useContext(UserContext);
   const navigate = useNavigate();
   const {
     open: modal1Open,
@@ -63,6 +65,8 @@ const Project = () => {
       const data = await handleProjectSave(formData);
       if (data.success) {
         return navigate("/userdashboard");
+      } else {
+        console.log(data);
       }
       console.log("data", data);
     } else {
