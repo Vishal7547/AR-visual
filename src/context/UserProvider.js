@@ -10,6 +10,7 @@ const UserProvider = ({ children }) => {
   const [isDelete, setIsDelete] = useState(false);
   const [isProfileUpload, setIsProfileUpload] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [buildId, setBuildId] = useState("");
   const handleLoad = async () => {
     try {
       const { data } = await axios.get(
@@ -221,6 +222,10 @@ const UserProvider = ({ children }) => {
       return error;
     }
   };
+  const handleBuild = () => {
+    const id = Date.now();
+    setBuildId(id);
+  };
   return (
     <UserContext.Provider
       value={{
@@ -246,6 +251,8 @@ const UserProvider = ({ children }) => {
         isProfileUpload,
         setIsLogin,
         isLogin,
+        handleBuild,
+        buildId,
       }}
     >
       {children}

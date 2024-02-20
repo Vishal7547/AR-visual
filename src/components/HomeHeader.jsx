@@ -1,7 +1,9 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/MyContext";
 const HomeHeader = () => {
+  const { authenticate } = useContext(UserContext);
   return (
     // <div>
     <nav className="navbar navbar-expand-lg navbar-light  px-2" id="mainHeader">
@@ -32,21 +34,25 @@ const HomeHeader = () => {
               Pricing
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink className="nav-link secondHeader_btn" to="/signin">
-              <button className="button" id="header_btn">
-                Sign In
-              </button>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link secondHeader_btn" to="/register">
-              <button className="button" id="header_btn">
-                {" "}
-                Register
-              </button>
-            </NavLink>
-          </li>
+          {!authenticate && (
+            <>
+              <li className="nav-item">
+                <NavLink className="nav-link secondHeader_btn" to="/signin">
+                  <button className="button" id="header_btn">
+                    Sign In
+                  </button>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link secondHeader_btn" to="/register">
+                  <button className="button" id="header_btn">
+                    {" "}
+                    Register
+                  </button>
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </nav>

@@ -15,11 +15,10 @@ const style = {
   transition: "transform 0.3s ease-in-out",
 };
 
-const Build = ({ handleOpen, open, handleClose, imgPreview }) => {
+const Build = ({ handleOpen, open, handleClose, imgPreview, handleBuild }) => {
   const [open1, setOpen1] = useState(false);
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
-
   return (
     <div>
       <Modal
@@ -37,7 +36,9 @@ const Build = ({ handleOpen, open, handleClose, imgPreview }) => {
               </p>
             </div>
             <div className="my-2 p-3 g-0">
-              <button className="btn btn-danger w-25">Build</button>
+              <button className="btn btn-danger w-25" onClick={handleBuild}>
+                Build
+              </button>
               <div className="tableSet mt-2">
                 <table class="table table-secondary table-hover">
                   <thead>

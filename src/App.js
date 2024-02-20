@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import Header from "./components/Header";
@@ -21,6 +27,8 @@ import Profilesetting from "./pages/user/Profilesetting.jsx";
 import UserProvider from "./context/UserProvider.js";
 import { UserContext } from "./context/MyContext.js";
 import ResetPassword from "./pages/ResetPassword.jsx";
+import { PrivateRoute } from "./routes/PrivateRoutes.js";
+import { PrivateAuth } from "./routes/PrivateAuth.js";
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
   useEffect(() => {
@@ -63,15 +71,20 @@ function AppContent() {
       {combinedShowHeader && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/project" element={<Profile />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<Forget />} />
-        <Route path="/scan/:projectid" element={<Scan />} />
-        <Route path="/userdashboard" element={<UserDashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profilesetting" element={<Profilesetting />} />
-        <Route path="/resetpassword/:token" element={<ResetPassword />} />
+        <Route element={<PrivateAuth />}>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<Forget />} />
+          <Route path="/resetpassword/:token" element={<ResetPassword />} />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/scan/:projectid" element={<Scan />} />
+          <Route path="/userdashboard" element={<UserDashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profilesetting" element={<Profilesetting />} />
+          <Route path="/project" element={<Profile />} />
+        </Route>
       </Routes>
     </>
   );
