@@ -8,7 +8,7 @@ import { UserContext } from "../context/MyContext";
 const ResetPassword = () => {
   const navigate = useNavigate();
   const { token } = useParams();
-  const { handleResetPassword } = useContext(UserContext);
+  const { handleResetPassword, setIsLogin, isLogin } = useContext(UserContext);
   const [password, setPassword] = useState();
   const handleReset = async (e) => {
     e.preventDefault();
@@ -35,7 +35,9 @@ const ResetPassword = () => {
                 required
               />
             </div>
-            <button className="btn m-auto btnlogin my-2">Reset Password</button>
+            <button className="btn m-auto btnlogin my-2" disabled={isLogin}>
+              {isLogin ? "Loading..." : "Reset Password"}
+            </button>
           </form>
         </div>
       </div>

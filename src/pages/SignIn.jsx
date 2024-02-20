@@ -22,7 +22,8 @@ const style = {
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { setAuthenticate, setUser } = useContext(UserContext);
+  const { setAuthenticate, setUser, setIsLogin, isLogin } =
+    useContext(UserContext);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
@@ -31,7 +32,7 @@ const SignIn = () => {
     if (!email || !password) {
       return;
     }
-
+    setIsLogin(true);
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API_KEY}/user/login`,
@@ -49,6 +50,8 @@ const SignIn = () => {
       );
       if (res.data.success) {
         // success
+        setIsLogin(false);
+
         console.log(res.data);
         setUser(res?.data?.user);
 
@@ -56,10 +59,13 @@ const SignIn = () => {
         navigate("/userdashboard");
       } else {
         //  error
+        setIsLogin(false);
+
         console.log("error");
       }
     } catch (error) {
       console.log(error);
+      setIsLogin(false);
     }
   };
   return (
@@ -109,7 +115,9 @@ const SignIn = () => {
             >
               Forgot Password?
             </span>
-            <button className="btn m-auto btnlogin my-2">LogIn</button>
+            <button disabled={isLogin} className="btn m-auto btnlogin my-2">
+              {isLogin ? "Loading..." : "Login"}
+            </button>
             <div className="signuplog ">
               <span onClick={() => navigate("/register")}> Register here</span>
             </div>

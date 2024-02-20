@@ -7,7 +7,9 @@ const UserProvider = ({ children }) => {
   const [project, setProject] = useState([]);
   const [isUpdate, setIsUpdate] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
-
+  const [isDelete, setIsDelete] = useState(false);
+  const [isProfileUpload, setIsProfileUpload] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const handleLoad = async () => {
     try {
       const { data } = await axios.get(
@@ -42,6 +44,7 @@ const UserProvider = ({ children }) => {
     }
   };
   const updateProfilePic = async (formData) => {
+    setIsProfileUpload(true);
     try {
       const { data } = await axios.put(
         `${process.env.REACT_APP_API_KEY}/user/updateprofilepic`,
@@ -55,14 +58,19 @@ const UserProvider = ({ children }) => {
         }
       );
       if (data.success) {
+        setIsProfileUpload(false);
+
         console.log("kar diya", data);
       }
     } catch (error) {
+      setIsProfileUpload(false);
+
       console.log(error);
     }
   };
   const handleForgetPassword = async (email) => {
     console.log(email);
+    setIsLogin(true);
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_KEY}/user/forgetpassword`,
@@ -74,14 +82,22 @@ const UserProvider = ({ children }) => {
           },
         }
       );
-      if (data.success) {
+      if (data?.success) {
+        setIsLogin(false);
+
         console.log("kar diya", data);
+      } else {
+        setIsLogin(false);
       }
     } catch (e) {
+      setIsLogin(false);
+
       console.log(e);
     }
   };
   const handleResetPassword = async (password, token) => {
+    setIsLogin(true);
+
     try {
       const { data } = await axios.put(
         `${process.env.REACT_APP_API_KEY}/user/resetpassword/${token}`,
@@ -94,14 +110,21 @@ const UserProvider = ({ children }) => {
         }
       );
       if (data.success) {
+        setIsLogin(false);
+
         console.log("kar diya", data);
         window.location.href = "/signin";
+      } else {
+        setIsLogin(false);
       }
     } catch (e) {
       console.log(e);
+      setIsLogin(false);
     }
   };
   const updateProfile = async (update) => {
+    setIsProfileUpload(true);
+
     try {
       const { data } = await axios.put(
         `${process.env.REACT_APP_API_KEY}/user/updateprofile`,
@@ -115,15 +138,19 @@ const UserProvider = ({ children }) => {
         }
       );
       if (data.success) {
+        setIsProfileUpload(false);
+
         console.log("kar diya", data);
       }
     } catch (e) {
+      setIsProfileUpload(false);
+
       console.log(e);
     }
   };
   const handleProjectSave = async (formData) => {
+    setIsUpload(true);
     try {
-      setIsUpload(true);
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_KEY}/user/uploadproject`,
         formData,
@@ -168,6 +195,8 @@ const UserProvider = ({ children }) => {
     }
   };
   const deleteProject = async (id) => {
+    setIsDelete(true);
+
     try {
       const { data } = await axios.delete(
         `${process.env.REACT_APP_API_KEY}/user/deletepropject/${id}`,
@@ -176,13 +205,18 @@ const UserProvider = ({ children }) => {
           withCredentials: true,
         }
       );
-      if (data.success) {
+      if (data?.success) {
+        setIsDelete(false);
         console.log("kar diya", data);
         setIsUpdate(!isUpdate);
         return data;
+      } else {
+        setIsDelete(false);
       }
     } catch (e) {
       console.log(e);
+      setIsDelete(false);
+
       const error = e.response.data;
       return error;
     }
@@ -208,6 +242,10 @@ const UserProvider = ({ children }) => {
         isUpdate,
         setIsUpdate,
         isUpload,
+        isDelete,
+        isProfileUpload,
+        setIsLogin,
+        isLogin,
       }}
     >
       {children}

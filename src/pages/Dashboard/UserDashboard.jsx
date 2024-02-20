@@ -11,10 +11,16 @@ import "../../style/UserDashboard.css";
 import { IoBuildOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
+import Loader from "../../components/Loader";
 const UserDashboard = () => {
   const navigate = useNavigate();
-  const { project, getAllProjectController, isUpdate, deleteProject } =
-    useContext(UserContext);
+  const {
+    isDelete,
+    project,
+    getAllProjectController,
+    isUpdate,
+    deleteProject,
+  } = useContext(UserContext);
   const videoRef = useRef(null);
   const [isPlay, setIsPlay] = useState(false);
   const [isShow, setIsShow] = useState(false);
@@ -60,8 +66,10 @@ const UserDashboard = () => {
   const handleDelete = async (id) => {
     await deleteProject(id);
   };
+
   return (
     <div className="row  m-0 p-0 g-0 ">
+      {isDelete && <Loader />}
       <div className="row g-0 p-0 m-0">
         <div className="d-flex justify-content-end align-items-center upperSearch m-0 p-0 g-0">
           <TextField

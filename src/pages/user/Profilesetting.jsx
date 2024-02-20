@@ -7,11 +7,17 @@ import Container from "@mui/material/Container";
 import { SlPencil } from "react-icons/sl";
 import { useContext } from "react";
 import { UserContext } from "../../context/MyContext";
-import axios from "axios";
+
+import Loader from "../../components/Loader";
 
 const Profilesetting = () => {
-  const { authenticate, user, updateProfilePic, updateProfile } =
-    useContext(UserContext);
+  const {
+    isProfileUpload,
+    authenticate,
+    user,
+    updateProfilePic,
+    updateProfile,
+  } = useContext(UserContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [profilePic, setProfilePic] = useState(
@@ -59,8 +65,10 @@ const Profilesetting = () => {
 
     await updateProfile({ name, email });
   };
+
   return (
     <div>
+      {isProfileUpload && <Loader />}
       <div className=" sidebarcontainer container-fluid">
         <div className="row">
           <div className="sidebaroption col-3 ">

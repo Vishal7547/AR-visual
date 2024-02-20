@@ -7,7 +7,7 @@ import { UserContext } from "../context/MyContext";
 
 const Forget = () => {
   const navigate = useNavigate();
-  const { handleForgetPassword } = useContext(UserContext);
+  const { handleForgetPassword, setIsLogin, isLogin } = useContext(UserContext);
 
   const [email, setEmail] = useState();
   const handleForget = async (e) => {
@@ -38,8 +38,8 @@ const Forget = () => {
                 required
               />
             </div>
-            <button className="btn m-auto btnlogin my-2">
-              Send Reset Link
+            <button className="btn m-auto btnlogin my-2" disabled={isLogin}>
+              {isLogin ? "Loading..." : "Send Reset Link"}
             </button>
           </form>
           <button

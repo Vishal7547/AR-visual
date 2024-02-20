@@ -11,9 +11,11 @@ import useModal from "../components/hooks/useModel";
 import { UserContext } from "../context/MyContext";
 import ArtWorkNameSave from "../components/model/ArtWorkNameSave";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 const Project = () => {
   const { handleProjectSave, setProject, project, isUpload } =
     useContext(UserContext);
+
   const navigate = useNavigate();
   const {
     open: modal1Open,
@@ -144,6 +146,7 @@ const Project = () => {
 
   return (
     <div className="profile">
+      {isUpload && <Loader />}
       <div className="container-fluid m-0 g-0 p-0">
         <div className="row">
           <div className="parentWork">

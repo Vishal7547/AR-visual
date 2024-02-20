@@ -7,7 +7,8 @@ import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { setAuthenticate, setUser } = useContext(UserContext);
+  const { setAuthenticate, setUser, setIsLogin, isLogin } =
+    useContext(UserContext);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ const Register = () => {
     if (!name || !email || !password) {
       return;
     }
+    setIsLogin(true);
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API_KEY}/user/register`,
@@ -34,16 +36,22 @@ const Register = () => {
       );
       if (res.data.success) {
         //  login
+        setIsLogin(false);
+
         setUser(res?.data?.user);
         setAuthenticate(res?.data?.success);
         console.log(res.data);
         navigate("/userdashboard");
       } else {
+        setIsLogin(false);
+
         // toast.error("something went wrong");
         // error
         console.log("error");
       }
     } catch (error) {
+      setIsLogin(false);
+
       console.log(error.response);
     }
   };
@@ -93,7 +101,12 @@ const Register = () => {
               />
             </div>
 
-            <button className="btn m-auto btnlogin mt-4 my-2">Register</button>
+            <button
+              className="btn m-auto btnlogin mt-4 my-2"
+              disabled={isLogin}
+            >
+              {isLogin ? "Loading..." : "Register"}
+            </button>
           </form>
           <div className="signuplog w-100">
             <span onClick={() => navigate("/signin")}>
