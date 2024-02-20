@@ -10,7 +10,7 @@ const UserProvider = ({ children }) => {
   const [isDelete, setIsDelete] = useState(false);
   const [isProfileUpload, setIsProfileUpload] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
-  const [buildId, setBuildId] = useState("");
+  const [buildId, setBuildId] = useState("63275325873593875");
   const handleLoad = async () => {
     try {
       const { data } = await axios.get(
@@ -223,8 +223,7 @@ const UserProvider = ({ children }) => {
     }
   };
   const handleBuild = () => {
-    const id = Date.now();
-    setBuildId(id);
+    setBuildId(Date.now());
   };
   return (
     <UserContext.Provider

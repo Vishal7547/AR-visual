@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ProjectShare from "./ProjectShare";
-
+import { UserContext } from "../../context/MyContext";
+import { useContext } from "react";
 const style = {
   position: "absolute",
   top: "50%",
@@ -15,7 +16,9 @@ const style = {
   transition: "transform 0.3s ease-in-out",
 };
 
-const Build = ({ handleOpen, open, handleClose, imgPreview, handleBuild }) => {
+const Build = ({ handleOpen, open, handleClose, imgPreview }) => {
+  const { handleBuild } = useContext(UserContext);
+
   const [open1, setOpen1] = useState(false);
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);

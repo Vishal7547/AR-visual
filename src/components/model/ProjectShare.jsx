@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 
 import Modal from "@mui/material/Modal";
@@ -18,7 +18,35 @@ const style = {
 
 const ProjectShare = ({ handleOpen1, open1, handleClose1, imgPreview }) => {
   useEffect(() => {}, [imgPreview, open1]);
+  const qrCodeRef = useRef(null);
   const { buildId } = useContext(UserContext);
+  const handleDownloadQRCode = () => {
+    const canvas = qrCodeRef.current?.getElementsByTagName("canvas")[0];
+    if (canvas) {
+      const dataUrl = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "qr-code.png";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const dataURLtoBlob = (dataURL) => {
+    const parts = dataURL.split(";base64,");
+    const contentType = parts[0].split(":")[1];
+    const raw = window.atob(parts[1]);
+    const rawLength = raw.length;
+    const uInt8Array = new Uint8Array(rawLength);
+
+    for (let i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], { type: contentType });
+  };
+
   return (
     <div>
       <Modal
@@ -39,6 +67,7 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, imgPreview }) => {
               <div className="leftWork text-center">
                 <p>Preview Url</p>
                 <a
+                  key={buildId}
                   href={`ar-visual.vercel.app/scan/${buildId}`}
                   target="_blank"
                   className="my-2"
@@ -47,7 +76,7 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, imgPreview }) => {
                   {`ar-visual.vercel.app/scan/${buildId}`}
                 </a>
 
-                <div id="qrcode my-3">
+                <div id="qrcode" className="my-3" ref={qrCodeRef}>
                   <QRCode
                     size={256}
                     style={{ height: "250px", maxWidth: "100%", width: "100%" }}
@@ -55,7 +84,9 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, imgPreview }) => {
                     viewBox={`0 0 256 256`}
                   />
                 </div>
-                <p className="mt-2">download QR code</p>
+                <p className="mt-2" onClick={handleDownloadQRCode}>
+                  download QR code
+                </p>
               </div>
               <div className="rightWork text-center">
                 <p>Target Image</p>
