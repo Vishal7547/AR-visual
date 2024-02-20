@@ -11,6 +11,8 @@ const UserProvider = ({ children }) => {
   const [isProfileUpload, setIsProfileUpload] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [buildId, setBuildId] = useState("63275325873593875");
+  const [imgPreview, setImgPreview] = useState(null);
+
   const handleLoad = async () => {
     try {
       const { data } = await axios.get(
@@ -252,6 +254,8 @@ const UserProvider = ({ children }) => {
         isLogin,
         handleBuild,
         buildId,
+        imgPreview,
+        setImgPreview,
       }}
     >
       {children}

@@ -29,6 +29,7 @@ import { UserContext } from "./context/MyContext.js";
 import ResetPassword from "./pages/ResetPassword.jsx";
 import { PrivateRoute } from "./routes/PrivateRoutes.js";
 import { PrivateAuth } from "./routes/PrivateAuth.js";
+import ProjectScan from "./pages/ProjectScan.jsx";
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
   useEffect(() => {
@@ -85,6 +86,7 @@ function AppContent() {
           <Route path="/project" element={<Profile />} />
         </Route>
         <Route path="/scan/:projectid" element={<Scan />} />
+        <Route path="/projectbuild/:projectid" element={<ProjectScan />} />
       </Routes>
     </>
   );

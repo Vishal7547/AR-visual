@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { UserContext } from "../context/MyContext";
 const Scan = () => {
   const navigate = useNavigate();
-
+  const { buildId } = useContext(UserContext);
   return (
     <div>
       <div className="container-fluid">
@@ -24,7 +25,12 @@ const Scan = () => {
         <div className="cameraOpenRequest">
           <div className="requestToOpen">
             <p>please allow camera access for AR effects</p>
-            <button className="btn btn-danger ">Continue</button>
+            <a
+              href={`https://ar-visual.vercel.app/projectbuild/${buildId}`}
+              className="btn btn-danger "
+            >
+              Continue
+            </a>
           </div>
         </div>
       </div>

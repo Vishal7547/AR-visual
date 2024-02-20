@@ -13,8 +13,14 @@ import ArtWorkNameSave from "../components/model/ArtWorkNameSave";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 const Project = () => {
-  const { handleProjectSave, setProject, project, isUpload } =
-    useContext(UserContext);
+  const {
+    handleProjectSave,
+    setProject,
+    project,
+    isUpload,
+    setImgPreview,
+    imgPreview,
+  } = useContext(UserContext);
 
   const navigate = useNavigate();
   const {
@@ -37,7 +43,6 @@ const Project = () => {
     handleOpen: handleOpen4,
     handleClose: handleClose4,
   } = useModal();
-  const [imgPreview, setImgPreview] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
   const [artWorkName, setArtWorkName] = useState(null);
   const [image, setImage] = useState(null);
