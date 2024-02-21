@@ -53,7 +53,8 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
-  const { authenticate } = useContext(UserContext);
+  const { authenticate, isUpdate, getAllProjectController } =
+    useContext(UserContext);
 
   const [showHeader, setShowHeader] = useState(false);
 
@@ -72,6 +73,12 @@ function AppContent() {
     const pathname = window.location.pathname;
     setShowHeader(!pathname.startsWith("/resetpassword/"));
   }, [location]);
+  useEffect(() => {
+    const fetchProject = async () => {
+      await getAllProjectController();
+    };
+    fetchProject();
+  }, [isUpdate]);
   const combinedShowHeader = shouldShowHeader && showHeader;
   return (
     <>

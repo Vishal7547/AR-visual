@@ -6,6 +6,7 @@ import { UserContext } from "../context/MyContext";
 const Hero = () => {
   const navigate = useNavigate();
   const { authenticate, project } = useContext(UserContext);
+
   return (
     <div className="backgroundSet">
       <div className="homeHeader">
@@ -28,26 +29,14 @@ const Hero = () => {
           Experiences
         </p>
 
-        {/* <button
-          class="custom-btn btn-10 btn"
-          onClick={() =>
-            authenticate
-              ? !project.length > 0
-                ? navigate("/project")
-                : navigate("/userdashboard")
-              : navigate("/signin")
-          }
-        >
-          ARtify
-        </button> */}
         <button
-          onClick={() =>
+          onClick={() => {
             authenticate
-              ? !project.length > 0
-                ? navigate("/project")
-                : navigate("/userdashboard")
-              : navigate("/signin")
-          }
+              ? project.length > 0
+                ? navigate("/userdashboard")
+                : navigate("/project")
+              : navigate("/signin");
+          }}
           class="button"
         >
           ARtify
