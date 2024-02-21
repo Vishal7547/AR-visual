@@ -18,6 +18,8 @@ import "./style/hero.css";
 import "./style/profile.css";
 import "./style/scan.css";
 import "./style/artWork.css";
+import "./style/notFound.css";
+
 import "./style/Profilesetting.css";
 import Register from "./pages/Register.jsx";
 import Forget from "./pages/Forget.jsx";
@@ -30,6 +32,8 @@ import ResetPassword from "./pages/ResetPassword.jsx";
 import { PrivateRoute } from "./routes/PrivateRoutes.js";
 import { PrivateAuth } from "./routes/PrivateAuth.js";
 import ProjectScan from "./pages/ProjectScan.jsx";
+import NotFound from "./pages/NotFound.jsx";
+
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
   useEffect(() => {
@@ -49,6 +53,8 @@ function App() {
 
 function AppContent() {
   const location = useLocation();
+  const { authenticate } = useContext(UserContext);
+
   const [showHeader, setShowHeader] = useState(false);
 
   // Array of paths where the header should not be shown
@@ -69,7 +75,7 @@ function AppContent() {
   const combinedShowHeader = shouldShowHeader && showHeader;
   return (
     <>
-      {combinedShowHeader && <Header />}
+      {combinedShowHeader && authenticate && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route element={<PrivateAuth />}>
@@ -87,6 +93,7 @@ function AppContent() {
         </Route>
         <Route path="/scan/:projectid" element={<Scan />} />
         <Route path="/projectbuild/:projectid" element={<ProjectScan />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
