@@ -10,6 +10,7 @@ import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 
 const ProjectScan = () => {
   const { imgPreview } = useContext(UserContext);
+  const [isTargetDetected, setIsTargetDetected] = useState(false);
 
   const containerRef = useRef(null);
   const start = async () => {
@@ -39,10 +40,12 @@ const ProjectScan = () => {
       anchor.group.add(plane);
 
       anchor.onTargetFound = () => {
+        setIsTargetDetected(false);
         video.play();
       };
 
       anchor.onTargetLost = () => {
+        setIsTargetDetected(true);
         video.pause();
       };
 
@@ -66,12 +69,14 @@ const ProjectScan = () => {
   }, []);
   return (
     <>
-      <div id="scanning">
-        <div class="inner">
-          <img src={a} alt="lo" />
-          <div class="scanline"></div>
+      {isTargetDetected && (
+        <div id="scanning">
+          <div class="inner">
+            <img src={a} alt="lo" />
+            <div class="scanline"></div>
+          </div>
         </div>
-      </div>
+      )}
       <div id="container" ref={containerRef}></div>
     </>
   );
