@@ -37,7 +37,7 @@ const UserProvider = ({ children }) => {
         }
       );
       if (data.success) {
-        console.log("kar diya", data);
+        console.log("logout", data);
         setUser(null);
         setAuthenticate(false);
         window.location.href = "/";

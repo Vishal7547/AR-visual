@@ -17,7 +17,7 @@ const Header = () => {
     handleOpen: handleOpen1,
   } = useModal();
 
-  const { project } = useContext(UserContext);
+  const { project, authenticate } = useContext(UserContext);
   return (
     // <div>
     <nav className="navbar navbar-expand-lg navbar-light  px-2">
