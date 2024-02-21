@@ -18,8 +18,10 @@ const ProjectScan = () => {
         container: containerRef.current,
         imageTargetSrc: b,
         uiScanning: "#scanning",
-        filterMinCF: 0.1,
-        filterBeta: 10,
+        filterMinCF: 0.001,
+        filterBeta: 0.001,
+        missTolerance: 1,
+        warmupTolerance: 1,
       });
       const { renderer, scene, camera } = mindarThree;
 
