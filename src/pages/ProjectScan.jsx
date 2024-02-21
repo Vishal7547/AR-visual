@@ -10,7 +10,7 @@ import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 
 const ProjectScan = () => {
   const { imgPreview } = useContext(UserContext);
-  const [isTargetDetected, setIsTargetDetected] = useState(false);
+  const [isTargetDetected, setIsTargetDetected] = useState(true);
 
   const containerRef = useRef(null);
   const start = async () => {
