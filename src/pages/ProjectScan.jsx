@@ -31,7 +31,7 @@ const ProjectScan = () => {
       video.loop = true;
       const texture = new THREE.VideoTexture(video);
 
-      const geometry = new THREE.PlaneGeometry(1, 1920 / 1080);
+      const geometry = new THREE.PlaneGeometry(1, 1280 / 797);
       const material = new THREE.MeshBasicMaterial({ map: texture });
       const plane = new THREE.Mesh(geometry, material);
 

@@ -111,6 +111,12 @@ const Project = () => {
         console.log(URL.createObjectURL(selectedFile));
         setImgPreview(URL.createObjectURL(selectedFile));
         setImageShow(true);
+        const img = new Image();
+        img.src = URL.createObjectURL(selectedFile);
+        img.onload = () => {
+          console.log("Image width:", img.naturalWidth);
+          console.log("Image height:", img.naturalHeight);
+        };
       } else {
         console.log(
           "Selected file is too large. Please select a file less than or equal to 1MB."
