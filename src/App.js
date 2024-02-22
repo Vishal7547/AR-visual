@@ -6,6 +6,7 @@ import Home from "./pages/Home.jsx";
 import Profile from "./pages/Project.jsx";
 import Scan from "./pages/Scan.jsx";
 import SignIn from "./pages/SignIn.jsx";
+import "./style/Pricing.css";
 import "./style/Dashboard.css";
 import "./style/Sidebar.css";
 import "./style/hero.css";
@@ -21,6 +22,8 @@ import Profilesetting from "./pages/user/Profilesetting.jsx";
 import UserProvider from "./context/UserProvider.js";
 import { UserContext } from "./context/MyContext.js";
 import ResetPassword from "./pages/ResetPassword.jsx";
+import Pricing from "./pages/Pricing.jsx";
+
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
   useEffect(() => {
@@ -72,6 +75,7 @@ function AppContent() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profilesetting" element={<Profilesetting />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
+        <Route path="/pricing" element={<Pricing/>} />
       </Routes>
     </>
   );

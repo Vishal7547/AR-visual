@@ -11,7 +11,7 @@ import { UserContext } from "../../context/MyContext";
 const Dashboard = () => {
   return (
     <div>
-      <div className=" sidebarcontainer container-fluid">
+      <div className="sidebarcontainer container-fluid">
         <div className="row">
           <div className="sidebaroption col-3 ">
             <Sidebar />
