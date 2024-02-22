@@ -1,0 +1,11 @@
+.containercard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  
+}
+.basicardcontent{
+    font-size:1.7rem;
+    font-weight:600;
+}

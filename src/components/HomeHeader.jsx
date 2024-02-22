@@ -30,7 +30,7 @@ const HomeHeader = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link secondHeader" to="/link">
+            <NavLink className="nav-link secondHeader" to="/pricing">
               Pricing
             </NavLink>
           </li>
