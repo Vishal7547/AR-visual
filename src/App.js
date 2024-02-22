@@ -33,6 +33,7 @@ import { PrivateRoute } from "./routes/PrivateRoutes.js";
 import { PrivateAuth } from "./routes/PrivateAuth.js";
 import ProjectScan from "./pages/ProjectScan.jsx";
 import NotFound from "./pages/NotFound.jsx";
+
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
   useEffect(() => {
@@ -41,6 +42,7 @@ function App() {
     };
     loadData();
   }, []);
+
   return (
     <>
       <BrowserRouter>

@@ -12,6 +12,7 @@ import { UserContext } from "../context/MyContext";
 import ArtWorkNameSave from "../components/model/ArtWorkNameSave";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
+
 const Project = () => {
   const {
     handleProjectSave,
@@ -47,6 +48,9 @@ const Project = () => {
   const [artWorkName, setArtWorkName] = useState(null);
   const [image, setImage] = useState(null);
   const [video, setVideo] = useState(null);
+  const [imhHeight, setImgHeight] = useState("");
+  const [imgWidth, setImgWidth] = useState("");
+
   const [isSave, setIsSave] = useState(false);
 
   const [videoShow, setVideoShow] = useState(false);
@@ -69,6 +73,9 @@ const Project = () => {
       formData.append("artWorkName", artWorkName);
       formData.append("file2", image);
       formData.append("file1", video);
+      formData.append("width", imgWidth);
+      formData.append("height", imhHeight);
+
       const data = await handleProjectSave(formData);
       if (data.success) {
         return navigate("/userdashboard");
@@ -103,7 +110,7 @@ const Project = () => {
       }
     }
   };
-  const handleFileChange = (selectedFile) => {
+  const handleFileChange = async (selectedFile) => {
     if (selectedFile) {
       const maxFileSize = 1048576;
       if (selectedFile.size <= maxFileSize) {
@@ -114,6 +121,8 @@ const Project = () => {
         const img = new Image();
         img.src = URL.createObjectURL(selectedFile);
         img.onload = () => {
+          setImgWidth(img.naturalWidth);
+          setImgHeight(img.naturalHeight);
           console.log("Image width:", img.naturalWidth);
           console.log("Image height:", img.naturalHeight);
         };
