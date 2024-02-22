@@ -12,6 +12,7 @@ import Home from "./pages/Home.jsx";
 import Profile from "./pages/Project.jsx";
 import Scan from "./pages/Scan.jsx";
 import SignIn from "./pages/SignIn.jsx";
+import "./style/Pricing.css";
 import "./style/Dashboard.css";
 import "./style/Sidebar.css";
 import "./style/hero.css";
@@ -29,6 +30,8 @@ import Profilesetting from "./pages/user/Profilesetting.jsx";
 import UserProvider from "./context/UserProvider.js";
 import { UserContext } from "./context/MyContext.js";
 import ResetPassword from "./pages/ResetPassword.jsx";
+import Pricing from "./pages/Pricing.jsx";
+
 import { PrivateRoute } from "./routes/PrivateRoutes.js";
 import { PrivateAuth } from "./routes/PrivateAuth.js";
 import ProjectScan from "./pages/ProjectScan.jsx";
@@ -102,6 +105,7 @@ function AppContent() {
         <Route path="/scan/:projectid" element={<Scan />} />
         <Route path="/projectbuild/:projectid" element={<ProjectScan />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/pricing" element={<Pricing/>} />
       </Routes>
     </>
   );
