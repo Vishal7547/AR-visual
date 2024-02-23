@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { setAuthenticate, setUser, setIsLogin, isLogin } =
+  const { setAuthenticate, setUser, setIsLogin, isLogin, setIsAdmin } =
     useContext(UserContext);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -40,8 +40,15 @@ const Register = () => {
 
         setUser(res?.data?.user);
         setAuthenticate(res?.data?.success);
+        if (res?.data?.user.role === "admin") {
+          setIsAdmin(true);
+        }
         console.log(res.data);
-        navigate("/userdashboard");
+        if (res?.data?.user.role === "user") {
+          return navigate("/userdashboard");
+        } else {
+          return navigate("/builder");
+        }
       } else {
         setIsLogin(false);
 

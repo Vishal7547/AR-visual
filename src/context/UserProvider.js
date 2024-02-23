@@ -3,11 +3,19 @@ import axios from "axios";
 import { UserContext } from "./MyContext";
 const UserProvider = ({ children }) => {
   const [authenticate, setAuthenticate] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const [user, setUser] = useState(null);
   const [project, setProject] = useState([]);
+  const [buildProject, setBuildProject] = useState([]);
+  const [isBuild, setIsBuild] = useState(false);
+
   const [isUpdate, setIsUpdate] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
+  const [isProjectGet, setIsProjectGet] = useState(false);
+  const [singleProject, setSingleProject] = useState({});
+
   const [isProfileUpload, setIsProfileUpload] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [buildId, setBuildId] = useState("63275325873593875");
@@ -24,6 +32,9 @@ const UserProvider = ({ children }) => {
       console.log("kar diya", data);
       setUser(data?.user);
       setAuthenticate(data?.success);
+      if (data?.user.role === "admin") {
+        setIsAdmin(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +50,7 @@ const UserProvider = ({ children }) => {
       if (data.success) {
         console.log("logout", data);
         setUser(null);
+        setIsAdmin(false);
         setAuthenticate(false);
         window.location.href = "/";
       }
@@ -224,8 +236,82 @@ const UserProvider = ({ children }) => {
       return error;
     }
   };
-  const handleBuild = () => {
-    setBuildId(Date.now());
+  const projectBuild = async () => {
+    setIsBuild(true);
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_KEY}/user/buildproject`,
+
+        {
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        setIsBuild(false);
+
+        console.log("kar diya", data);
+        setBuildProject(data?.project);
+        //  setProject(data?.project?.project_report);
+        return data;
+      }
+    } catch (e) {
+      setIsBuild(false);
+
+      console.log(e);
+    }
+  };
+  // const handleBuild = () => {
+  //   setBuildId(Date.now());
+  // };
+  const updateProject = async (formData, id) => {
+    try {
+      console.log(formData, id, "server");
+      const { data } = await axios.put(
+        `${process.env.REACT_APP_API_KEY}/user/updatepropject/${id}`,
+        formData,
+
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        //  setIsProfileUpload(false);
+        console.log("kar diya", data);
+
+        return data;
+      }
+    } catch (e) {
+      //  setIsProfileUpload(false);
+
+      console.log(e);
+    }
+  };
+  const fetchProjectById = async (projectId) => {
+    setIsProjectGet(true);
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_KEY}/user/projectget/${projectId}`,
+
+        {
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        setIsProjectGet(false);
+
+        console.log("kar diya", data);
+        setSingleProject(data?.project);
+        //  setProject(data?.project?.project_report);
+        return data;
+      }
+    } catch (e) {
+      setIsProjectGet(false);
+
+      console.log(e);
+    }
   };
   return (
     <UserContext.Provider
@@ -252,10 +338,19 @@ const UserProvider = ({ children }) => {
         isProfileUpload,
         setIsLogin,
         isLogin,
-        handleBuild,
+        // handleBuild,
         buildId,
         imgPreview,
         setImgPreview,
+        setIsAdmin,
+        isAdmin,
+        projectBuild,
+        buildProject,
+        isBuild,
+        updateProject,
+        fetchProjectById,
+        isProjectGet,
+        singleProject,
       }}
     >
       {children}

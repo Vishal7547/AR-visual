@@ -22,7 +22,7 @@ const style = {
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { setAuthenticate, setUser, setIsLogin, isLogin } =
+  const { setAuthenticate, setUser, setIsLogin, isLogin ,setIsAdmin} =
     useContext(UserContext);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -52,11 +52,18 @@ const SignIn = () => {
         // success
         setIsLogin(false);
 
-        console.log(res.data);
+        console.log(res.data, "login");
         setUser(res?.data?.user);
 
         setAuthenticate(res?.data?.success);
-        navigate("/userdashboard");
+        if (res?.data?.user.role==="admin") {
+          setIsAdmin(true);
+        }
+        if (res?.data?.user.role === "user") {
+          return navigate("/userdashboard");
+        } else {
+          return navigate("/builder");
+        }
       } else {
         //  error
         setIsLogin(false);

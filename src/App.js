@@ -37,6 +37,7 @@ import { PrivateAuth } from "./routes/PrivateAuth.js";
 import ProjectScan from "./pages/ProjectScan.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Builder from "./pages/Admin/Builder.jsx";
+import { AdminRoute } from "./routes/AdminRoute.js";
 
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
@@ -108,7 +109,9 @@ function AppContent() {
         <Route path="/projectbuild/:projectid" element={<ProjectScan />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/builder" element={<Builder />} />
+        <Route element={<AdminRoute />}>
+          <Route path="/builder" element={<Builder />} />
+        </Route>
       </Routes>
     </>
   );

@@ -75,6 +75,8 @@ const Project = () => {
       formData.append("file1", video);
       formData.append("width", imgWidth);
       formData.append("height", imhHeight);
+      formData.append("builder", false);
+      formData.append("status", "build");
 
       const data = await handleProjectSave(formData);
       if (data.success) {
@@ -325,7 +327,11 @@ const Project = () => {
         open={modal3Open}
         handleClose={handleClose3}
         handleOpen={handleOpen3}
-        imgPreview={imgPreview}
+        imgWidth={imgWidth}
+        video={video}
+        image={image}
+        imhHeight={imhHeight}
+        artWorkName={artWorkName}
       />
       <ArtWorkInfo
         open={modal1Open}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import ProjectShare from "./ProjectShare";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/MyContext";
 import { useContext } from "react";
 const style = {
@@ -16,12 +17,40 @@ const style = {
   transition: "transform 0.3s ease-in-out",
 };
 
-const Build = ({ handleOpen, open, handleClose, imgPreview }) => {
-  const { handleBuild } = useContext(UserContext);
+const Build = ({
+  open,
+  handleClose,
+  artWorkName,
+  imhHeight,
+  imgWidth,
+  video,
+  image,
+}) => {
+  const navigate = useNavigate();
+
+  const { handleProjectSave } = useContext(UserContext);
 
   const [open1, setOpen1] = useState(false);
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
+
+  const handleBuild = async () => {
+    const formData = new FormData();
+    formData.append("artWorkName", artWorkName);
+    formData.append("file2", image);
+    formData.append("file1", video);
+    formData.append("width", imgWidth);
+    formData.append("height", imhHeight);
+    formData.append("builder", true);
+    formData.append("status", "pending");
+
+    const data = await handleProjectSave(formData);
+    if (data.success) {
+      return navigate("/userdashboard");
+    } else {
+      console.log(data);
+    }
+  };
   return (
     <div>
       <Modal
@@ -40,7 +69,7 @@ const Build = ({ handleOpen, open, handleClose, imgPreview }) => {
             </div>
             <div className="my-2 p-3 g-0">
               <button className="btn btn-danger w-25" onClick={handleBuild}>
-                Request for Build
+                Build
               </button>
               {/* <div className="tableSet mt-2">
                 <table class="table table-secondary table-hover">
@@ -84,7 +113,7 @@ const Build = ({ handleOpen, open, handleClose, imgPreview }) => {
         handleOpen1={handleOpen1}
         handleClose1={handleClose1}
         open1={open1}
-        imgPreview={imgPreview}
+        imgPreview={"imgPreview"}
       />
     </div>
   );

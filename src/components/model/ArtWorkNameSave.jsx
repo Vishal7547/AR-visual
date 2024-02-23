@@ -42,6 +42,9 @@ const ArtWorkNameSave = ({
       formData.append("file1", video);
       formData.append("width", imgWidth);
       formData.append("height", imhHeight);
+      formData.append("builder", false);
+      formData.append("status", "build");
+
       const data = await handleProjectSave(formData);
       console.log("data", data);
       if (data.success) {

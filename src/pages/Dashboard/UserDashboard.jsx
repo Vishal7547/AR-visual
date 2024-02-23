@@ -12,7 +12,18 @@ import { IoBuildOutline } from "react-icons/io5";
 import { FiEdit2 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import Loader from "../../components/Loader";
+import useModal from "../../components/hooks/useModel";
+import Build from "../../components/model/Build";
+import ProjectShare from "../../components/model/ProjectShare";
+
 const UserDashboard = () => {
+  const { open, handleOpen, handleClose, setOpen, sureStyle } = useModal();
+  const {
+    open: open1,
+    handleOpen: handleOpen1,
+    handleClose: handleClose1,
+  } = useModal();
+
   const navigate = useNavigate();
   const {
     isDelete,
@@ -66,7 +77,11 @@ const UserDashboard = () => {
   const handleDelete = async (id) => {
     await deleteProject(id);
   };
-
+  const handleBuilder = async (status) => {
+    if (status === "approved") {
+      handleOpen1();
+    }
+  };
   return (
     <div className="row  m-0 p-0 g-0 ">
       {isDelete && <Loader />}
@@ -112,11 +127,17 @@ const UserDashboard = () => {
                         <div className="menuWorkingParent" ref={menuRef}>
                           {isShow && (
                             <div className="menuWorking">
-                              <div className="iconWork1 d-flex">
+                              <div
+                                className="iconWork1 d-flex"
+                                onClick={() => handleBuilder(p?.status)}
+                              >
                                 <span>
                                   <IoBuildOutline />
                                 </span>
-                                <span>Build</span>
+                                <span>
+                                  {p?.status.charAt(0).toUpperCase() +
+                                    p?.status.slice(1)}
+                                </span>
                               </div>
                               <div className="iconWork1 d-flex">
                                 <span>
@@ -168,6 +189,8 @@ const UserDashboard = () => {
           </div>
         </div>
       )}
+      <Build open={open} handleClose={handleClose} handleOpen={handleOpen} />
+      <ProjectShare handleClose1={handleClose1} open1={open1} />
     </div>
   );
 };
