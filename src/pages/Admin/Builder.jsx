@@ -3,6 +3,7 @@ import AdminSidebar from "../../components/AdminSidebar";
 import { useRef } from "react";
 import { IoIosCloudDownload } from "react-icons/io";
 import { MdDriveFolderUpload } from "react-icons/md";
+
 const Builder = () => {
   const [Target,setTarget] = useState("");
   const fileInputRef = useRef(null);
@@ -44,55 +45,28 @@ const Builder = () => {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mansi</td>
-      <td>Mansi2gmail.com</td>
-      <td>goodspeed</td>
-      <td><IoIosCloudDownload fontSize={25} onClick={()=>downloadImage()}/></td>
-      <td><MdDriveFolderUpload fontSize={25} onClick={()=>handleClick()}/></td>
-      <input
-                type="file"
-                accept="image/*"
-                multiple={false}
-                ref={fileInputRef}
-                onChange={(e) => handleTarget(e.target.files[0])}
-                style={{ display: "none" }}
-              />
-     
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Mansi</td>
-      <td>Mansi2gmail.com</td>
-      <td>goodspeed</td>
-      <td><IoIosCloudDownload fontSize={25} onClick={()=>downloadImage()}/></td>
-      <td><MdDriveFolderUpload fontSize={25} onClick={()=>handleClick()}/></td>
-      <input
-                type="file"
-                accept="image/*"
-                multiple={false}
-                ref={fileInputRef}
-                onChange={(e) => setTarget(e.target.files[0])}
-                style={{ display: "none" }}
-              />
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Mansi</td>
-      <td>Mansi2gmail.com</td>
-      <td>goodspeed</td>
-      <td><IoIosCloudDownload fontSize={25} onClick={()=>downloadImage()}/></td>
-      <td><MdDriveFolderUpload fontSize={25} onClick={()=>handleClick()}/></td>
-      <input
-                type="file"
-                accept="image/*"
-                multiple={false}
-                ref={fileInputRef}
-                onChange={(e) => setTarget(e.target.files[0])}
-                style={{ display: "none" }}
-              />
-    </tr>
+    {[1,2,3].map((t,i)=>(
+    <tr key={i}>
+    <th scope="row">1</th>
+    <td>Mansi</td>
+    <td>Mansi2gmail.com</td>
+    <td>goodspeed</td>
+    <td><IoIosCloudDownload fontSize={25} onClick={()=>downloadImage()}/></td>
+    <td><MdDriveFolderUpload fontSize={25} onClick={()=>handleClick()}/></td>
+    <input
+              type="file"
+              accept="image/*"
+              multiple={false}
+              ref={fileInputRef}
+              onChange={(e) => handleTarget(e.target.files[0])}
+              style={{ display: "none" }}
+            />
+   
+  </tr>
+    ))}
+
+
+
   </tbody>
 </table>
             </div>
