@@ -8,7 +8,13 @@ import { CiCircleQuestion } from "react-icons/ci";
 import { useContext } from "react";
 import { UserContext } from "../../context/MyContext";
 
+
 const Dashboard = () => {
+  const {
+
+    user,
+
+  } = useContext(UserContext);
   return (
     <div>
       <div className="sidebarcontainer container-fluid">
@@ -24,15 +30,14 @@ const Dashboard = () => {
               className="sidebarcontentprofiles "
               >
 
-               
                 <div className="upperprofiledashboard my-4">
-                  <Avatar src="#" className="upperprofileavtar" />
+                  <Avatar src={user ? user?.avatar?.url:"https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="} className="upperprofileavtar" />
                   <div className="namedashboard">
-                  <span>Mansi</span>
+                  <span>{user?.name}</span>
                   </div>
              
                 <div className="emaildashboard">
-              <span>mansi@gmail.com</span>
+              <span>{user?.email}</span>
                 </div>
                 </div>
 
