@@ -1,11 +1,30 @@
 .containercard{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
   
 }
 .basicardcontent{
     font-size:1.7rem;
+    font-weight:600;
+}
+.mothhcardcnt{
+    font-size:0.8rem;
+    font-weight:600;
+}
+.cardpricing{
+    border-radius:10px !important;
+}
+.linecard{
+    border:1px solid #F0F0F1;
+}
+.paracarde{
+    font-size:0.8rem;
+}
+.divcontent{
+    font-size:0.8rem; 
+}
+.rupeecardcnt{
+    font-size:1.3rem;
     font-weight:600;
 }
