@@ -1,15 +1,9 @@
 import React from "react";
-
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Container from "@mui/material/Container";
-import { CiCircleQuestion } from "react-icons/ci";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { IoCheckmark } from "react-icons/io5";
 import HomeHeader from "../components/HomeHeader";
 const Pricing = () => {

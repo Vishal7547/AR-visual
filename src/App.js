@@ -20,7 +20,7 @@ import "./style/profile.css";
 import "./style/scan.css";
 import "./style/artWork.css";
 import "./style/notFound.css";
-
+import "./style/AdminSidebar.css";
 import "./style/Profilesetting.css";
 import Register from "./pages/Register.jsx";
 import Forget from "./pages/Forget.jsx";
