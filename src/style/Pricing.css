@@ -1,30 +1,44 @@
-.containercard{
+.containercard {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-  
+
 }
-.basicardcontent{
-    font-size:1.7rem;
-    font-weight:600;
+
+.pricing {
+    background-color: #F4F4F4;
+    height: 100%;
+    width: 100%;
 }
-.mothhcardcnt{
-    font-size:0.8rem;
-    font-weight:600;
+
+.basicardcontent {
+    font-size: 1.7rem;
+    font-weight: 600;
 }
-.cardpricing{
-    border-radius:10px !important;
+
+.mothhcardcnt {
+    font-size: 0.8rem;
+    font-weight: 600;
 }
-.linecard{
-    border:1px solid #F0F0F1;
+
+.cardpricing {
+    border-radius: 10px !important;
+    max-width: 275px;
 }
-.paracarde{
-    font-size:0.8rem;
+
+.linecard {
+    border: 1px solid #F0F0F1;
 }
-.divcontent{
-    font-size:0.8rem; 
+
+.paracarde {
+    font-size: 0.8rem;
 }
-.rupeecardcnt{
-    font-size:1.3rem;
-    font-weight:600;
+
+.divcontent {
+    font-size: 0.8rem;
+}
+
+.rupeecardcnt {
+    font-size: 1.3rem;
+    font-weight: 600;
 }

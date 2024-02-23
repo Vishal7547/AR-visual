@@ -1,12 +1,24 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/MyContext";
 const HomeHeader = () => {
   const { authenticate } = useContext(UserContext);
+  const location = useLocation();
+  const [isPath, setIsPath] = useState(true);
+  useEffect(() => {
+    if (location.pathname === "/pricing") {
+      setIsPath(true);
+    } else {
+      setIsPath(false);
+    }
+  }, [location.pathname]);
   return (
     // <div>
-    <nav className="navbar navbar-expand-lg navbar-light  px-2" id="mainHeader">
+    <nav
+      className="navbar navbar-expand-lg navbar-light   px-2"
+      id={`${isPath ? "mainHeader2" : "mainHeader"}`}
+    >
       <NavLink className="navbar-brand secondHeader_logo" to="/">
         Godspeed
       </NavLink>

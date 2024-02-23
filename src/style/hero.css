@@ -51,6 +51,11 @@
     background: transparent !important;
 }
 
+#mainHeader2 {
+    background-color: black !important;
+    width: 100% !important;
+}
+
 .secondHeader {
     color: white !important;
     /* font-weight: 900 !important; */
