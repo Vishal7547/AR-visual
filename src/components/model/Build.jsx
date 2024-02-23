@@ -40,9 +40,9 @@ const Build = ({ handleOpen, open, handleClose, imgPreview }) => {
             </div>
             <div className="my-2 p-3 g-0">
               <button className="btn btn-danger w-25" onClick={handleBuild}>
-                Build
+                Request for Build
               </button>
-              <div className="tableSet mt-2">
+              {/* <div className="tableSet mt-2">
                 <table class="table table-secondary table-hover">
                   <thead>
                     <tr>
@@ -75,7 +75,7 @@ const Build = ({ handleOpen, open, handleClose, imgPreview }) => {
                     </tr>
                   </tbody>
                 </table>
-              </div>
+              </div> */}
             </div>
           </div>
         </Box>

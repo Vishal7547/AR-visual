@@ -36,6 +36,7 @@ import { PrivateRoute } from "./routes/PrivateRoutes.js";
 import { PrivateAuth } from "./routes/PrivateAuth.js";
 import ProjectScan from "./pages/ProjectScan.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import Builder from "./pages/Admin/Builder.jsx";
 
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
@@ -70,6 +71,7 @@ function AppContent() {
     "/contact",
     "/pricing",
     "/forgot-password",
+    "/builder",
   ];
   const shouldShowHeader = !pathsWithoutHeader.includes(location.pathname);
 
@@ -105,7 +107,8 @@ function AppContent() {
         <Route path="/scan/:projectid" element={<Scan />} />
         <Route path="/projectbuild/:projectid" element={<ProjectScan />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/pricing" element={<Pricing/>} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/builder" element={<Builder />} />
       </Routes>
     </>
   );

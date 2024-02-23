@@ -348,6 +348,8 @@ const Project = () => {
         handleClose={handleClose4}
         video={video}
         image={image}
+        imgWidth={imgWidth}
+        imhHeight={imhHeight}
       />
     </div>
   );

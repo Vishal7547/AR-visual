@@ -26,6 +26,8 @@ const ArtWorkNameSave = ({
   artWorkName,
   image,
   video,
+  imgWidth,
+  imhHeight,
 }) => {
   const navigate = useNavigate();
 
@@ -38,7 +40,8 @@ const ArtWorkNameSave = ({
       formData.append("artWorkName", artWorkName);
       formData.append("file2", image);
       formData.append("file1", video);
-
+      formData.append("width", imgWidth);
+      formData.append("height", imhHeight);
       const data = await handleProjectSave(formData);
       console.log("data", data);
       if (data.success) {
