@@ -22,14 +22,29 @@ const style = {
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { setAuthenticate, setUser, setIsLogin, isLogin ,setIsAdmin} =
+  const { setAuthenticate, setUser, setIsLogin, isLogin, setIsAdmin } =
     useContext(UserContext);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [customError, setCustomError] = useState("");
   const handleLogion = async (e) => {
     e.preventDefault();
-    if (!email || !password) {
+    setIsError(false);
+
+    setEmailError("");
+    setPasswordError("");
+    setCustomError("");
+    if (!email) {
+      setIsError(true);
+      setEmailError("email is necessary");
+      return;
+    }
+    if (!password) {
+      setIsError(true);
+      setPasswordError("password is necessary");
       return;
     }
     setIsLogin(true);
@@ -56,7 +71,7 @@ const SignIn = () => {
         setUser(res?.data?.user);
 
         setAuthenticate(res?.data?.success);
-        if (res?.data?.user.role==="admin") {
+        if (res?.data?.user.role === "admin") {
           setIsAdmin(true);
         }
         if (res?.data?.user.role === "user") {
@@ -72,6 +87,8 @@ const SignIn = () => {
       }
     } catch (error) {
       console.log(error);
+      setCustomError(error?.response?.data?.message);
+
       setIsLogin(false);
     }
   };
@@ -98,8 +115,8 @@ const SignIn = () => {
             <div className="emailogin">
               <TextField
                 label="Email"
-                multiline
-                maxRows={1}
+                error={isError}
+                helperText={isError && emailError}
                 variant="filled"
                 className="insidemailog w-100"
                 onChange={(e) => setEmail(e.target.value)}
@@ -109,9 +126,11 @@ const SignIn = () => {
               <TextField
                 id="filled-multiline-flexible"
                 label="Password"
-                multiline
-                maxRows={4}
                 variant="filled"
+                error={isError}
+                helperText={
+                  (isError || customError) && (passwordError || customError)
+                }
                 className="insidepasslog w-100"
                 onChange={(e) => setPassword(e.target.value)}
               />

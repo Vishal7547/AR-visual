@@ -10,12 +10,54 @@ const Register = () => {
   const { setAuthenticate, setUser, setIsLogin, isLogin, setIsAdmin } =
     useContext(UserContext);
   const [name, setName] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [customError, setCustomError] = useState("");
+
   console.log(process.env.REACT_APP_API_KEY);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !email || !password) {
+
+    setIsError(false);
+    setErrorMessage("");
+    setEmailError("");
+    setPasswordError("");
+    setCustomError("");
+    if (!name) {
+      setIsError(true);
+      setErrorMessage("name is necessary");
+      return;
+    }
+    if (!email) {
+      setIsError(true);
+      setEmailError("email is necessary");
+      return;
+    }
+    if (!password) {
+      setIsError(true);
+      setPasswordError("password is necessary");
+      return;
+    }
+    if (!name || name.length < 3 || /\d/.test(name)) {
+      setIsError(true);
+      setErrorMessage(
+        "Name should be at least three characters long and should not contain any numbers."
+      );
+      return;
+    }
+    if (!password || password.length < 6) {
+      setIsError(true);
+      setPasswordError("Password should be at least six characters long.");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      setIsError(true);
+      emailError("Email should be in a valid format.");
       return;
     }
     setIsLogin(true);
@@ -57,6 +99,7 @@ const Register = () => {
         console.log("error");
       }
     } catch (error) {
+      setCustomError(error?.response?.data?.message);
       setIsLogin(false);
 
       console.log(error.response);
@@ -84,6 +127,8 @@ const Register = () => {
           <form className="row m-0 p-0 g-0" onSubmit={handleSubmit}>
             <div className="emailogin my-2">
               <TextField
+                error={isError}
+                helperText={isError && errorMessage}
                 label="Name"
                 variant="filled"
                 className="insidemailog w-100"
@@ -92,6 +137,8 @@ const Register = () => {
             </div>
             <div className="emailogin my-2">
               <TextField
+                error={isError}
+                helperText={isError && emailError}
                 label="Email"
                 variant="filled"
                 className="insidemailog w-100"
@@ -100,6 +147,10 @@ const Register = () => {
             </div>
             <div className="passwordlogin my-2">
               <TextField
+                error={isError}
+                helperText={
+                  (isError || customError) && (passwordError || customError)
+                }
                 id="filled-multiline-flexible"
                 label="Password"
                 variant="filled"
