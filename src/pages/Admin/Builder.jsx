@@ -8,8 +8,14 @@ import { UserContext } from "../../context/MyContext";
 import Loader from "../../components/Loader";
 
 const Builder = () => {
-  const { isUpload, projectBuild, buildProject, isBuild, updateProject } =
-    useContext(UserContext);
+  const {
+    isApproved,
+    isUpload,
+    projectBuild,
+    buildProject,
+    isBuild,
+    updateProject,
+  } = useContext(UserContext);
   const [Target, setTarget] = useState("");
   const fileInputRef = useRef(null);
   useEffect(() => {
@@ -52,7 +58,7 @@ const Builder = () => {
 
   return (
     <div>
-      {isBuild && <Loader />}
+      {(isBuild || isApproved) && <Loader />}
       <div className="container-fluid">
         <div className="row">
           <div className="col-1 m-0 p-0">
@@ -99,9 +105,9 @@ const Builder = () => {
                     </td>
                     <td>
                       {t?.status === "approved" ? (
-                        <button className="btn btn-success">Re-Upload</button>
+                        <button className="btn btn-success">Approved</button>
                       ) : (
-                        <button className="btn btn-danger">Reject</button>
+                        <button className="btn btn-danger">Pending</button>
                       )}
                     </td>
                     <input

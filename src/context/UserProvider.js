@@ -9,6 +9,8 @@ const UserProvider = ({ children }) => {
   const [project, setProject] = useState([]);
   const [buildProject, setBuildProject] = useState([]);
   const [isBuild, setIsBuild] = useState(false);
+  const [isApproved, setIsApproved] = useState(false);
+  const [isUserBuild, setIsUserBuild] = useState(false);
 
   const [isUpdate, setIsUpdate] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
@@ -264,6 +266,7 @@ const UserProvider = ({ children }) => {
   //   setBuildId(Date.now());
   // };
   const updateProject = async (formData, id) => {
+    setIsApproved(true);
     try {
       console.log(formData, id, "server");
       const { data } = await axios.put(
@@ -279,12 +282,15 @@ const UserProvider = ({ children }) => {
       );
       if (data.success) {
         //  setIsProfileUpload(false);
+        setIsApproved(false);
+
         console.log("kar diya", data);
 
         return data;
       }
     } catch (e) {
       //  setIsProfileUpload(false);
+      setIsApproved(false);
 
       console.log(e);
     }
@@ -309,6 +315,35 @@ const UserProvider = ({ children }) => {
       }
     } catch (e) {
       setIsProjectGet(false);
+
+      console.log(e);
+    }
+  };
+  const requestForBuild = async (id, formData) => {
+    setIsUserBuild(true);
+    try {
+      console.log("paragraph");
+      const { data } = await axios.put(
+        `${process.env.REACT_APP_API_KEY}/user/updatepropjectuser/${id}`,
+        formData,
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        setIsUserBuild(false);
+        setIsUpdate(!isUpdate);
+
+        console.log("kar diya", data);
+
+        return data;
+      }
+    } catch (e) {
+      setIsUserBuild(false);
 
       console.log(e);
     }
@@ -351,6 +386,9 @@ const UserProvider = ({ children }) => {
         fetchProjectById,
         isProjectGet,
         singleProject,
+        isApproved,
+        requestForBuild,
+        isUserBuild,
       }}
     >
       {children}

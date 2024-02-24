@@ -31,6 +31,8 @@ const UserDashboard = () => {
     getAllProjectController,
     isUpdate,
     deleteProject,
+    requestForBuild,
+    isUserBuild,
   } = useContext(UserContext);
   const videoRef = useRef(null);
   const [isPlay, setIsPlay] = useState(false);
@@ -77,14 +79,21 @@ const UserDashboard = () => {
   const handleDelete = async (id) => {
     await deleteProject(id);
   };
-  const handleBuilder = async (status) => {
+  const handleBuilder = async (status, id) => {
     if (status === "approved") {
-      handleOpen1();
+      return handleOpen1();
+    }
+    if (status === "build") {
+      const formData = new FormData();
+      formData.append("status", "pending");
+      formData.append("builder", true);
+
+      await requestForBuild(id, formData);
     }
   };
   return (
     <div className="row  m-0 p-0 g-0 ">
-      {isDelete && <Loader />}
+      {(isDelete || isUserBuild) && <Loader />}
       <div className="row g-0 p-0 m-0">
         <div className="d-flex justify-content-end align-items-center upperSearch m-0 p-0 g-0">
           <TextField
@@ -129,7 +138,7 @@ const UserDashboard = () => {
                             <div className="menuWorking">
                               <div
                                 className="iconWork1 d-flex"
-                                onClick={() => handleBuilder(p?.status)}
+                                onClick={() => handleBuilder(p?.status, p._id)}
                               >
                                 <span>
                                   <IoBuildOutline />
