@@ -21,7 +21,7 @@ const AllProject = () => {
           <div className="col-1 m-0 p-0">
             <AdminSidebar />
           </div>
-          <div className="col-11 m-0 p-0 my-5 ">
+          <div className="col-11 m-0 p-0  ">
             <div className="row my-2">
               <div className="commonGraphStyle p-2">
                 <h3>All Project</h3>
@@ -36,13 +36,12 @@ const AllProject = () => {
                         Serial <br /> No.
                       </th>
                       <th scope="col">Artwork Name</th>
-                      <th scope="col">Build</th>
+                      <th scope="col">Build Request</th>
+                      <th scope="col">status</th>
+                      <th scope="col">Profile</th>
                       <th scope="col">
                         MindAr <br /> Upload
                       </th>
-                      <th scope="col">status</th>
-                      <th scope="col">Profile</th>
-
                       <th scope="col">Email</th>
                     </tr>
                   </thead>
@@ -67,7 +66,7 @@ const AllProject = () => {
                             <FaUser fontSize={30} />
                           )}
                         </td>
-                        <td>{u?.status}</td>
+                        <td>{u?.mindArUpload ? "Uploaded" : "Not Uploaded"}</td>
 
                         <td>{u?.user?.email}</td>
                       </tr>

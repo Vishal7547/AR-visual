@@ -17,10 +17,10 @@ const Users = () => {
       {isAllUser && <Loader />}
       <div className="container-fluid">
         <div className="row">
-          <div className="col-2 m-0 p-0">
+          <div className="col-1 m-0 p-0">
             <AdminSidebar />
           </div>
-          <div className="col-10 m-0 p-0  ">
+          <div className="col-11 m-0 p-0  ">
             <div className="row my-2">
               <div className="commonGraphStyle p-2">
                 <h3>All User</h3>
