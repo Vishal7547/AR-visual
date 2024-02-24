@@ -22,6 +22,8 @@ import "./style/artWork.css";
 import "./style/notFound.css";
 import "./style/AdminSidebar.css";
 import "./style/Profilesetting.css";
+import "./style/dashboardAdmin.css";
+
 import Register from "./pages/Register.jsx";
 import Forget from "./pages/Forget.jsx";
 import UserDashboard from "./pages/Dashboard/UserDashboard.jsx";
@@ -38,6 +40,9 @@ import ProjectScan from "./pages/ProjectScan.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Builder from "./pages/Admin/Builder.jsx";
 import { AdminRoute } from "./routes/AdminRoute.js";
+import Users from "./pages/Admin/Users.jsx";
+import AllProject from "./pages/Admin/AllProject.jsx";
+import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
@@ -73,6 +78,9 @@ function AppContent() {
     "/pricing",
     "/forgot-password",
     "/builder",
+    "/dashboard/user",
+    "/dashboard/project",
+    "/dashboard/admindashboard",
   ];
   const shouldShowHeader = !pathsWithoutHeader.includes(location.pathname);
 
@@ -111,6 +119,12 @@ function AppContent() {
         <Route path="/pricing" element={<Pricing />} />
         <Route element={<AdminRoute />}>
           <Route path="/builder" element={<Builder />} />
+          <Route path="/dashboard/user" element={<Users />} />
+          <Route path="/dashboard/project" element={<AllProject />} />
+          <Route
+            path="/dashboard/admindashboard"
+            element={<AdminDashboard />}
+          />
         </Route>
       </Routes>
     </>

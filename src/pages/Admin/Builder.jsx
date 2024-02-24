@@ -61,67 +61,78 @@ const Builder = () => {
       {(isBuild || isApproved) && <Loader />}
       <div className="container-fluid">
         <div className="row">
-          <div className="col-1 m-0 p-0">
+          <div className="col-2 m-0 p-0">
             <AdminSidebar />
           </div>
-          <div className="col-10 m-0 p-0 my-5 ">
+          <div className="col-10 m-0 p-0  ">
             {/* Your table  */}
-            <table class="table">
-              <thead class="table-dark">
-                <tr>
-                  <th scope="col">Serial no.</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Project Name</th>
-                  <th scope="col">Image/Download</th>
-                  <th scope="col">Target</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {buildProject?.map((t, i) => (
-                  <tr
-                    key={t._id}
-                    style={{
-                      textDecoration:
-                        t?.status === "approved" ? "line-through" : "none",
-                    }}
-                  >
-                    <th scope="row">{i + 1}</th>
-                    <td>{t?.user?.name}</td>
-                    <td>{t?.user?.email}</td>
-                    <td>{t?.artWorkName}</td>
-                    <td>
-                      <IoIosCloudDownload
-                        fontSize={25}
-                        onClick={() => downloadImage(t?.target?.url)}
-                      />
-                    </td>
-                    <td>
-                      <MdDriveFolderUpload
-                        fontSize={25}
-                        onClick={() => handleClick()}
-                      />
-                    </td>
-                    <td>
-                      {t?.status === "approved" ? (
-                        <button className="btn btn-success">Approved</button>
-                      ) : (
-                        <button className="btn btn-danger">Pending</button>
-                      )}
-                    </td>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      multiple={false}
-                      ref={fileInputRef}
-                      onChange={(e) => handleTarget(e, t?._id)}
-                      style={{ display: "none" }}
-                    />
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="row my-2">
+              <div className="commonGraphStyle p-2">
+                <h3>Build Request</h3>
+              </div>
+            </div>
+            <div className="row">
+              <div className="commonGraphStyle p-2">
+                <table class="table">
+                  <thead class="table-dark">
+                    <tr>
+                      <th scope="col">Serial no.</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Project Name</th>
+                      <th scope="col">Image/Download</th>
+                      <th scope="col">Target</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {buildProject?.map((t, i) => (
+                      <tr
+                        key={t._id}
+                        style={{
+                          textDecoration:
+                            t?.status === "approved" ? "line-through" : "none",
+                        }}
+                      >
+                        <th scope="row">{i + 1}</th>
+                        <td>{t?.user?.name}</td>
+                        <td>{t?.user?.email}</td>
+                        <td>{t?.artWorkName}</td>
+                        <td>
+                          <IoIosCloudDownload
+                            fontSize={25}
+                            onClick={() => downloadImage(t?.target?.url)}
+                          />
+                        </td>
+                        <td>
+                          <MdDriveFolderUpload
+                            fontSize={25}
+                            onClick={() => handleClick()}
+                          />
+                        </td>
+                        <td>
+                          {t?.status === "approved" ? (
+                            <button className="btn btn-success">
+                              Approved
+                            </button>
+                          ) : (
+                            <button className="btn btn-danger">Pending</button>
+                          )}
+                        </td>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          multiple={false}
+                          ref={fileInputRef}
+                          onChange={(e) => handleTarget(e, t?._id)}
+                          style={{ display: "none" }}
+                        />
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

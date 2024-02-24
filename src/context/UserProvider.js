@@ -11,12 +11,15 @@ const UserProvider = ({ children }) => {
   const [isBuild, setIsBuild] = useState(false);
   const [isApproved, setIsApproved] = useState(false);
   const [isUserBuild, setIsUserBuild] = useState(false);
+  const [isAllUser, setIsAllUser] = useState(false);
 
   const [isUpdate, setIsUpdate] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [isProjectGet, setIsProjectGet] = useState(false);
   const [singleProject, setSingleProject] = useState({});
+  const [totalUser, setTotalUser] = useState([]);
+  const [totalProject, setTotalProject] = useState([]);
 
   const [isProfileUpload, setIsProfileUpload] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
@@ -348,6 +351,52 @@ const UserProvider = ({ children }) => {
       console.log(e);
     }
   };
+  const fetchUser = async () => {
+    setIsAllUser(true);
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_KEY}/user/alluser`,
+
+        {
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        setIsAllUser(false);
+        setTotalUser(data?.user);
+        console.log("kar diya", data);
+
+        return data;
+      }
+    } catch (e) {
+      setIsAllUser(false);
+
+      console.log(e);
+    }
+  };
+  const fetchProjectByAdmin = async () => {
+    setIsAllUser(true);
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_KEY}/user/allprojectadmin`,
+
+        {
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        setIsAllUser(false);
+        setTotalProject(data.project);
+        console.log("All Project", data);
+
+        return data;
+      }
+    } catch (e) {
+      setIsAllUser(false);
+
+      console.log(e);
+    }
+  };
   return (
     <UserContext.Provider
       value={{
@@ -389,6 +438,11 @@ const UserProvider = ({ children }) => {
         isApproved,
         requestForBuild,
         isUserBuild,
+        fetchUser,
+        isAllUser,
+        totalUser,
+        fetchProjectByAdmin,
+        totalProject,
       }}
     >
       {children}

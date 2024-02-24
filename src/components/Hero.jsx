@@ -32,7 +32,7 @@ const Hero = () => {
         <button
           onClick={() => {
             authenticate
-              ? project.length > 0
+              ? project?.length > 0
                 ? navigate("/userdashboard")
                 : navigate("/project")
               : navigate("/signin");

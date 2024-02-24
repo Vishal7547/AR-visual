@@ -8,6 +8,9 @@ import { RiFocus2Line } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
 import { FaProductHunt, FaRegUser } from "react-icons/fa";
 import { MdFormatAlignLeft } from "react-icons/md";
+import { SiEsbuild } from "react-icons/si";
+import { MdDashboard } from "react-icons/md";
+import { FaUserFriends, FaProjectDiagram } from "react-icons/fa";
 import useModal from "./hooks/useModel";
 import AreYouSure from "./model/AreYouSure";
 
@@ -18,31 +21,32 @@ const AdminSidebar = () => {
     <nav className="nav__cont">
       <ul className="nav">
         <li className="nav__items">
-          <FaRegUser fontSize={20} />
+          <MdDashboard fontSize={20} />
+
+          <Link to="/dashboard/admindashboard">Dashboard</Link>
+        </li>
+        <li className="nav__items">
+          <SiEsbuild fontSize={20} />
 
           <Link to="/builder">Builder</Link>
         </li>
 
         <li className="nav__items">
-          <GiTwirlyFlower fontSize={20} />
+          <FaUserFriends fontSize={20} />
 
           <Link to="#">Staff</Link>
         </li>
         <li className="nav__items">
           <BsFillPeopleFill fontSize={20} />
 
-          <Link to="#">Customers</Link>
+          <Link to="/dashboard/user">Users</Link>
         </li>
         <li className="nav__items">
-          <CiShoppingCart fontSize={20} />
+          <FaProjectDiagram fontSize={20} />
 
-          <Link to="#">Projects</Link>
+          <Link to="/dashboard/project">Projects</Link>
         </li>
-        <li className="nav__items">
-          <SlSettings fontSize={20} />
 
-          <Link to="#">Setting</Link>
-        </li>
         <li className="nav__items">
           <RiFocus2Line fontSize={20} />
 
