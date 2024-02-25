@@ -26,6 +26,9 @@ const UserProvider = ({ children }) => {
   const [buildId, setBuildId] = useState("63275325873593875");
   const [imgPreview, setImgPreview] = useState(null);
 
+  axios.defaults.headers.common["Authorization"] =
+    window.localStorage.getItem("token");
+
   const handleLoad = async () => {
     try {
       const { data } = await axios.get(

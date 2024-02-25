@@ -65,6 +65,8 @@ const SignIn = () => {
       );
       if (res.data.success) {
         // success
+        window.localStorage.setItem("token", res?.data?.token);
+
         setIsLogin(false);
 
         console.log(res.data, "login");

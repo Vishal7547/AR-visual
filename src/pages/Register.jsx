@@ -78,6 +78,7 @@ const Register = () => {
       );
       if (res.data.success) {
         //  login
+        window.localStorage.setItem("token", res?.data?.token);
         setIsLogin(false);
 
         setUser(res?.data?.user);
