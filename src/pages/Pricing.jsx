@@ -61,7 +61,7 @@ const Pricing = () => {
               </Card>
             </div>
             <div className="containercarditems mt-5">
-              <Card className="cardpricing  ">
+              <Card className="cardpricing " id="wMobile">
                 <CardContent>
                   <div className="basicardcontent">
                     <span>Pro Plus</span>

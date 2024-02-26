@@ -37,7 +37,7 @@ const Hero = () => {
                 : navigate("/project")
               : navigate("/signin");
           }}
-          class="button"
+          class="button atsmall"
         >
           ARtify
         </button>

@@ -7,18 +7,6 @@ import "../style/SignIn.css";
 import axios from "axios";
 
 import { UserContext } from "../context/MyContext";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 700,
-  bgcolor: "background.paper",
-  border: "none",
-  boxShadow: 24,
-  outline: "none",
-  transition: "transform 0.3s ease-in-out",
-};
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -65,6 +53,7 @@ const SignIn = () => {
       );
       if (res.data.success) {
         // success
+        console.log(res?.data?.token);
         window.localStorage.setItem("token", res?.data?.token);
 
         setIsLogin(false);

@@ -42,3 +42,21 @@
     font-size: 1.3rem;
     font-weight: 600;
 }
+
+@media screen and (max-width:857px) {
+    .containercard {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .cardpricing {
+        border-radius: 10px !important;
+        max-width: 80%;
+        margin: auto;
+    }
+
+
+}

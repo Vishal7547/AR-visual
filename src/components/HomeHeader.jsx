@@ -16,26 +16,32 @@ const HomeHeader = () => {
   return (
     // <div>
     <nav
-      className="navbar navbar-expand-lg navbar-light   px-2"
+      className="navbar navbar-expand-lg    px-2"
       id={`${isPath ? "mainHeader2" : "mainHeader"}`}
     >
       <NavLink className="navbar-brand secondHeader_logo" to="/">
         Godspeed
       </NavLink>
       <button
-        className="navbar-toggler"
+        className="navbar-toggler bg-light"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon bg-light"></span>
       </button>
 
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav   w-100 d-flex justify-content-end align-items-center">
+      <div
+        className="collapse navbar-collapse mobileW100"
+        id="navbarSupportedContent"
+      >
+        <ul
+          className="navbar-nav   w-100 d-flex justify-content-end align-items-center"
+          id="mobileHeader"
+        >
           <li className="nav-item">
             <NavLink className="nav-link secondHeader" to="/" exact>
               Contact

@@ -28,6 +28,7 @@ const UserProvider = ({ children }) => {
 
   axios.defaults.headers.common["Authorization"] =
     window.localStorage.getItem("token");
+  console.log(window.localStorage.getItem("token"));
 
   const handleLoad = async () => {
     try {
