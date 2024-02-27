@@ -1,17 +1,18 @@
 .profile {
-    height: 100vh;
+    height: auto !important;
     width: 100%;
     background-color: rgb(192, 192, 192);
 }
 
 .parentWork {
     margin: auto;
-    height: 8vh;
-
+    height: 10vh;
+    padding: 10px 5px;
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .work1 {
@@ -85,42 +86,31 @@
 }
 
 .buildProject {
-    height: 100%;
     width: 100%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    position: relative;
-    /* top: 100%; */
-    left: 90%;
-    transform: translate(-50%, -50%);
+
+
 }
 
 .projectSetUp {
-    position: absolute;
-    /* background-color: aquamarine; */
+    position: relative;
     height: 270px;
     width: 300px;
+    margin: auto !important;
 
 }
-
-/* .projectSetUp p {
-    color: red;
-} */
-
 
 .projectSetUp img {
     height: 100%;
     width: 100% !important;
 }
 
-.projectSetUp video,
-.w-set {
+.projectSetUp video {
     position: absolute;
     left: 0;
     top: 0;
     height: 100% !important;
     width: 100% !important;
+    object-fit: cover;
 
 }
 
@@ -144,5 +134,32 @@
 .leftWork,
 .rightWork {
     width: 50% !important;
+
+}
+
+@media screen and (max-width:665px) {
+    .work1 {
+        display: none;
+    }
+
+    .parentWork {
+        justify-content: end;
+
+    }
+
+    .parentUpload {
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    .upload1,
+    .upload2 {
+        width: 100% !important;
+    }
+
+    .upload2 {
+        margin: 10px auto;
+    }
 
 }

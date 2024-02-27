@@ -25,7 +25,14 @@ span {
 
 nav {
   background-color: rgb(244, 244, 244);
+  position: relative !important;
 }
+
+/* .secondHeaderIcon {
+  color: white !important;
+} */
+
+
 
 .loader-overlay {
   position: fixed;

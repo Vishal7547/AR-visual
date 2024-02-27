@@ -19,57 +19,59 @@ const Header = () => {
 
   const { project, authenticate } = useContext(UserContext);
   return (
-    // <div>
-    <nav className="navbar navbar-expand-lg navbar-light  px-2">
-      <NavLink className="navbar-brand">ARTIFY</NavLink>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+    <>
+      <div id="mainHeader3" className=" px-2">
+        <div>
+          <NavLink className="artify">ARTIFY</NavLink>
+        </div>
 
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav   w-100 d-flex justify-content-end">
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/userdashboard" exact>
-              <LuHome fontSize={25} />
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <>
-              {project.length > 0 ? (
-                <span className="nav-link" onClick={handleOpen1}>
-                  <MdOutlineAddBox fontSize={30} />
-                </span>
-              ) : (
-                <NavLink className="nav-link" to="/project">
-                  <MdOutlineAddBox fontSize={30} />
-                </NavLink>
-              )}
-            </>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/link">
-              <MdOutlineHelpOutline fontSize={30} />
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/dashboard">
-              <FaRegCircleUser fontSize={25} />
-            </NavLink>
-          </li>
-          <li className="nav-item" onClick={handleOpen}>
-            <NavLink className="nav-link" to="#">
-              <AiOutlineLogout fontSize={25} />
-            </NavLink>
-          </li>
-        </ul>
+        <div>
+          <ul
+            id="atMobileViewHeader"
+            className="w-100  d-flex justify-content-end align-items-center"
+          >
+            <li className="nav-item ">
+              <NavLink
+                className="nav-link secondHeaderIcon"
+                to="/userdashboard"
+                exact
+              >
+                <LuHome fontSize={25} />
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <>
+                {project.length > 0 ? (
+                  <span
+                    className="nav-link secondHeaderIcon"
+                    onClick={handleOpen1}
+                  >
+                    <MdOutlineAddBox fontSize={30} />
+                  </span>
+                ) : (
+                  <NavLink className="nav-link secondHeaderIcon" to="/project">
+                    <MdOutlineAddBox fontSize={30} />
+                  </NavLink>
+                )}
+              </>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link secondHeaderIcon" to="/link">
+                <MdOutlineHelpOutline fontSize={30} />
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link secondHeaderIcon" to="/dashboard">
+                <FaRegCircleUser fontSize={25} />
+              </NavLink>
+            </li>
+            <li className="nav-item" onClick={handleOpen}>
+              <NavLink className="nav-link secondHeaderIcon" to="#">
+                <AiOutlineLogout fontSize={25} />
+              </NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
       <AreYouSure
         handleClose={handleClose}
@@ -79,9 +81,7 @@ const Header = () => {
         message="logged Out ?"
       />
       <Instruction handleClose={handleClose1} open={open1} />
-    </nav>
-
-    // </div>
+    </>
   );
 };
 

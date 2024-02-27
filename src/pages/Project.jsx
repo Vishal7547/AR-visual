@@ -56,10 +56,13 @@ const Project = () => {
   const [videoShow, setVideoShow] = useState(false);
   const [imageShow, setImageShow] = useState(false);
   const [bothUpload, setBothUplaod] = useState(false);
+  const [resizeTarget, setResizeTarget] = useState(false);
+
   const [videoKey, setVideoKey] = useState(0);
 
   const fileInputRef = useRef(null);
   const videoInputRef = useRef(null);
+
   const handlePublish = () => {
     if (artWorkName) {
       handleOpen3();
@@ -93,7 +96,20 @@ const Project = () => {
     if (imgPreview && videoKey) {
       setBothUplaod(true);
     }
+    const handleResize = () => {
+      console.log(window.innerWidth < 1300, window.innerWidth);
+      return setResizeTarget(window.innerWidth < 1300);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [imgPreview, videoKey]);
+
   const handleClick = () => {
     fileInputRef.current.click();
   };
@@ -167,160 +183,168 @@ const Project = () => {
   };
 
   return (
-    <div className="profile">
-      {isUpload && <Loader />}
-      <div className="container-fluid m-0 g-0 p-0">
-        <div className="row">
-          <div className="parentWork">
-            <div className="work1">
-              <div className="sample1">
-                <span className="iconsSet">
-                  {true ? (
-                    <MdPausePresentation fontSize={30} />
-                  ) : (
-                    <MdOutlineSmartDisplay fontSize={30} />
-                  )}
-                </span>
-              </div>
-              <div className="sample1" onClick={handleOpen1}>
-                <span className="iconsSet ">
-                  <CiSquareInfo fontFamily={30} />
-                </span>
-                <span className="workInfo">Artwork Info</span>
-              </div>
-              <div className="sample1">
-                <div className=" row ">
-                  <input
-                    type="text"
-                    className="form-control "
-                    placeholder="Artwork Name"
-                    value={artWorkName}
-                    onChange={(e) => setArtWorkName(e.target.value)}
-                  />
+    <>
+      <div className="profile">
+        {isUpload && <Loader />}
+        <div className="container-fluid m-0 g-0 p-0">
+          <div className="row ">
+            <div className="parentWork ">
+              <div className="work1">
+                <div className="sample1">
+                  <span className="iconsSet">
+                    {true ? (
+                      <MdPausePresentation fontSize={30} />
+                    ) : (
+                      <MdOutlineSmartDisplay fontSize={30} />
+                    )}
+                  </span>
+                </div>
+                <div className="sample1" onClick={handleOpen1}>
+                  <span className="iconsSet ">
+                    <CiSquareInfo fontFamily={30} />
+                  </span>
+                  <span className="workInfo">Artwork Info</span>
+                </div>
+                <div className="sample1">
+                  <div className=" row ">
+                    <input
+                      type="text"
+                      className="form-control "
+                      placeholder="Artwork Name"
+                      value={artWorkName}
+                      onChange={(e) => setArtWorkName(e.target.value)}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="work2">
-              <button
-                className="btn btn-success"
-                disabled={!bothUpload}
-                onClick={handleSave}
-              >
-                Save
-              </button>
-              <button
-                className="btn btn-danger"
-                disabled={!bothUpload}
-                onClick={handlePublish}
-              >
-                Publish
-              </button>
+              <div className="work2">
+                <button
+                  className="btn btn-success"
+                  disabled={!bothUpload}
+                  onClick={handleSave}
+                >
+                  Save
+                </button>
+                <button
+                  className="btn btn-danger"
+                  disabled={!bothUpload}
+                  onClick={handlePublish}
+                >
+                  Publish
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="row  ">
-          <div
-            className="parentUpload"
-            style={{ height: bothUpload && "100%" }}
-          >
+          <div className="row  ">
             <div
-              className="upload1"
-              style={{ flexDirection: bothUpload && "row" }}
-              onClick={handleClick}
-              onDragOver={(event) => event.preventDefault()}
-              onDrop={handleImageDrop}
+              className="parentUpload"
+              style={{ height: bothUpload && "100%" }}
             >
-              <div className="img1">
-                {imageShow ? (
-                  <img
-                    src={imgPreview}
-                    alt="preview"
-                    height="250"
-                    width="170"
-                  />
-                ) : (
-                  <CiImageOn fontSize={90} />
-                )}
+              <div
+                className="upload1"
+                style={{
+                  flexDirection: resizeTarget ? "column" : bothUpload && "row",
+                }}
+                onClick={handleClick}
+                onDragOver={(event) => event.preventDefault()}
+                onDrop={handleImageDrop}
+              >
+                <div className="img1">
+                  {imageShow ? (
+                    <img
+                      src={imgPreview}
+                      alt="preview"
+                      height="250"
+                      width="170"
+                    />
+                  ) : (
+                    <CiImageOn fontSize={90} />
+                  )}
+                </div>
+                <div className="img1 mx-1">
+                  <h6>
+                    Add <b>image</b> / <b>artwork</b> <br /> to be recognized{" "}
+                  </h6>
+                </div>
+                <div className="img1 mx-2">
+                  <button className="btn btn-outline-secondary">
+                    {imageShow ? "Change file" : " Select File"}
+                  </button>
+                </div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple={false}
+                  ref={fileInputRef}
+                  onChange={(e) => handleFileChange(e.target.files[0])}
+                  style={{ display: "none" }}
+                />
               </div>
-              <div className="img1">
-                <h6>
-                  Add <b>image</b> / <b>artwork</b> to be recognized{" "}
-                </h6>
+              <div
+                className="upload2 "
+                style={{
+                  flexDirection: resizeTarget ? "column" : bothUpload && "row",
+                }}
+                onClick={handleVideoClick}
+                onDragOver={(event) => event.preventDefault()}
+                onDrop={handleVideoDrop}
+              >
+                <div className="img1">
+                  {videoShow ? (
+                    <video
+                      key={videoKey}
+                      width="170"
+                      height="250"
+                      autoPlay
+                      muted
+                      loop
+                    >
+                      <source src={videoPreview} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <GoVideo fontSize={90} />
+                  )}
+                </div>
+                <div className="img1 mx-2">
+                  <h6>
+                    Add <b>Video</b>
+                  </h6>
+                </div>
+                <div className="img1">
+                  <button className="btn btn-outline-secondary">
+                    {videoShow ? "Change file" : " Select File"}
+                  </button>
+                </div>
+                <input
+                  type="file"
+                  accept="video/*"
+                  multiple={false}
+                  ref={videoInputRef}
+                  onChange={(e) => handleVideoChange(e.target.files[0])}
+                  style={{ display: "none" }}
+                />
               </div>
-              <div className="img1">
-                <button className="btn btn-outline-secondary">
-                  {imageShow ? "Change file" : " Select File"}
-                </button>
-              </div>
-              <input
-                type="file"
-                accept="image/*"
-                multiple={false}
-                ref={fileInputRef}
-                onChange={(e) => handleFileChange(e.target.files[0])}
-                style={{ display: "none" }}
-              />
             </div>
-            <div
-              className="upload2 "
-              style={{ flexDirection: bothUpload && "row" }}
-              onClick={handleVideoClick}
-              onDragOver={(event) => event.preventDefault()}
-              onDrop={handleVideoDrop}
-            >
-              <div className="img1">
-                {videoShow ? (
-                  <video
-                    key={videoKey}
-                    width="170"
-                    height="250"
-                    autoPlay
-                    muted
-                    loop
-                  >
-                    <source src={videoPreview} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <GoVideo fontSize={90} />
-                )}
+            {bothUpload && (
+              <div>
+                <div className="buildProject">
+                  <div className="projectSetUp">
+                    <img src={imgPreview} alt="imgPreview" />
+                    <video key={videoKey} autoPlay muted loop>
+                      <source
+                        src={videoPreview}
+                        type="video/mp4"
+                        className="w-set"
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
               </div>
-              <div className="img1">
-                <h6>
-                  Add <b>Video</b>
-                </h6>
-              </div>
-              <div className="img1">
-                <button className="btn btn-outline-secondary">
-                  {videoShow ? "Change file" : " Select File"}
-                </button>
-              </div>
-              <input
-                type="file"
-                accept="video/*"
-                multiple={false}
-                ref={videoInputRef}
-                onChange={(e) => handleVideoChange(e.target.files[0])}
-                style={{ display: "none" }}
-              />
-            </div>
+            )}
           </div>
-          {bothUpload && (
-            <div className="buildProject">
-              <div className="projectSetUp">
-                <img src={imgPreview} alt="imgPreview" />
-                <video key={videoKey} autoPlay muted loop>
-                  <source
-                    src={videoPreview}
-                    type="video/mp4"
-                    className="w-set"
-                  />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-          )}
         </div>
       </div>
       <Build
@@ -357,7 +381,7 @@ const Project = () => {
         imgWidth={imgWidth}
         imhHeight={imhHeight}
       />
-    </div>
+    </>
   );
 };
 
