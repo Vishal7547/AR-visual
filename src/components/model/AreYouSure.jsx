@@ -16,7 +16,7 @@ const AreYouSure = ({ open, handleClose, style, message = "delete" }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style} className="cssCustomized">
           <div className="row">
             <h5>
               <b>Are you sure you want to {message}</b>

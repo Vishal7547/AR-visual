@@ -48,7 +48,8 @@ const UserDashboard = () => {
   const togglePlay = () => {
     const video = videoRef.current;
     if (isPlay) {
-      // video.pause();
+      video.pause();
+      video.currentTime = 0;
       handleEnded();
     } else {
       video.play();
@@ -72,6 +73,7 @@ const UserDashboard = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
   const handleEnded = () => {
     setIsPlay(false);
     videoRef.current.currentTime = 0;
@@ -94,7 +96,7 @@ const UserDashboard = () => {
   return (
     <div className="row  m-0 p-0 g-0 ">
       {(isDelete || isUserBuild) && <Loader />}
-      <div className="row g-0 p-0 m-0">
+      {/* <div className="row g-0 p-0 m-0">
         <div className="d-flex justify-content-end align-items-center upperSearch m-0 p-0 g-0">
           <TextField
             id="outlined-basic"
@@ -103,7 +105,7 @@ const UserDashboard = () => {
             className="textOutsearch mx-3"
           />
         </div>
-      </div>
+      </div> */}
       {project.length > 0 ? (
         <div className="row mt-2">
           <div className="parentWorking">

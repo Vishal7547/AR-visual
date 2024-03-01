@@ -107,6 +107,7 @@ const SignIn = () => {
               <TextField
                 label="Email"
                 error={isError}
+                type="email"
                 helperText={isError && emailError}
                 variant="filled"
                 className="insidemailog w-100"
@@ -118,6 +119,7 @@ const SignIn = () => {
                 id="filled-multiline-flexible"
                 label="Password"
                 variant="filled"
+                type="password"
                 error={isError}
                 helperText={
                   (isError || customError) && (passwordError || customError)

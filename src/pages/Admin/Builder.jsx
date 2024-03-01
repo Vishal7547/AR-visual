@@ -25,11 +25,12 @@ const Builder = () => {
     fetchBuildProject();
   }, [isUpload]);
   const handleClick = () => {
+    console.log("click");
     fileInputRef.current.click();
   };
-  const handleTarget = async (e, id) => {
+  const handleTarget = async (e, id, i) => {
     const file = e.target.files[0];
-    console.log("working");
+    console.log("working", i);
     console.log(file);
     setTarget(file);
     if (file) {
@@ -88,14 +89,14 @@ const Builder = () => {
                   <tbody>
                     {buildProject?.map((t, i) => (
                       <tr
-                        key={t._id}
+                        key={t?._id}
                         style={{
                           textDecoration:
                             t?.status === "approved" ? "line-through" : "none",
                         }}
                       >
                         <th scope="row">{i + 1}</th>
-                        <td>{t?.user?.name}</td>
+                        <td>{t?.user?.name}s</td>
                         <td>{t?.user?.email}</td>
                         <td>{t?.artWorkName}</td>
                         <td>
@@ -121,10 +122,10 @@ const Builder = () => {
                         </td>
                         <input
                           type="file"
-                          accept="image/*"
+                          accept="image/mind"
                           multiple={false}
                           ref={fileInputRef}
-                          onChange={(e) => handleTarget(e, t?._id)}
+                          onChange={(e) => handleTarget(e, t?._id, i)}
                           style={{ display: "none" }}
                         />
                       </tr>

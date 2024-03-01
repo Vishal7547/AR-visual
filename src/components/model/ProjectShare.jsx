@@ -59,7 +59,7 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1 }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style} className="cssCustomized">
           <div className="container-fluid m-0 p-0 g-0">
             <div className="cross px-2 bg-danger d-flex  justify-content-between align-items-center">
               <p>{build?.artWorkName}</p>

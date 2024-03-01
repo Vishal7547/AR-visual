@@ -132,6 +132,7 @@ const Register = () => {
                 helperText={isError && errorMessage}
                 label="Name"
                 variant="filled"
+                type="name"
                 className="insidemailog w-100"
                 onChange={(e) => setName(e.target.value)}
               />
@@ -139,6 +140,7 @@ const Register = () => {
             <div className="emailogin my-2">
               <TextField
                 error={isError}
+                type="email"
                 helperText={isError && emailError}
                 label="Email"
                 variant="filled"
@@ -149,6 +151,7 @@ const Register = () => {
             <div className="passwordlogin my-2">
               <TextField
                 error={isError}
+                type="password"
                 helperText={
                   (isError || customError) && (passwordError || customError)
                 }

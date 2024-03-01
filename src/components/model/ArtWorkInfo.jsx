@@ -25,7 +25,7 @@ const ArtWorkInfo = ({ open, handleClose, handleOpen }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style} className="cssCustomized">
           <div className="container-fluid p-4">
             <div className="row">
               <p>Artwork info</p>
