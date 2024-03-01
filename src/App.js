@@ -23,6 +23,7 @@ import "./style/notFound.css";
 import "./style/AdminSidebar.css";
 import "./style/Profilesetting.css";
 import "./style/dashboardAdmin.css";
+import "./style/adminBuilder.css";
 
 import Register from "./pages/Register.jsx";
 import Forget from "./pages/Forget.jsx";
