@@ -66,8 +66,8 @@ const ProjectScan = () => {
       const texture = new THREE.VideoTexture(video);
 
       const geometry = new THREE.PlaneGeometry(
-        1,
-        Number(singleProject?.width) / Number(singleProject?.height)
+        Number(singleProject?.width),
+        Number(singleProject?.height)
         // 1280 / 760
       );
       const material = new THREE.MeshBasicMaterial({ map: texture });
