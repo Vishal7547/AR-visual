@@ -65,9 +65,12 @@ const ProjectScan = () => {
       video.loop = true;
       const texture = new THREE.VideoTexture(video);
       const ratio =
-        Number(singleProject?.height) > Number(singleProject?.width)
-          ? Number(singleProject?.height) / Number(singleProject?.width)
-          : Number(singleProject?.width) / Number(singleProject?.height);
+        parseFloat(singleProject?.height).toFixed(2) >
+        parseFloat(singleProject?.width).toFixed(2)
+          ? parseFloat(singleProject?.height).toFixed(2) /
+            parseFloat(singleProject?.width).toFixed(2)
+          : parseFloat(singleProject?.width).toFixed(2) /
+            parseFloat(singleProject?.height).toFixed(2);
 
       const geometry = new THREE.PlaneGeometry(
         1,
