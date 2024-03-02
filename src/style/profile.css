@@ -169,3 +169,67 @@
     }
 
 }
+
+@media screen and (max-width:992px) {
+
+    #atSmallBuildImg,
+    #atSmallBuildQr {
+        height: 200px !important;
+        width: 200px !important;
+
+    }
+
+}
+
+@media screen and (max-width:767px) {
+
+    .leftWork,
+    .rightWork {
+        width: 100% !important;
+        height: 25%;
+
+    }
+
+    .workBuild {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .cssCustomized2 {
+        height: 90% !important;
+        width: 85%;
+        padding: 10px !important;
+    }
+
+    #atSmallBuildImg,
+    #atSmallBuildQr {
+        height: 100px !important;
+        width: 100px !important;
+
+    }
+}
+
+@media screen and (max-width:563px) {
+
+
+
+    .cssCustomized2 {
+        height: 95% !important;
+        width: 85%;
+        padding: 10px !important;
+    }
+
+    #atSmallBuildImg,
+    #atSmallBuildQr {
+        height: 100px !important;
+        width: 100px !important;
+
+    }
+
+    .leftWork a {
+        font-size: small !important;
+        font-weight: 700;
+    }
+}

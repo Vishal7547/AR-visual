@@ -59,7 +59,7 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1 }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="cssCustomized">
+        <Box sx={style} className="cssCustomized cssCustomized2">
           <div className="container-fluid m-0 p-0 g-0">
             <div className="cross px-2 bg-danger d-flex  justify-content-between align-items-center">
               <p>{build?.artWorkName}</p>
@@ -83,7 +83,12 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1 }) => {
                 <div id="qrcode" className="my-3" ref={qrCodeRef}>
                   <QRCode
                     size={256}
-                    style={{ height: "250px", maxWidth: "100%", width: "100%" }}
+                    style={{
+                      maxHeight: "250px",
+                      maxWidth: "100%",
+                      width: "100%",
+                    }}
+                    id="atSmallBuildQr"
                     value={`https://ar-visual.vercel.app/scan/${build?._id}`}
                     viewBox={`0 0 256 256`}
                   />
@@ -99,6 +104,7 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1 }) => {
                   alt="imgPreview"
                   height="250"
                   width="300"
+                  id="atSmallBuildImg"
                 />
               </div>
             </div>
