@@ -69,6 +69,7 @@ function AppContent() {
     useContext(UserContext);
 
   const [showHeader, setShowHeader] = useState(false);
+  const [showScan, setShowscan] = useState(false);
 
   // Array of paths where the header should not be shown
   const pathsWithoutHeader = [
@@ -88,6 +89,7 @@ function AppContent() {
   useEffect(() => {
     const pathname = window.location.pathname;
     setShowHeader(!pathname.startsWith("/resetpassword/"));
+    setShowscan(!pathname.startsWith("/scan/"));
   }, [location]);
   useEffect(() => {
     const fetchProject = async () => {
@@ -95,7 +97,7 @@ function AppContent() {
     };
     fetchProject();
   }, [isUpdate]);
-  const combinedShowHeader = shouldShowHeader && showHeader;
+  const combinedShowHeader = shouldShowHeader && showHeader && showScan;
   return (
     <>
       {combinedShowHeader && authenticate && <Header />}

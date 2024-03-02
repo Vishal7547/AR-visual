@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as THREE from "three";
 // import a from "../imageProcess/a.jpg";
-import b from "../imageProcess/targets2.mind";
-import c from "../imageProcess/cv.mp4";
+// import b from "../imageProcess/targets2.mind";
+// import c from "../imageProcess/cv.mp4";
 import { UserContext } from "../context/MyContext";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
