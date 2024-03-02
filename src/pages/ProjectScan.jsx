@@ -65,7 +65,7 @@ const ProjectScan = () => {
       video.loop = true;
       const texture = new THREE.VideoTexture(video);
       const ratio =
-        parseFloat(singleProject?.height).toFixed(2) >
+        parseFloat(singleProject?.height).toFixed(2) >=
         parseFloat(singleProject?.width).toFixed(2)
           ? parseFloat(singleProject?.height).toFixed(2) /
             parseFloat(singleProject?.width).toFixed(2)
