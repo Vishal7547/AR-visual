@@ -64,10 +64,14 @@ const ProjectScan = () => {
       video.crossOrigin = "anonymous";
       video.loop = true;
       const texture = new THREE.VideoTexture(video);
+      const ratio =
+        Number(singleProject?.height) > Number(singleProject?.width)
+          ? Number(singleProject?.height) / Number(singleProject?.width)
+          : Number(singleProject?.width) / Number(singleProject?.height);
 
       const geometry = new THREE.PlaneGeometry(
-        Number(singleProject?.width),
-        Number(singleProject?.height)
+        1,
+        ratio
         // 1280 / 760
       );
       const material = new THREE.MeshBasicMaterial({ map: texture });
