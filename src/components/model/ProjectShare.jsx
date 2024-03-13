@@ -72,7 +72,8 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1 }) => {
                 <p>Preview Url</p>
                 <a
                   key={buildId}
-                  href={`https://ar-visual.vercel.app/scan/${build?._id}`}
+                  // href={`https://ar-visual.vercel.app/scan/${build?._id}`}
+                  href={`http://localhost:3000/scan/${build?._id}`}
                   target="_blank"
                   className="my-2"
                   rel="noopener noreferrer"

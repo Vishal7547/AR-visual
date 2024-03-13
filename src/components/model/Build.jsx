@@ -46,7 +46,10 @@ const Build = ({
 
     const data = await handleProjectSave(formData);
     if (data.success) {
-      return navigate("/userdashboard");
+      // window.location.href = "http://localhost:4000/build";
+      window.location.href = "https://ar-backend-j397.onrender.com/build";
+
+      // return navigate("/userdashboard");
     } else {
       console.log(data);
     }

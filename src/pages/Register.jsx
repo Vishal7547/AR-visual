@@ -150,7 +150,7 @@ const Register = () => {
             </div>
             <div className="passwordlogin my-2">
               <TextField
-                error={isError}
+                error={isError}s
                 type="password"
                 helperText={
                   (isError || customError) && (passwordError || customError)

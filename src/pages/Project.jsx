@@ -12,6 +12,7 @@ import { UserContext } from "../context/MyContext";
 import ArtWorkNameSave from "../components/model/ArtWorkNameSave";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
+import Notify from "../components/model/Notify";
 
 const Project = () => {
   const {
@@ -44,6 +45,12 @@ const Project = () => {
     handleOpen: handleOpen4,
     handleClose: handleClose4,
   } = useModal();
+
+  const {
+    open: modal5Open,
+    handleOpen: handleOpen5,
+    handleClose: handleClose5,
+  } = useModal();
   const [videoPreview, setVideoPreview] = useState(null);
   const [artWorkName, setArtWorkName] = useState(null);
   const [image, setImage] = useState(null);
@@ -57,7 +64,7 @@ const Project = () => {
   const [imageShow, setImageShow] = useState(false);
   const [bothUpload, setBothUplaod] = useState(false);
   const [resizeTarget, setResizeTarget] = useState(false);
-
+  const [notifyMessage, setNotifyMessage] = useState("");
   const [videoKey, setVideoKey] = useState(0);
 
   const fileInputRef = useRef(null);
@@ -124,6 +131,8 @@ const Project = () => {
       if (droppedFile.type.startsWith("image/")) {
         handleFileChange(droppedFile);
       } else {
+        setNotifyMessage("Please drop a image file.");
+        handleOpen5();
         console.log("Please drop a image file.");
       }
     }
@@ -145,6 +154,10 @@ const Project = () => {
           console.log("Image height:", img.naturalHeight);
         };
       } else {
+        setNotifyMessage(
+          "Selected file is too large. Please select a file less than or equal to 1MB."
+        );
+        handleOpen5();
         console.log(
           "Selected file is too large. Please select a file less than or equal to 1MB."
         );
@@ -159,6 +172,8 @@ const Project = () => {
       if (droppedFile.type.startsWith("video/")) {
         handleVideoChange(droppedFile);
       } else {
+        setNotifyMessage("Please drop a video file.");
+        handleOpen5();
         console.log("Please drop a video file.");
       }
     }
@@ -175,9 +190,14 @@ const Project = () => {
         setVideoShow(true);
         setVideoKey((prevKey) => prevKey + 1);
       } else {
+        setNotifyMessage(
+          "Selected file is too large. Please select a file less than or equal to 10MB."
+        );
+
         console.log(
           "Selected file is too large. Please select a file less than or equal to 10MB."
         );
+        handleOpen5();
       }
     }
   };
@@ -380,6 +400,11 @@ const Project = () => {
         image={image}
         imgWidth={imgWidth}
         imhHeight={imhHeight}
+      />
+      <Notify
+        message={notifyMessage}
+        open={modal5Open}
+        handleClose={handleClose5}
       />
     </>
   );

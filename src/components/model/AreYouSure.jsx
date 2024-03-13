@@ -17,13 +17,13 @@ const AreYouSure = ({ open, handleClose, style, message = "delete" }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="cssCustomized">
-          <div className="row">
+          <div className="row textMessageAreYouSure">
             <h5>
               <b>Are you sure you want to {message}</b>
             </h5>
           </div>
           <div className="row my-2">
-            <div className="col-sm-6">
+            <div className="col-sm-6 marginMobileBtn">
               <button className="w-100 btn btn-dark" onClick={handleLogout}>
                 Yes
               </button>

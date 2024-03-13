@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import HomeHeader from "./HomeHeader";
 import { useContext } from "react";
 import { UserContext } from "../context/MyContext";
+
 const Hero = () => {
   const navigate = useNavigate();
   const { authenticate, project } = useContext(UserContext);

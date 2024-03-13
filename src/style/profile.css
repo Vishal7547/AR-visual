@@ -233,3 +233,13 @@
         font-weight: 700;
     }
 }
+
+@media screen and (max-width:575px) {
+    .marginMobileBtn {
+        margin: 10px 0 !important;
+    }
+
+    .textMessageAreYouSure h5 b {
+        font-size: 1.1rem !important;
+    }
+}

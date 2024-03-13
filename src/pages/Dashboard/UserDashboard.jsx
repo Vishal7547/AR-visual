@@ -86,11 +86,13 @@ const UserDashboard = () => {
       return handleOpen1();
     }
     if (status === "build") {
-      const formData = new FormData();
-      formData.append("status", "pending");
-      formData.append("builder", true);
+      // const formData = new FormData();
+      // formData.append("status", "pending");
+      // formData.append("builder", true);
 
-      await requestForBuild(id, formData);
+      // await requestForBuild(id, formData);
+      // window.location.href = "http://localhost:4000/build";
+      window.location.href = "https://ar-backend-j397.onrender.com/build";
     }
   };
   return (
