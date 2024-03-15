@@ -13,7 +13,7 @@ import ArtWorkNameSave from "../components/model/ArtWorkNameSave";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import Notify from "../components/model/Notify";
-
+import Swal from "sweetalert2";
 const Project = () => {
   const {
     handleProjectSave,
@@ -131,8 +131,14 @@ const Project = () => {
       if (droppedFile.type.startsWith("image/")) {
         handleFileChange(droppedFile);
       } else {
-        setNotifyMessage("Please drop a image file.");
-        handleOpen5();
+        Swal.fire({
+          text: "Please drop a image file!",
+          customClass: {
+            validationMessage: "my-validation-message",
+          },
+        });
+        // setNotifyMessage("Please drop a image file.");
+        // handleOpen5();
         console.log("Please drop a image file.");
       }
     }
@@ -154,10 +160,17 @@ const Project = () => {
           console.log("Image height:", img.naturalHeight);
         };
       } else {
-        setNotifyMessage(
-          "Selected file is too large. Please select a file less than or equal to 1MB."
-        );
-        handleOpen5();
+        Swal.fire({
+          text: "Selected file is too large. Please select a file less than or equal to 1MB.",
+          customClass: {
+            validationMessage: "my-validation-message",
+          },
+        });
+
+        // setNotifyMessage(
+        //   "Selected file is too large. Please select a file less than or equal to 1MB."
+        // );
+        // handleOpen5();
         console.log(
           "Selected file is too large. Please select a file less than or equal to 1MB."
         );
@@ -172,8 +185,15 @@ const Project = () => {
       if (droppedFile.type.startsWith("video/")) {
         handleVideoChange(droppedFile);
       } else {
-        setNotifyMessage("Please drop a video file.");
-        handleOpen5();
+        Swal.fire({
+          text: "Please drop a video file.",
+          customClass: {
+            validationMessage: "my-validation-message",
+          },
+        });
+
+        // setNotifyMessage("Please drop a video file.");
+        // handleOpen5();
         console.log("Please drop a video file.");
       }
     }
@@ -190,14 +210,20 @@ const Project = () => {
         setVideoShow(true);
         setVideoKey((prevKey) => prevKey + 1);
       } else {
-        setNotifyMessage(
-          "Selected file is too large. Please select a file less than or equal to 10MB."
-        );
+        // setNotifyMessage(
+        //   "Selected file is too large. Please select a file less than or equal to 10MB."
+        // );
+        Swal.fire({
+          text: "Selected file is too large. Please select a file less than or equal to 10MB.",
+          customClass: {
+            validationMessage: "my-validation-message",
+          },
+        });
 
         console.log(
           "Selected file is too large. Please select a file less than or equal to 10MB."
         );
-        handleOpen5();
+        // handleOpen5();
       }
     }
   };

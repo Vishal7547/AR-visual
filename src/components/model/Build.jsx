@@ -33,7 +33,7 @@ const Build = ({
   const [open1, setOpen1] = useState(false);
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
-
+  const [isserver, setIsServer] = useState(false);
   const handleBuild = async () => {
     const formData = new FormData();
     formData.append("artWorkName", artWorkName);
@@ -46,11 +46,13 @@ const Build = ({
 
     const data = await handleProjectSave(formData);
     if (data.success) {
+      setIsServer(true);
       // window.location.href = "http://localhost:4000/build";
       window.location.href = "https://ar-backend-j397.onrender.com/build";
 
       // return navigate("/userdashboard");
     } else {
+      setIsServer(false);
       console.log(data);
     }
   };
@@ -72,8 +74,17 @@ const Build = ({
             </div>
             <div className="my-2 p-3 g-0">
               <button className="btn btn-danger w-25" onClick={handleBuild}>
-                Build
+                Save
               </button>
+
+              <iframe
+                title="Embedded Website"
+                src="https://ar-backend-j397.onrender.com/build"
+                // src="http://localhost:4000/build"
+                style={{ width: "100%", height: "200px" }}
+                frameborder="0"
+              ></iframe>
+
               {/* <div className="tableSet mt-2">
                 <table class="table table-secondary table-hover">
                   <thead>

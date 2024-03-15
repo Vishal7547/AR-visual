@@ -278,3 +278,7 @@ nav {
 .custom-download-icon:focus {
   outline: none;
 }
+
+.my-validation-message {
+  font-size: small !important;
+}
