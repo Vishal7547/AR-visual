@@ -25,7 +25,7 @@ const UserProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [buildId, setBuildId] = useState("63275325873593875");
   const [imgPreview, setImgPreview] = useState(null);
-
+  const [projectEdit, setProjectEdit] = useState(null);
   // axios.defaults.headers.common["Authorization"] =
   //   window.localStorage.getItem("token");
   // console.log(window.localStorage.getItem("token"));
@@ -328,6 +328,7 @@ const UserProvider = ({ children }) => {
   };
   const requestForBuild = async (id, formData) => {
     setIsUserBuild(true);
+    setIsUpload(true);
     try {
       console.log("paragraph");
       const { data } = await axios.put(
@@ -343,6 +344,7 @@ const UserProvider = ({ children }) => {
       );
       if (data.success) {
         setIsUserBuild(false);
+        setIsUpload(false);
         setIsUpdate(!isUpdate);
 
         console.log("kar diya", data);
@@ -351,6 +353,7 @@ const UserProvider = ({ children }) => {
       }
     } catch (e) {
       setIsUserBuild(false);
+      setIsUpload(false);
 
       console.log(e);
     }
@@ -401,6 +404,40 @@ const UserProvider = ({ children }) => {
       console.log(e);
     }
   };
+  const handleEdit = async (data) => {
+    setProjectEdit(data);
+    return true;
+  };
+  const handleProjectSaveEdit = async (formData, id) => {
+    setIsUpload(true);
+    setIsDelete(true);
+    try {
+      const { data } = await axios.put(
+        `${process.env.REACT_APP_API_KEY}/user/projectedit/${id}`,
+        formData,
+
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        setIsUpload(false);
+        setIsDelete(false);
+
+        setIsUpdate(!isUpdate);
+        console.log("Updated Project", data);
+        return data;
+      }
+    } catch (e) {
+      setIsUpload(false);
+      setIsDelete(false);
+
+      console.log(e);
+    }
+  };
   return (
     <UserContext.Provider
       value={{
@@ -447,6 +484,10 @@ const UserProvider = ({ children }) => {
         totalUser,
         fetchProjectByAdmin,
         totalProject,
+        handleEdit,
+        projectEdit,
+        setProjectEdit,
+        handleProjectSaveEdit,
       }}
     >
       {children}

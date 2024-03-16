@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import Notify from "../components/model/Notify";
 import Swal from "sweetalert2";
+import ProjectShare from "../components/model/ProjectShare";
 const Project = () => {
   const {
     handleProjectSave,
@@ -22,6 +23,9 @@ const Project = () => {
     isUpload,
     setImgPreview,
     imgPreview,
+    projectEdit,
+    setProjectEdit,
+    handleProjectSaveEdit,
   } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -45,7 +49,11 @@ const Project = () => {
     handleOpen: handleOpen4,
     handleClose: handleClose4,
   } = useModal();
-
+  const {
+    open: modal6Open,
+    handleOpen: handleOpen6,
+    handleClose: handleClose6,
+  } = useModal();
   const {
     open: modal5Open,
     handleOpen: handleOpen5,
@@ -70,9 +78,27 @@ const Project = () => {
   const fileInputRef = useRef(null);
   const videoInputRef = useRef(null);
 
-  const handlePublish = () => {
+  const handlePublish = async () => {
     if (artWorkName) {
-      handleOpen3();
+      const formData = new FormData();
+      formData.append("artWorkName", artWorkName);
+      formData.append("file2", image);
+      formData.append("file1", video);
+      formData.append("width", imgWidth);
+      formData.append("height", imhHeight);
+      formData.append("builder", true);
+      formData.append("status", "pending");
+
+      const data = await handleProjectSave(formData);
+      if (data?.success) {
+        // redirect to server page
+
+        window.location.href = "http://localhost:4000/build";
+      } else {
+        console.log(data);
+      }
+
+      // handleOpen3();
     } else {
       handleOpen2();
     }
@@ -86,7 +112,7 @@ const Project = () => {
       formData.append("width", imgWidth);
       formData.append("height", imhHeight);
       formData.append("builder", false);
-      formData.append("status", "build");
+      formData.append("status", "pending");
 
       const data = await handleProjectSave(formData);
       if (data.success) {
@@ -97,6 +123,45 @@ const Project = () => {
       console.log("data", data);
     } else {
       handleOpen4();
+    }
+  };
+  const handleUpdate = async (id) => {
+    const formData = new FormData();
+    formData.append("artWorkName", artWorkName);
+    formData.append("file2", image);
+    formData.append("file1", video);
+    formData.append("width", imgWidth);
+    formData.append("height", imhHeight);
+    formData.append("builder", false);
+    formData.append("status", "pending");
+    formData.append("mindArUpload", false);
+
+    const data = await handleProjectSaveEdit(formData, id);
+    if (data?.success) {
+      setProjectEdit(null);
+      return navigate("/userdashboard");
+    } else {
+      console.log(data);
+    }
+  };
+
+  const handleRepublish = async (id) => {
+    const formData = new FormData();
+    formData.append("artWorkName", artWorkName);
+    formData.append("file2", image);
+    formData.append("file1", video);
+    formData.append("width", imgWidth);
+    formData.append("height", imhHeight);
+    formData.append("builder", false);
+    formData.append("status", "pending");
+    formData.append("mindArUpload", false);
+
+    const data = await handleProjectSaveEdit(formData, id);
+    if (data?.success) {
+      setProjectEdit(null);
+      window.location.href = "http://localhost:4000/build";
+    } else {
+      console.log(data);
     }
   };
   useEffect(() => {
@@ -228,6 +293,36 @@ const Project = () => {
     }
   };
 
+  let lengthMeasure =
+    imhHeight >= imgWidth ? "projectSetUpSet" : "projectSetUpSet2";
+
+  useEffect(() => {
+    if (projectEdit) {
+      setVideoPreview(projectEdit?.content?.url);
+      setImgPreview(projectEdit?.target?.url);
+      setArtWorkName(projectEdit?.artWorkName);
+      setImageShow(true);
+      setVideoShow(true);
+      setBothUplaod(true);
+      lengthMeasure =
+        projectEdit?.height >= projectEdit?.width
+          ? "projectSetUpSet"
+          : "projectSetUpSet2";
+    }
+  }, [projectEdit]);
+
+  const handleApprovedPending = () => {
+    window.location.href = "http://localhost:4000/build";
+  };
+  const handleClear = () => {
+    setProjectEdit(null);
+    setVideoPreview(null);
+    setImgPreview(null);
+    setArtWorkName(null);
+    setImageShow(false);
+    setVideoShow(false);
+    setBothUplaod(false);
+  };
   return (
     <>
       <div className="profile">
@@ -236,7 +331,7 @@ const Project = () => {
           <div className="row ">
             <div className="parentWork ">
               <div className="work1">
-                <div className="sample1">
+                {/* <div className="sample1">
                   <span className="iconsSet">
                     {true ? (
                       <MdPausePresentation fontSize={30} />
@@ -250,9 +345,9 @@ const Project = () => {
                     <CiSquareInfo fontFamily={30} />
                   </span>
                   <span className="workInfo">Artwork Info</span>
-                </div>
+                </div> */}
                 <div className="sample1">
-                  <div className=" row ">
+                  <div className="row mx-2">
                     <input
                       type="text"
                       className="form-control "
@@ -264,19 +359,40 @@ const Project = () => {
                 </div>
               </div>
               <div className="work2">
-                <button
-                  className="btn btn-success"
-                  disabled={!bothUpload}
-                  onClick={handleSave}
-                >
-                  Save
-                </button>
+                {projectEdit?.status !== "approved" ? (
+                  <button
+                    className="btn btn-success"
+                    disabled={!bothUpload}
+                    onClick={() =>
+                      projectEdit
+                        ? handleUpdate(projectEdit?._id)
+                        : handleSave()
+                    }
+                  >
+                    {projectEdit ? "Update" : "Save"}
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-success"
+                    onClick={() => handleClear()}
+                  >
+                    Clear
+                  </button>
+                )}
+
                 <button
                   className="btn btn-danger"
                   disabled={!bothUpload}
-                  onClick={handlePublish}
+                  onClick={() =>
+                    projectEdit
+                      ? projectEdit?.status === "pending"
+                        ? handleApprovedPending()
+                        : projectEdit?.status === "approved" &&
+                          handleRepublish(projectEdit?._id)
+                      : handlePublish()
+                  }
                 >
-                  Publish
+                  {projectEdit?.mindArUpload ? "Republish" : "Publish"}
                 </button>
               </div>
             </div>
@@ -376,7 +492,7 @@ const Project = () => {
             {bothUpload && (
               <div>
                 <div className="buildProject">
-                  <div className="projectSetUp">
+                  <div className="projectSetUp" id={lengthMeasure}>
                     <img src={imgPreview} alt="imgPreview" />
                     <video key={videoKey} autoPlay muted loop>
                       <source
@@ -415,6 +531,10 @@ const Project = () => {
         handleOpen={handleOpen2}
         handleClose={handleClose2}
         handleOpen3={handleOpen3}
+        imgWidth={imgWidth}
+        video={video}
+        image={image}
+        imhHeight={imhHeight}
       />
       <ArtWorkNameSave
         setArtWorkName={setArtWorkName}
@@ -432,6 +552,7 @@ const Project = () => {
         open={modal5Open}
         handleClose={handleClose5}
       />
+      <ProjectShare handleClose1={handleClose6} open1={modal6Open} />
     </>
   );
 };

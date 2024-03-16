@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
+import { UserContext } from "../../context/MyContext";
 const style = {
   position: "absolute",
   top: "50%",
@@ -22,12 +23,44 @@ const ArtWorkName = ({
   handleOpen,
   artWorkName,
   handleOpen3,
+  image,
+  video,
+  imgWidth,
+  imhHeight,
 }) => {
+  const { handleProjectSave } = useContext(UserContext);
   const [error, setError] = useState(false);
-  const handleSave = () => {
+  const handleSave = async () => {
     if (artWorkName) {
       handleClose();
-      handleOpen3();
+      const formData = new FormData();
+      formData.append("artWorkName", artWorkName);
+      formData.append("file2", image);
+      formData.append("file1", video);
+      formData.append("width", imgWidth);
+      formData.append("height", imhHeight);
+      formData.append("builder", true);
+      formData.append("status", "pending");
+
+      const data = await handleProjectSave(formData);
+      if (data?.success) {
+        // redirect to server page
+        window.location.href = "http://localhost:4000/build";
+
+        // window.open("http://localhost:4000/build", "_blank");
+        // const a = document.createElement("a");
+        // a.href = "http://localhost:4000/build";
+        // a.target = "_blank";
+        // document.body.appendChild(a);
+        // a.click();
+        // setTimeout(() => {
+        //   document.body.removeChild(a);
+        // }, 1000);
+      } else {
+        console.log(data);
+      }
+
+      // handleOpen3();
     }
     setError(true);
   };
