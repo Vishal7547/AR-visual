@@ -21,7 +21,7 @@
 
 
 .lowersearch {
-    width: 300px;
+    width: 280px;
     height: 270px;
     display: flex;
     align-items: center;
@@ -46,7 +46,7 @@
 }
 
 .childWork {
-    height: 270px;
+    height: 320px;
     width: 300px;
     margin: 10px;
     border: 1px solid white;
@@ -55,7 +55,7 @@
 }
 
 .imgVideoWorking {
-    height: 70%;
+    height: 65%;
     width: 100%;
     background-color: white;
     position: relative;
@@ -74,6 +74,12 @@
 
 }
 
+.upgrade_btn {
+    width: 50%;
+    border-radius: 0 !important;
+    margin-top: 10px;
+}
+
 #aboveWork {
     z-index: 1;
 
@@ -84,8 +90,9 @@
 }
 
 .playerWorking {
-    height: 30%;
+    height: 30% !important;
     width: 100%;
+    /* background-color: bisque; */
 
 }
 

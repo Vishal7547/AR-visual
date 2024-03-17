@@ -99,7 +99,12 @@ const UserDashboard = () => {
                     id={p?.isPlay ? "aboveWork" : "innerWork"}
                   ></video>
                 </div>
-                <div className="playerWorking ">
+                <div className="playerWorking">
+                  <div className="row m-0 p-0 g-0">
+                    <button className="btn btn-success upgrade_btn">
+                      Upgrade
+                    </button>
+                  </div>
                   <div className="row m-0 p-0 g-0">
                     <div className="d-flex justify-content-between align-items-center">
                       <div className="artWorkNameWorking">

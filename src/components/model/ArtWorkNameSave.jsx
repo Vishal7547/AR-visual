@@ -43,7 +43,7 @@ const ArtWorkNameSave = ({
       formData.append("width", imgWidth);
       formData.append("height", imhHeight);
       formData.append("builder", false);
-      formData.append("status", "build");
+      formData.append("status", "pending");
 
       const data = await handleProjectSave(formData);
       console.log("data", data);
