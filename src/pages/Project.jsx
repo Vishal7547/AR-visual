@@ -210,7 +210,7 @@ const Project = () => {
   };
   const handleFileChange = async (selectedFile) => {
     if (selectedFile) {
-      const maxFileSize = 1048576;
+      const maxFileSize = 5242880;
       if (selectedFile.size <= maxFileSize) {
         setImage(selectedFile);
         console.log(URL.createObjectURL(selectedFile));
@@ -226,7 +226,7 @@ const Project = () => {
         };
       } else {
         Swal.fire({
-          text: "Selected file is too large. Please select a file less than or equal to 1MB.",
+          text: "Selected file is too large. Please select a file less than or equal to 5MB.",
           customClass: {
             validationMessage: "my-validation-message",
           },
@@ -266,7 +266,7 @@ const Project = () => {
 
   const handleVideoChange = (selectedFile) => {
     if (selectedFile) {
-      const maxFileSize = 10485760;
+      const maxFileSize = 52428800;
       if (selectedFile.size <= maxFileSize) {
         setVideo(selectedFile);
         const videoURL = URL.createObjectURL(selectedFile);
@@ -279,7 +279,7 @@ const Project = () => {
         //   "Selected file is too large. Please select a file less than or equal to 10MB."
         // );
         Swal.fire({
-          text: "Selected file is too large. Please select a file less than or equal to 10MB.",
+          text: "Selected file is too large. Please select a file less than or equal to 50MB.",
           customClass: {
             validationMessage: "my-validation-message",
           },
