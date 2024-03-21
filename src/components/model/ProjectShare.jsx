@@ -16,14 +16,21 @@ const style = {
   boxShadow: 24,
 };
 
-const ProjectShare = ({ handleOpen1, open1, handleClose1 }) => {
+const ProjectShare = ({ handleOpen1, open1, handleClose1, projectId }) => {
   const qrCodeRef = useRef(null);
   const [build, setBuild] = useState({});
   const { buildId, project } = useContext(UserContext);
-  console.log(project, "projectQrCode");
+  // console.log(project, "projectQrCode");
   useEffect(() => {
-    setBuild(project[0]);
-  }, [project]);
+    const p = project.find((p, i) => {
+      return p?._id === projectId;
+    });
+
+    if (p) {
+      setBuild(p);
+    }
+    // setBuild(project[0]);
+  }, [project, projectId]);
   const handleDownloadQRCode = () => {
     const canvas = qrCodeRef.current?.getElementsByTagName("canvas")[0];
     if (canvas) {
@@ -85,7 +92,7 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1 }) => {
                   <QRCode
                     size={256}
                     style={{
-                      maxHeight: "250px",
+                      maxHeight: "200px",
                       maxWidth: "100%",
                       width: "100%",
                     }}
@@ -103,9 +110,13 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1 }) => {
                 <img
                   src={build?.target?.url}
                   alt="imgPreview"
-                  height="250"
-                  width="300"
+                  // id={
+                  //   build?.height >= build?.width
+                  //     ? "atSmallBuildImg"
+                  //     : "atSmallBuildImg1"
+                  // }
                   id="atSmallBuildImg"
+                  // id="atSmallBuildImg"
                 />
               </div>
             </div>

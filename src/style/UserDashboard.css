@@ -19,14 +19,20 @@
 }
 
 
+.projectDashboardMain {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
 
 .lowersearch {
-    width: 300px;
-    height: 300px;
+    width: 290px;
+    height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #F4F4F4;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
 .boxlower {
@@ -44,18 +50,20 @@
 }
 
 .childWork {
-    height: 270px;
+    height: 320px;
     width: 300px;
     margin: 10px;
     border: 1px solid white;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
 .imgVideoWorking {
-    height: 70%;
+    height: 65%;
     width: 100%;
     background-color: white;
     position: relative;
+    border-radius: 10px;
 }
 
 .imgVideoWorking img,
@@ -66,7 +74,14 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
 
+}
+
+.upgrade_btn {
+    width: 50%;
+    border-radius: 0 !important;
+    margin-top: 10px;
 }
 
 #aboveWork {
@@ -79,14 +94,15 @@
 }
 
 .playerWorking {
-    height: 30%;
+    height: 30% !important;
     width: 100%;
+    /* background-color: bisque; */
 
 }
 
 .artWorkNameWorking span {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 900;
 }
 
 .iconWorking span {

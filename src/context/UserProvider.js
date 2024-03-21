@@ -25,7 +25,7 @@ const UserProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [buildId, setBuildId] = useState("63275325873593875");
   const [imgPreview, setImgPreview] = useState(null);
-
+  const [projectEdit, setProjectEdit] = useState(null);
   // axios.defaults.headers.common["Authorization"] =
   //   window.localStorage.getItem("token");
   // console.log(window.localStorage.getItem("token"));
@@ -328,6 +328,7 @@ const UserProvider = ({ children }) => {
   };
   const requestForBuild = async (id, formData) => {
     setIsUserBuild(true);
+    setIsUpload(true);
     try {
       console.log("paragraph");
       const { data } = await axios.put(
@@ -343,6 +344,7 @@ const UserProvider = ({ children }) => {
       );
       if (data.success) {
         setIsUserBuild(false);
+        setIsUpload(false);
         setIsUpdate(!isUpdate);
 
         console.log("kar diya", data);
@@ -351,6 +353,7 @@ const UserProvider = ({ children }) => {
       }
     } catch (e) {
       setIsUserBuild(false);
+      setIsUpload(false);
 
       console.log(e);
     }
@@ -401,6 +404,213 @@ const UserProvider = ({ children }) => {
       console.log(e);
     }
   };
+  const handleEdit = async (data) => {
+    setProjectEdit(data);
+    return true;
+  };
+  const handleProjectSaveEdit = async (formData, id) => {
+    setIsUpload(true);
+    setIsDelete(true);
+    try {
+      const { data } = await axios.put(
+        `${process.env.REACT_APP_API_KEY}/user/projectedit/${id}`,
+        formData,
+
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
+      if (data.success) {
+        setIsUpload(false);
+        setIsDelete(false);
+
+        setIsUpdate(!isUpdate);
+        console.log("Updated Project", data);
+        return data;
+      }
+    } catch (e) {
+      setIsUpload(false);
+      setIsDelete(false);
+
+      console.log(e);
+    }
+  };
+  const handleCreatePayment = async (p) => {
+    try {
+      const {
+        data: { key },
+      } = await axios.get(
+        `${process.env.REACT_APP_API_KEY}/payment/razorpaykey`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_KEY}/paymentone/createorderonline`,
+        { totalAmount: "999" },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+
+      if (data.success) {
+        const options = {
+          key,
+          amount: data?.order?.amount,
+          currency: "INR",
+          name: "Godspeed",
+          description: "create art work",
+          order_id: data?.order?.id,
+          handler: async function (response) {
+            try {
+              const {
+                razorpay_payment_id,
+                razorpay_order_id,
+                razorpay_signature,
+              } = response;
+              console.log(response);
+              const { data } = await axios.post(
+                `${process.env.REACT_APP_API_KEY}/paymentone/paymentverification`,
+                {
+                  razorpay_payment_id,
+                  razorpay_order_id,
+                  razorpay_signature,
+                  p,
+                },
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  withCredentials: true,
+                }
+              );
+
+              console.log(data);
+              console.log(project, data?.projectData);
+              const d = project?.map((pr) => {
+                if (pr?._id === data?.projectData?._id) {
+                  return data?.projectData;
+                } else {
+                  return pr;
+                }
+              });
+
+              setProject(d);
+              return data;
+
+              // Update your UI or handle the payment completion logic here
+            } catch (error) {
+              console.log(error);
+            }
+          },
+          prefill: {
+            name: user?.name,
+            email: user?.email,
+          },
+          theme: {
+            color: "#9c003c",
+          },
+        };
+        const razorpay = new window.Razorpay(options);
+        razorpay.open();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubscription = async (p) => {
+    try {
+      const id = p?._id;
+      const {
+        data: { key },
+      } = await axios.get(
+        `${process.env.REACT_APP_API_KEY}/payment/razorpaykey`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_KEY}/payment/subscribe/${id}`,
+
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (data.success) {
+        const options = {
+          key,
+          // amount: data?.order?.amount,
+          // currency: "INR",
+          name: "Godspeed",
+          subscription_id: data?.subscription,
+          handler: async function (response) {
+            try {
+              const {
+                razorpay_payment_id,
+                razorpay_subscription_id,
+                razorpay_signature,
+              } = response;
+
+              const { data } = await axios.post(
+                `${process.env.REACT_APP_API_KEY}/payment/paymentverification`,
+                {
+                  razorpay_payment_id,
+                  razorpay_subscription_id,
+                  razorpay_signature,
+                  p,
+                },
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  withCredentials: true,
+                }
+              );
+
+              console.log(data);
+              console.log(project, data?.projectData);
+              const d = project?.map((pr) => {
+                if (pr?._id === data?.projectData?._id) {
+                  return data?.projectData;
+                } else {
+                  return pr;
+                }
+              });
+
+              setProject(d);
+              // return data;
+
+              // Update your UI or handle the payment completion logic here
+            } catch (error) {
+              console.log(error);
+            }
+          },
+          prefill: {
+            name: user?.name,
+            email: user?.email,
+          },
+          theme: {
+            color: "#9c003c",
+          },
+        };
+        const razorpay = new window.Razorpay(options);
+        razorpay.open();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -447,6 +657,12 @@ const UserProvider = ({ children }) => {
         totalUser,
         fetchProjectByAdmin,
         totalProject,
+        handleEdit,
+        projectEdit,
+        setProjectEdit,
+        handleProjectSaveEdit,
+        handleCreatePayment,
+        handleSubscription,
       }}
     >
       {children}

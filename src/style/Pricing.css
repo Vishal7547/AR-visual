@@ -1,8 +1,12 @@
 .containercard {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
+}
+
+.containercarditems {
+    margin: 0 20px;
 }
 
 .pricing {

@@ -40,7 +40,10 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <>
+              <NavLink className="nav-link secondHeaderIcon" to="/project">
+                <MdOutlineAddBox fontSize={30} />
+              </NavLink>
+              {/* <>
                 {project.length > 0 ? (
                   <span
                     className="nav-link secondHeaderIcon"
@@ -53,7 +56,7 @@ const Header = () => {
                     <MdOutlineAddBox fontSize={30} />
                   </NavLink>
                 )}
-              </>
+              </> */}
             </li>
             <li className="nav-item">
               <NavLink className="nav-link secondHeaderIcon" to="/link">
@@ -80,7 +83,7 @@ const Header = () => {
         open={open}
         message="logged Out ?"
       />
-      <Instruction handleClose={handleClose1} open={open1} />
+      {/* <Instruction handleClose={handleClose1} open={open1} /> */}
     </>
   );
 };
