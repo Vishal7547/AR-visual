@@ -313,3 +313,27 @@
         margin-top: 20px;
     }
 }
+
+/* Work */
+.flowWork1 {
+    border: 0.6px solid grey;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.flowWork1 img {
+    height: 70%;
+    width: 100%;
+}
+
+.howItsWork {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.artticleHomeP {
+    font-size: 1.5rem;
+}
+
+.articleHome {
+    text-decoration: underline;
+}

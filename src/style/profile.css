@@ -79,6 +79,20 @@
 .upload1 .img1,
 .upload2 .img1 {
     margin: 5px 0;
+
+}
+
+.dynamicHeight {
+    height: 200px;
+    width: 250px;
+    border: 2px solid grey;
+}
+
+.dynamicHeight img,
+.dynamicHeight video {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .img1 button {
@@ -93,27 +107,30 @@
 
 .projectSetUp {
     position: relative;
-    /* height: 270px;
-    width: 300px; */
+    height: 270px;
+    width: 300px;
     margin: auto !important;
     /* color:rgb(150, 40, 58); */
 }
 
 
 
-#projectSetUpSet {
-    height: 300px;
-    width: 270px;
+#atSmallBuildImg {
+    height: 70% !important;
+    width: 50% !important;
+    object-fit: contain !important;
+    /* border: 1px solid black; */
 }
 
-#projectSetUpSet2 {
+/* #projectSetUpSet2 {
     height: 270px;
     width: 300px;
-}
+} */
 
 .projectSetUp img {
     height: 100%;
     width: 100% !important;
+    object-fit: contain !important;
 }
 
 .projectSetUp video {
@@ -122,8 +139,8 @@
     top: 0;
     height: 100% !important;
     width: 100% !important;
-    object-fit: cover;
-
+    object-fit: contain;
+    opacity: 0.8 !important;
 }
 
 .cross p {
@@ -182,15 +199,16 @@
 
 }
 
-#atSmallBuildImg {
-    height: 300px !important;
-    width: 250px !important;
-}
 
-#atSmallBuildImg1 {
+
+/* .rightWork {
+    border: 1px solid black;
+} */
+
+/* #atSmallBuildImg1 {
     height: 250px !important;
     width: 300px !important;
-}
+} */
 
 @media screen and (max-width:992px) {
 
@@ -204,12 +222,13 @@
     #atSmallBuildImg {
         height: 200px !important;
         width: 180px !important;
+        object-fit: contain !important;
     }
 
-    #atSmallBuildImg1 {
+    /* #atSmallBuildImg1 {
         height: 180px !important;
         width: 200px !important;
-    }
+    } */
 
 
 }

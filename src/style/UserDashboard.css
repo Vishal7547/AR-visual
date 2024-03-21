@@ -19,10 +19,14 @@
 }
 
 
+.projectDashboardMain {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
 
 .lowersearch {
-    width: 280px;
-    height: 270px;
+    width: 290px;
+    height: 320px;
     display: flex;
     align-items: center;
     justify-content: center;

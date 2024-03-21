@@ -169,12 +169,19 @@ nav {
   bottom: 0;
   background: transparent;
   z-index: 2;
+  /* background-color: #60beeb; */
 }
 
 @media (min-aspect-ratio: 1/1) {
   #scanning .inner {
-    width: 50vh;
-    height: 50vh;
+    /* width: 50vh;
+    height: 50vh; */
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(110, 110, 110, 0.1) !important;
+    /* z-index: 99999999; */
+    border-radius: 20px;
+
   }
 }
 
@@ -182,6 +189,8 @@ nav {
   #scanning .inner {
     width: 80vw;
     height: 80vw;
+    /* width: fit-content;
+    height: fit-content; */
   }
 }
 
@@ -202,7 +211,10 @@ nav {
     linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
   background-repeat: no-repeat;
   background-size: 40px 40px;
+  border-radius: 20px;
+
 }
+
 
 #scanning.hidden {
   display: none;
@@ -210,14 +222,28 @@ nav {
 
 #scanning img {
   opacity: 0.6;
-  width: 90%;
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  padding: 20px 20px;
+  border-radius: 20px !important;
+  /* border-radius: 20px !important; */
+  /* width: fit-content;
+  height: fit-content; */
   align-self: center;
 }
 
 #scanning .inner .scanline {
   position: absolute;
-  width: 100%;
+  width: 96%;
   height: 10px;
+  border-radius: 20px;
+  /* padding: 20px 20px; */
+  /* margin: 20px; */
+  /* border-radius: 8px; */
+  /* width: fit-content;
+  height: fit-content; */
+  /* margin: 20px 0 !important; */
   background: white;
   animation: move 2s linear infinite;
 }

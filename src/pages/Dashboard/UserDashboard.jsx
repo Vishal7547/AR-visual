@@ -40,6 +40,9 @@ const UserDashboard = () => {
     handleEdit,
     setProjectEdit,
     handleProjectSaveEdit,
+    handleCreatePayment,
+    setIsUpdate,
+    handleSubscription,
   } = useContext(UserContext);
   const videoRef = useRef(null);
   const [projectId, setProjectId] = useState("");
@@ -80,11 +83,21 @@ const UserDashboard = () => {
     await handleEdit(p);
     navigate("/project");
   };
+  const payment = async (p, status) => {
+    console.log(p, status);
+    // await handleCreatePayment(p);
+    // await handleSubscription(p);
+    if (status === "create") {
+      await handleCreatePayment(p);
+    } else if (status === "expired") {
+      await handleSubscription(p);
+    }
+  };
   return (
     <div className="row  m-0 p-0 g-0 ">
       {(isDelete || isUserBuild) && <Loader />}
 
-      <div className="d-flex">
+      <div className="projectDashboardMain">
         <div className="row mt-2">
           <div className="parentWorking">
             {project.map((p, i) => (
@@ -101,9 +114,14 @@ const UserDashboard = () => {
                 </div>
                 <div className="playerWorking">
                   <div className="row m-0 p-0 g-0">
-                    <button className="btn btn-success upgrade_btn">
-                      Upgrade
-                    </button>
+                    {!p?.subscriptionId?.planId && (
+                      <button
+                        className="btn btn-success upgrade_btn"
+                        onClick={() => payment(p, p?.subscriptionId?.status)}
+                      >
+                        Upgrade
+                      </button>
+                    )}
                   </div>
                   <div className="row m-0 p-0 g-0">
                     <div className="d-flex justify-content-between align-items-center">

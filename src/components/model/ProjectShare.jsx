@@ -92,7 +92,7 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, projectId }) => {
                   <QRCode
                     size={256}
                     style={{
-                      maxHeight: "250px",
+                      maxHeight: "200px",
                       maxWidth: "100%",
                       width: "100%",
                     }}
@@ -110,11 +110,12 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, projectId }) => {
                 <img
                   src={build?.target?.url}
                   alt="imgPreview"
-                  id={
-                    build?.height >= build?.width
-                      ? "atSmallBuildImg"
-                      : "atSmallBuildImg1"
-                  }
+                  // id={
+                  //   build?.height >= build?.width
+                  //     ? "atSmallBuildImg"
+                  //     : "atSmallBuildImg1"
+                  // }
+                  id="atSmallBuildImg"
                   // id="atSmallBuildImg"
                 />
               </div>

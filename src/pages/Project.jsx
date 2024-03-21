@@ -414,12 +414,14 @@ const Project = () => {
               >
                 <div className="img1">
                   {imageShow ? (
-                    <img
-                      src={imgPreview}
-                      alt="preview"
-                      height="250"
-                      width="170"
-                    />
+                    <div className="dynamicHeight">
+                      <img
+                        src={imgPreview}
+                        alt="preview"
+                        // height="250"
+                        // width="170"
+                      />
+                    </div>
                   ) : (
                     <CiImageOn fontSize={90} />
                   )}
@@ -454,17 +456,19 @@ const Project = () => {
               >
                 <div className="img1">
                   {videoShow ? (
-                    <video
-                      key={videoKey}
-                      width="170"
-                      height="250"
-                      autoPlay
-                      muted
-                      loop
-                    >
-                      <source src={videoPreview} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                    <div className="dynamicHeight">
+                      <video
+                        key={videoKey}
+                        // width="170"
+                        // height="250"
+                        autoPlay
+                        muted
+                        loop
+                      >
+                        <source src={videoPreview} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   ) : (
                     <GoVideo fontSize={90} />
                   )}
