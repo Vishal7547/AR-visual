@@ -140,6 +140,11 @@ const Scan = () => {
               <img src={singleProject?.target?.url} alt="lo" />
               <div class="scanline"></div>
             </div>
+            <div className="logoNameScane">
+              Artify Powered by
+              <br />
+              thegodspeedz
+            </div>
           </div>
           <div id="container" ref={containerRef}></div>
         </>
@@ -148,7 +153,7 @@ const Scan = () => {
           <div className="container-fluid">
             <div className="row text-center py-2 bg-danger scanHeading">
               <p>
-                This AR effect was designed with Godspeed.com - AR studio.
+                This AR effect was designed with thegodspeedz.com - AR studio.
                 Create your effect now for free.
                 <span
                   className="btn btn-success mx-2"

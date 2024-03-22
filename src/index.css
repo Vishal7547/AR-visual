@@ -163,6 +163,7 @@ nav {
   align-items: center;
   justify-content: center;
   position: absolute;
+  flex-direction: column;
   left: 0;
   right: 0;
   top: 0;
@@ -170,6 +171,13 @@ nav {
   background: transparent;
   z-index: 2;
   /* background-color: #60beeb; */
+}
+
+.logoNameScane {
+
+  color: rgb(220, 53, 69);
+  font-size: large;
+  font-weight: 900;
 }
 
 @media (min-aspect-ratio: 1/1) {
