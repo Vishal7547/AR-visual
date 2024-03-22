@@ -24,6 +24,7 @@ import "./style/AdminSidebar.css";
 import "./style/Profilesetting.css";
 import "./style/dashboardAdmin.css";
 import "./style/adminBuilder.css";
+import "./style/article.css";
 
 import Register from "./pages/Register.jsx";
 import Forget from "./pages/Forget.jsx";
@@ -44,6 +45,7 @@ import { AdminRoute } from "./routes/AdminRoute.js";
 import Users from "./pages/Admin/Users.jsx";
 import AllProject from "./pages/Admin/AllProject.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
+import Article from "./pages/Article";
 
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
@@ -103,6 +105,7 @@ function AppContent() {
       {combinedShowHeader && authenticate && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/article" element={<Article />} />
         <Route element={<PrivateAuth />}>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/register" element={<Register />} />

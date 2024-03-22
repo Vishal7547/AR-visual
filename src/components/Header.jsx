@@ -59,7 +59,7 @@ const Header = () => {
               </> */}
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link secondHeaderIcon" to="/link">
+              <NavLink className="nav-link secondHeaderIcon" to="/article">
                 <MdOutlineHelpOutline fontSize={30} />
               </NavLink>
             </li>
