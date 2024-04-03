@@ -3,6 +3,8 @@ import { TextField } from "@mui/material";
 import { IoSearchOutline } from "react-icons/io5";
 import { CiSquarePlus } from "react-icons/ci";
 import { HiDotsVertical } from "react-icons/hi";
+import Swal from "sweetalert2";
+
 import {
   MdPausePresentation,
   MdOutlineDeleteOutline,
@@ -43,6 +45,7 @@ const UserDashboard = () => {
     handleCreatePayment,
     setIsUpdate,
     handleSubscription,
+    user,
   } = useContext(UserContext);
   const videoRef = useRef(null);
   const [projectId, setProjectId] = useState("");
@@ -91,6 +94,24 @@ const UserDashboard = () => {
       await handleCreatePayment(p);
     } else if (status === "expired") {
       await handleSubscription(p);
+    }
+  };
+  const handleChecker = () => {
+    const data = project?.filter(
+      (p, i) => p?.subscriptionId?.status === "active"
+    );
+    console.log(user);
+    // console.log(user?.project_report.length, data?.length + 2);
+    if (project?.length >= data?.length + 2) {
+      Swal.fire({
+        text: "Upgrade your existing free project to create a new project",
+        customClass: {
+          validationMessage: "my-validation-message",
+        },
+      });
+      return;
+    } else {
+      // navigate("/project");
     }
   };
   return (
@@ -175,7 +196,7 @@ const UserDashboard = () => {
             className="lowersearch mx-5 my-2 p-0 m-0"
             onClick={() => {
               setProjectEdit(null);
-              navigate("/project");
+              handleChecker();
             }}
           >
             <div className="boxlower">

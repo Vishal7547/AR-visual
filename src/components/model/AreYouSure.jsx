@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { UserContext } from "../../context/MyContext";
 import { useContext } from "react";
+
 const AreYouSure = ({ open, handleClose, style, message = "delete" }) => {
   const { loLogOut } = useContext(UserContext);
   const handleLogout = async () => {
