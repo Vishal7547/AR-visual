@@ -111,7 +111,7 @@ const UserDashboard = () => {
       });
       return;
     } else {
-      // navigate("/project");
+      navigate("/project");
     }
   };
   return (
