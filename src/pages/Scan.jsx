@@ -103,6 +103,7 @@ const Scan = () => {
 
       video.crossOrigin = "anonymous";
       video.loop = true;
+      video.setAttribute("playsinline", "playsinline");
       const texture = new THREE.VideoTexture(video);
       const ratio =
         parseFloat(singleProject?.height).toFixed(2) >=
