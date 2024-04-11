@@ -1,7 +1,7 @@
 .profile {
-    height: auto !important;
+    min-height: 100vh !important;
     width: 100%;
-    background-color: rgb(192, 192, 192);
+    background-color: rgb(239, 245, 255);
 }
 
 .parentWork {
@@ -12,7 +12,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    margin-top: 15px;
+    width: 97%;
+    border-radius: 20px;
 }
 
 .work1 {
@@ -29,8 +32,21 @@
 
 .work2 button {
     margin: 0 10px;
-    border-radius: 0 !important;
+    border-radius: 20px !important;
+    padding: 5px 20px;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgb(214, 233, 255) !important;
+    color: rgb(21, 122, 255) !important;
+    border: 0 !important;
+    outline: 0 !important;
+    font-weight: 600;
+    cursor: pointer !important;
 }
+
+.work2 button:nth-child(1) {}
+
+.work2 button:nth-child(2) {}
 
 .sample1 {
     cursor: pointer;
@@ -58,6 +74,7 @@
     align-items: center;
     height: 87vh;
     width: 100%;
+
 }
 
 .parentUpload .upload1,
@@ -65,7 +82,9 @@
     width: 50%;
     height: 100%;
     margin: 0 10px;
+    border-radius: 20px;
     background-color: white;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .upload1,
@@ -76,16 +95,29 @@
     align-items: center;
 }
 
+.projectNameInput {
+    border-radius: 20px;
+}
+
 .upload1 .img1,
 .upload2 .img1 {
     margin: 5px 0;
 
 }
 
+.img1 button {
+    background-color: rgb(214, 233, 255) !important;
+    color: rgb(21, 122, 255) !important;
+    border-radius: 20px !important;
+    border: 0;
+    padding: 9px 20px;
+    font-weight: 900 !important;
+}
+
 .dynamicHeight {
     height: 200px;
     width: 250px;
-    border: 2px solid grey;
+    border: 1px solid rgb(214, 233, 255);
 }
 
 .dynamicHeight img,
@@ -118,14 +150,10 @@
 #atSmallBuildImg {
     height: 70% !important;
     width: 50% !important;
-    object-fit: contain !important;
+    object-fit: cover !important;
     /* border: 1px solid black; */
 }
 
-/* #projectSetUpSet2 {
-    height: 270px;
-    width: 300px;
-} */
 
 .projectSetUp img {
     height: 100%;
@@ -135,10 +163,10 @@
 
 .projectSetUp video {
     position: absolute;
-    left: 0;
     top: 0;
-    height: 100% !important;
-    width: 100% !important;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     opacity: 0.8 !important;
 }
@@ -324,5 +352,84 @@
     #projectSetUpSet2 {
         height: 200px;
         width: 250px;
+    }
+}
+
+
+.mobileView {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* height: 100vh;
+    width: 100%; */
+}
+
+.parentUpload {
+    flex: 75%;
+}
+
+
+.mobileScreen {
+    /* width: 200px; */
+    flex: 25%;
+    min-height: 86vh;
+    /* margin: 0 10px; */
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.projectNameSaveBtn button {
+    border-radius: 20px !important;
+    padding: 6px 15px;
+}
+
+.projectNameSaveBtn button:nth-child(2) {
+    background-color: rgb(214, 233, 255) !important;
+    color: rgb(21, 122, 255) !important;
+    border-radius: 20px !important;
+    border: 0;
+    font-weight: 800;
+}
+
+@media screen and (max-width:867px) {
+    .mobileView {
+        flex-direction: column;
+    }
+
+    .mobileScreen {
+        width: 98% !important;
+        padding: 10px;
+        min-height: auto !important;
+        margin: auto !important;
+
+    }
+
+    .parentUpload .upload1,
+    .upload2 {
+        width: 98% !important;
+        margin: auto !important;
+
+
+    }
+
+    .parentWork {
+        width: 93% !important;
+        /* margin: auto !important; */
+    }
+}
+
+@media screen and (max-width:665px) {
+    .parentWork {
+        margin-bottom: 10px;
+    }
+
+    .parentUpload .upload2 {
+        margin: 10px auto !important;
+
+
     }
 }

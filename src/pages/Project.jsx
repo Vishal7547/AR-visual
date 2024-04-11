@@ -1,9 +1,6 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import { MdOutlineSmartDisplay } from "react-icons/md";
-import { MdPausePresentation } from "react-icons/md";
-
-import { CiSquareInfo, CiImageOn } from "react-icons/ci";
-import { GoVideo } from "react-icons/go";
+import { FaImage } from "react-icons/fa6";
+import { RiVideoFill } from "react-icons/ri";
 import Build from "../components/model/Build";
 import ArtWorkInfo from "../components/model/ArtWorkInfo";
 import ArtWorkName from "../components/model/ArtWorkName";
@@ -329,28 +326,13 @@ const Project = () => {
         {isUpload && <Loader />}
         <div className="container-fluid m-0 g-0 p-0">
           <div className="row ">
-            <div className="parentWork ">
+            <div className="parentWork">
               <div className="work1">
-                {/* <div className="sample1">
-                  <span className="iconsSet">
-                    {true ? (
-                      <MdPausePresentation fontSize={30} />
-                    ) : (
-                      <MdOutlineSmartDisplay fontSize={30} />
-                    )}
-                  </span>
-                </div>
-                <div className="sample1" onClick={handleOpen1}>
-                  <span className="iconsSet ">
-                    <CiSquareInfo fontFamily={30} />
-                  </span>
-                  <span className="workInfo">Artwork Info</span>
-                </div> */}
                 <div className="sample1">
                   <div className="row mx-2">
                     <input
                       type="text"
-                      className="form-control "
+                      className="form-control projectNameInput"
                       placeholder="Artwork Name"
                       value={artWorkName}
                       onChange={(e) => setArtWorkName(e.target.value)}
@@ -361,7 +343,7 @@ const Project = () => {
               <div className="work2">
                 {projectEdit?.status !== "approved" ? (
                   <button
-                    className="btn btn-success"
+                    className="btn"
                     disabled={!bothUpload}
                     onClick={() =>
                       projectEdit
@@ -372,16 +354,13 @@ const Project = () => {
                     {projectEdit ? "Update" : "Save"}
                   </button>
                 ) : (
-                  <button
-                    className="btn btn-success"
-                    onClick={() => handleClear()}
-                  >
+                  <button className="btn" onClick={() => handleClear()}>
                     Clear
                   </button>
                 )}
 
                 <button
-                  className="btn btn-danger"
+                  className="btn"
                   disabled={!bothUpload}
                   onClick={() =>
                     projectEdit
@@ -398,16 +377,16 @@ const Project = () => {
             </div>
           </div>
 
-          <div className="row  ">
+          <div className="mobileView">
             <div
               className="parentUpload"
-              style={{ height: bothUpload && "100%" }}
+              // style={{ height: bothUpload && "100%" }}
             >
               <div
                 className="upload1"
-                style={{
-                  flexDirection: resizeTarget ? "column" : bothUpload && "row",
-                }}
+                // style={{
+                //   flexDirection: resizeTarget ? "column" : bothUpload && "row",
+                // }}
                 onClick={handleClick}
                 onDragOver={(event) => event.preventDefault()}
                 onDrop={handleImageDrop}
@@ -423,7 +402,7 @@ const Project = () => {
                       />
                     </div>
                   ) : (
-                    <CiImageOn fontSize={90} />
+                    <FaImage fontSize={90} />
                   )}
                 </div>
                 <div className="img1 mx-1">
@@ -432,7 +411,7 @@ const Project = () => {
                   </h6>
                 </div>
                 <div className="img1 mx-2">
-                  <button className="btn btn-outline-secondary">
+                  <button className="btn">
                     {imageShow ? "Change file" : " Select File"}
                   </button>
                 </div>
@@ -447,9 +426,9 @@ const Project = () => {
               </div>
               <div
                 className="upload2 "
-                style={{
-                  flexDirection: resizeTarget ? "column" : bothUpload && "row",
-                }}
+                // style={{
+                //   flexDirection: resizeTarget ? "column" : bothUpload && "row",
+                // }}
                 onClick={handleVideoClick}
                 onDragOver={(event) => event.preventDefault()}
                 onDrop={handleVideoDrop}
@@ -470,12 +449,13 @@ const Project = () => {
                       </video>
                     </div>
                   ) : (
-                    <GoVideo fontSize={90} />
+                    <RiVideoFill fontSize={90} />
                   )}
                 </div>
                 <div className="img1 mx-2">
                   <h6>
-                    Add <b>Video</b>
+                    Add <b>Video</b>/ <b>Content</b>
+                    <br /> to be recognized{" "}
                   </h6>
                 </div>
                 <div className="img1">
@@ -494,10 +474,12 @@ const Project = () => {
               </div>
             </div>
             {bothUpload && (
-              <div>
+              <div className="mobileScreen">
                 <div className="buildProject">
                   <div className="projectSetUp" id={lengthMeasure}>
+                    {/* <div className="imgDemoPROJECT"> */}
                     <img src={imgPreview} alt="imgPreview" />
+                    {/* </div> */}
                     <video key={videoKey} autoPlay muted loop>
                       <source
                         src={videoPreview}

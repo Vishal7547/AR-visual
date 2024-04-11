@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { LuHome } from "react-icons/lu";
-import { MdOutlineHelpOutline, MdOutlineAddBox } from "react-icons/md";
-import { FaRegCircleUser } from "react-icons/fa6";
-import { AiOutlineLogout } from "react-icons/ai";
+import { IoHomeSharp, IoHelpCircle } from "react-icons/io5";
+import { MdCreateNewFolder } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
+import { RiLogoutCircleRFill } from "react-icons/ri";
 import useModal from "./hooks/useModel";
 import AreYouSure from "./model/AreYouSure";
 import { useContext } from "react";
@@ -20,7 +20,7 @@ const Header = () => {
   const { project, authenticate } = useContext(UserContext);
   return (
     <>
-      <div id="mainHeader3" className=" px-2">
+      <div id="mainHeader3" className="px-2">
         <div>
           <NavLink className="artify">ARTIFY</NavLink>
         </div>
@@ -36,41 +36,27 @@ const Header = () => {
                 to="/userdashboard"
                 exact
               >
-                <LuHome fontSize={25} />
+                <IoHomeSharp fontSize={25} />
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link secondHeaderIcon" to="/project">
-                <MdOutlineAddBox fontSize={30} />
+                <MdCreateNewFolder fontSize={30} />
               </NavLink>
-              {/* <>
-                {project.length > 0 ? (
-                  <span
-                    className="nav-link secondHeaderIcon"
-                    onClick={handleOpen1}
-                  >
-                    <MdOutlineAddBox fontSize={30} />
-                  </span>
-                ) : (
-                  <NavLink className="nav-link secondHeaderIcon" to="/project">
-                    <MdOutlineAddBox fontSize={30} />
-                  </NavLink>
-                )}
-              </> */}
             </li>
             <li className="nav-item">
               <NavLink className="nav-link secondHeaderIcon" to="/article">
-                <MdOutlineHelpOutline fontSize={30} />
+                <IoHelpCircle fontSize={30} />
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link secondHeaderIcon" to="/dashboard">
-                <FaRegCircleUser fontSize={25} />
+                <FaUserCircle fontSize={25} />
               </NavLink>
             </li>
             <li className="nav-item" onClick={handleOpen}>
               <NavLink className="nav-link secondHeaderIcon" to="#">
-                <AiOutlineLogout fontSize={25} />
+                <RiLogoutCircleRFill fontSize={25} />
               </NavLink>
             </li>
           </ul>

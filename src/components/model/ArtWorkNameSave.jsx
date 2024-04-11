@@ -16,6 +16,7 @@ const style = {
   boxShadow: 24,
   outline: "none",
   transition: "transform 0.3s ease-in-out",
+  borderRadius: "20px",
 };
 
 const ArtWorkNameSave = ({
@@ -80,7 +81,7 @@ const ArtWorkNameSave = ({
                 onChange={(e) => setArtWorkName(e.target.value)}
               />
             </div>
-            <div className="d-flex justify-content-end align-items-center ">
+            <div className="d-flex justify-content-end align-items-center projectNameSaveBtn">
               <button className="btn btn-danger mx-2" onClick={handleClose}>
                 Cancel
               </button>
