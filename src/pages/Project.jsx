@@ -90,8 +90,8 @@ const Project = () => {
       if (data?.success) {
         // redirect to server page
 
-        // window.location.href = "https://ar-backend-j397.onrender.com/build";
-        window.location.href = "http://localhost:4000/build";
+        window.location.href = "https://ar-backend-j397.onrender.com/build";
+        // window.location.href = "http://localhost:4000/build";
       } else {
         console.log(data);
       }
@@ -163,8 +163,8 @@ const Project = () => {
     const data = await handleProjectSaveEdit(formData, id);
     if (data?.success) {
       setProjectEdit(null);
-      // window.location.href = "https://ar-backend-j397.onrender.com/build";
-      window.location.href = "http://localhost:4000/build";
+      window.location.href = "https://ar-backend-j397.onrender.com/build";
+      // window.location.href = "http://localhost:4000/build";
     } else {
       console.log(data);
     }
@@ -317,8 +317,8 @@ const Project = () => {
   }, [projectEdit]);
 
   const handleApprovedPending = () => {
-    // window.location.href = "https://ar-backend-j397.onrender.com/build";
-    window.location.href = "http://localhost:4000/build";
+    window.location.href = "https://ar-backend-j397.onrender.com/build";
+    // window.location.href = "http://localhost:4000/build";
   };
   const handleClear = () => {
     setProjectEdit(null);
