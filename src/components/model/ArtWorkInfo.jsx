@@ -13,6 +13,7 @@ const style = {
   boxShadow: 24,
   outline: "none",
   transition: "transform 0.3s ease-in-out",
+  borderRadius: "20px",
 };
 
 const ArtWorkInfo = ({ open, handleClose, handleOpen }) => {

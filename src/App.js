@@ -25,6 +25,8 @@ import "./style/Profilesetting.css";
 import "./style/dashboardAdmin.css";
 import "./style/adminBuilder.css";
 import "./style/article.css";
+import "./components/Layout/layout.css";
+import "./components/Layout/sidebar.css";
 
 import Register from "./pages/Register.jsx";
 import Forget from "./pages/Forget.jsx";
@@ -85,6 +87,7 @@ function AppContent() {
     "/dashboard/user",
     "/dashboard/project",
     "/dashboard/admindashboard",
+    "/userdashboard",
   ];
   const shouldShowHeader = !pathsWithoutHeader.includes(location.pathname);
 

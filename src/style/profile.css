@@ -145,12 +145,20 @@
     /* color:rgb(150, 40, 58); */
 }
 
-
+.imageWrapperRightWork {
+    height: 200px;
+    width: 250px;
+    margin: auto;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #atSmallBuildImg {
-    height: 70% !important;
-    width: 50% !important;
-    object-fit: cover !important;
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: contain !important;
     /* border: 1px solid black; */
 }
 

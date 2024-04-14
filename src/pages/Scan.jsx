@@ -168,7 +168,7 @@ const Scan = () => {
     fetchProject();
   }, [projectid]);
   return (
-    <>
+    <div id={`${!isAllow && "scannerWrapper"}`}>
       {isAllow ? (
         <>
           {isProjectGet && <Loader />}
@@ -196,18 +196,18 @@ const Scan = () => {
       ) : (
         <div>
           <div className="container-fluid">
-            <div className="row text-center py-2 bg-danger scanHeading">
+            <div className="row text-center py-2 scanHeading">
               <p>
                 This AR effect was designed with thegodspeedz.com - AR studio.
                 Create your effect now for free.
-                <span
-                  className="btn btn-success mx-2"
+                <button
+                  className="btn scanBtn mx-1"
                   onClick={() => {
                     navigate("/");
                   }}
                 >
                   Start Now
-                </span>
+                </button>
               </p>
             </div>
             <div className="cameraOpenRequest">
@@ -217,7 +217,7 @@ const Scan = () => {
                   onClick={() => {
                     handleAllow();
                   }}
-                  className="btn btn-danger "
+                  className="btn scanBtn"
                 >
                   Continue
                 </button>
@@ -226,7 +226,7 @@ const Scan = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

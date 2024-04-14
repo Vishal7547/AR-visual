@@ -24,13 +24,13 @@ const AreYouSure = ({ open, handleClose, style, message = "delete" }) => {
             </h5>
           </div>
           <div className="row my-2">
-            <div className="col-sm-6 marginMobileBtn">
-              <button className="w-100 btn btn-dark" onClick={handleLogout}>
+            <div className="col-sm-6 marginMobileBtn work2">
+              <button className="w-100 btn" onClick={handleLogout}>
                 Yes
               </button>
             </div>
-            <div className="col-sm-6">
-              <button className="w-100 btn btn-dark" onClick={handleClose}>
+            <div className="col-sm-6 work2">
+              <button className="w-100 btn " onClick={handleClose}>
                 No
               </button>
             </div>

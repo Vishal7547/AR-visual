@@ -13,7 +13,9 @@ const style = {
   width: "90%",
   bgcolor: "background.paper",
   border: "none",
+  outline: "none",
   boxShadow: 24,
+  borderRadius: "20px",
 };
 
 const ProjectShare = ({ handleOpen1, open1, handleClose1, projectId }) => {
@@ -68,7 +70,10 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, projectId }) => {
       >
         <Box sx={style} className="cssCustomized cssCustomized2">
           <div className="container-fluid m-0 p-0 g-0">
-            <div className="cross px-2 bg-danger d-flex  justify-content-between align-items-center">
+            <div
+              className="cross px-2 d-flex  justify-content-between align-items-center"
+              style={{ backgroundColor: "rgb(17,125,255)" }}
+            >
               <p>{build?.artWorkName}</p>
               <p className="closedThis" onClick={handleClose1}>
                 X
@@ -79,8 +84,8 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, projectId }) => {
                 <p>Preview Url</p>
                 <a
                   key={buildId}
-                  href={`https://ar-visual.vercel.app/scan/${build?._id}`}
-                  // href={`http://localhost:3000/scan/${build?._id}`}
+                  // href={`https://ar-visual.vercel.app/scan/${build?._id}`}
+                  href={`http://localhost:3000/scan/${build?._id}`}
                   target="_blank"
                   className="my-2"
                   rel="noopener noreferrer"
@@ -107,17 +112,19 @@ const ProjectShare = ({ handleOpen1, open1, handleClose1, projectId }) => {
               </div>
               <div className="rightWork text-center">
                 <p>Target Image</p>
-                <img
-                  src={build?.target?.url}
-                  alt="imgPreview"
-                  // id={
-                  //   build?.height >= build?.width
-                  //     ? "atSmallBuildImg"
-                  //     : "atSmallBuildImg1"
-                  // }
-                  id="atSmallBuildImg"
-                  // id="atSmallBuildImg"
-                />
+                <div className="imageWrapperRightWork">
+                  <img
+                    src={build?.target?.url}
+                    alt="imgPreview"
+                    // id={
+                    //   build?.height >= build?.width
+                    //     ? "atSmallBuildImg"
+                    //     : "atSmallBuildImg1"
+                    // }
+                    id="atSmallBuildImg"
+                    // id="atSmallBuildImg"
+                  />
+                </div>
               </div>
             </div>
           </div>

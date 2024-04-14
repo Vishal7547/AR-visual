@@ -10,6 +10,7 @@ const sureStyle = {
   boxShadow: 24,
   padding: 5,
   transition: "transform 0.3s ease-in-out",
+  borderRadius: "20px",
 };
 const useModal = () => {
   const [open, setOpen] = useState(false);

@@ -42,7 +42,7 @@ const HomeHeader = () => {
           className="navbar-nav   w-100 d-flex justify-content-end align-items-center"
           id="mobileHeader"
         >
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink className="nav-link secondHeader" to="/" exact>
               Contact
             </NavLink>
@@ -51,7 +51,7 @@ const HomeHeader = () => {
             <NavLink className="nav-link secondHeader" to="/pricing">
               Pricing
             </NavLink>
-          </li>
+          </li> */}
           {!authenticate && (
             <>
               <li className="nav-item">
