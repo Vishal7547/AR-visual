@@ -48,7 +48,7 @@ const ArtWorkName = ({
         // redirect to server page
         window.location.href = "https://ar-backend-j397.onrender.com/build";
         // window.location.href = "http://localhost:4000/build";
-
+// testing
         // window.open("http://localhost:4000/build", "_blank");
         // const a = document.createElement("a");
         // a.href = "http://localhost:4000/build";
