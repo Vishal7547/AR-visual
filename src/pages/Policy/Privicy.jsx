@@ -50,7 +50,7 @@ const Privicy = () => {
             Policy.
           </p>
 
-          <div className="row">
+          <div className="row my-5">
             <h6>1. Consent</h6>
             <div className="row">
               <ol>
