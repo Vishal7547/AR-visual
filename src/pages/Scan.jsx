@@ -11,6 +11,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../context/MyContext";
 import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 import Loader from "../components/Loader";
+import A from "../imageProcess/Vector (2).png";
+import C from "../imageProcess/Vector (3).png";
+import D from "../imageProcess/Vector (4).png";
+import E from "../imageProcess/Vector (5).png";
+import F from "../imageProcess/Vector (6).png";
+// import G from "../imageProcess/Vector (7).png";
+import B from "../imageProcess/Vector R.png";
 
 const Scan = () => {
   const navigate = useNavigate();
@@ -196,22 +203,14 @@ const Scan = () => {
       ) : (
         <div>
           <div className="container-fluid">
-            <div className="row text-center py-2 scanHeading">
+            <div className="row text-center py-1 scanHeading">
               <p>
-                This AR effect was designed with thegodspeedz.com - AR studio.
-                Create your effect now for free.
-                <button
-                  className="btn scanBtn mx-1"
-                  onClick={() => {
-                    navigate("/");
-                  }}
-                >
-                  Start Now
-                </button>
+                This AR experience is designed by thegodspeeds.com - ARtify
+                Tool. Open in Chrome browser to experience in high quality.
               </p>
             </div>
-            <div className="cameraOpenRequest">
-              <div className="requestToOpen">
+            <div className="cameraOpenRequest mt-5">
+              {/* <div className="requestToOpen">
                 <p>please allow camera access for AR effects</p>
                 <button
                   onClick={() => {
@@ -220,6 +219,39 @@ const Scan = () => {
                   className="btn scanBtn"
                 >
                   Continue
+                </button>
+              </div> */}
+
+              <div className="logoNameScan">
+                <div className="child">
+                  <img src={A} alt="" />
+                </div>
+                <div className="child">
+                  <img src={B} alt="" />
+                </div>
+                <div className="child">
+                  <img src={C} alt="" />
+                </div>
+                <div className="child">
+                  <img src={D} alt="" />
+                </div>
+                <div className="child">
+                  <img src={E} alt="" />
+                </div>
+                <div className="child">
+                  <img src={F} alt="" />
+                </div>
+              </div>
+
+              <div className="blurOverlay">
+                <p>Please allow camera access to try the AR experience</p>
+                <button
+                  className="btn px-5"
+                  onClick={() => {
+                    handleAllow();
+                  }}
+                >
+                  continue
                 </button>
               </div>
             </div>

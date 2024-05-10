@@ -21,7 +21,7 @@ const ProjectScan = () => {
     };
     fetchProject();
   }, [projectid]);
-  const [isTargetDetected, setIsTargetDetected] = useState(true);
+  const [isTargetDetected, setIsTargetDetected] = useState("");
 
   const containerRef = useRef(null);
   const start = async () => {
