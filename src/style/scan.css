@@ -39,6 +39,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     position: relative;
 }
 
@@ -267,4 +268,8 @@
         font-weight: 400;
         font-size: small;
     }
+}
+
+.linkScan a {
+    color: white;
 }

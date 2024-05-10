@@ -48,6 +48,8 @@ import Users from "./pages/Admin/Users.jsx";
 import AllProject from "./pages/Admin/AllProject.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import Article from "./pages/Article";
+import Privicy from "./pages/Policy/Privicy.jsx";
+import Terms from "./pages/Policy/Terms.jsx";
 
 function App() {
   const { handleLoad, authenticate } = useContext(UserContext);
@@ -88,6 +90,8 @@ function AppContent() {
     "/dashboard/project",
     "/dashboard/admindashboard",
     "/userdashboard",
+    "/privicy",
+    "/terms",
   ];
   const shouldShowHeader = !pathsWithoutHeader.includes(location.pathname);
 
@@ -123,6 +127,10 @@ function AppContent() {
           <Route path="/project" element={<Profile />} />
         </Route>
         <Route path="/scan/:projectid" element={<Scan />} />
+        <Route path="/privicy" element={<Privicy />} />
+
+        <Route path="/terms" element={<Terms />} />
+
         <Route path="/projectbuild/:projectid" element={<ProjectScan />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/pricing" element={<Pricing />} />

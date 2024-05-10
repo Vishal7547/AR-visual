@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import * as THREE from "three";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../context/MyContext";
 import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 import Loader from "../components/Loader";
@@ -242,7 +242,10 @@ const Scan = () => {
                   <img src={F} alt="" />
                 </div>
               </div>
-
+              <p className="linkScan">
+                <Link to="/privicy">Privicy & Policy</Link> and{" "}
+                <Link to="/terms"> terms & conditions</Link>
+              </p>
               <div className="blurOverlay">
                 <p>Please allow camera access to try the AR experience</p>
                 <button
