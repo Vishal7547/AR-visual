@@ -13,7 +13,11 @@
 }
 
 .logoNameScane {
-    color: rgb(17, 125, 255) !important;
+    color: pink !important;
+}
+
+.logoNameScane span {
+    font-size: medium;
 }
 
 .scanHeading {

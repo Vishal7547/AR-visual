@@ -192,10 +192,28 @@ const Scan = () => {
               <img src={singleProject?.target?.url} alt="lo" />
               <div class="scanline"></div>
             </div>
-            <div className="logoNameScane">
-              Artify Powered by
+
+            <div className="logoNameScane mt-1">
+              <span
+                style={{
+                  backgroundImage: "linear-gradient(to right, black, pink)",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                Artify
+              </span>{" "}
+              Powered by
               <br />
-              thegodspeedz
+              <span
+                style={{
+                  backgroundImage: "linear-gradient(to right, black, pink)",
+                  WebkitBackgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                thegodspeeds
+              </span>
             </div>
           </div>
           <div id="container" ref={containerRef}></div>
