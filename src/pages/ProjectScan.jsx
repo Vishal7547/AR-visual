@@ -21,7 +21,7 @@ const ProjectScan = () => {
     };
     fetchProject();
   }, [projectid]);
-  const [isTargetDetected, setIsTargetDetected] = useState("");
+  const [isTargetDetected, setIsTargetDetected] = useState(true);
 
   const containerRef = useRef(null);
   const start = async () => {
@@ -130,3 +130,28 @@ const ProjectScan = () => {
 };
 
 export default ProjectScan;
+
+
+// get("url", {
+//   headers: {
+//     "content-types": "application/json",
+//     Authorization: "token",
+//   },
+// }),
+
+
+  // delete("url", {
+  //   headers: {
+  //     "content-types": "application/json",
+  //     Authorization: "token",
+  //   },
+  // });
+
+
+    // post("url", {
+  //   headers: {
+  //     "content-types": "application/json",
+  //     Authorization: "token",
+  //   },
+  // });
+

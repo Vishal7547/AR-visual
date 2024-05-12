@@ -4,6 +4,8 @@ import Works from "../components/Works";
 import Pricing from "../components/Pricing";
 
 const Home = () => {
+
+  
   return (
     <>
       <Hero />
