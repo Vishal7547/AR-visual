@@ -9,6 +9,7 @@
 .scanHeading p {
     color: white;
     font-weight: 600;
+    font-family: "Hepta Slab", serif;
 }
 
 .logoNameScane {
@@ -104,6 +105,7 @@
     line-height: 49.27px;
     text-align: center;
     color: white;
+    font-family: "Hepta Slab", serif;
 }
 
 .blurOverlay button {
@@ -273,6 +275,22 @@
     }
 }
 
+.linkScan {
+    font-size: small !important;
+}
+
 .linkScan a {
     color: white;
+    font-size: small;
+}
+
+.logoSet {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.logoSet img {
+    height: 100px;
+    width: 100px;
 }

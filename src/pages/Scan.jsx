@@ -18,7 +18,7 @@ import E from "../imageProcess/Vector (5).png";
 import F from "../imageProcess/Vector (6).png";
 // import G from "../imageProcess/Vector (7).png";
 import B from "../imageProcess/Vector R.png";
-
+import logo from "../imageProcess/godspeeedLogo.png";
 const Scan = () => {
   const navigate = useNavigate();
   let { projectid } = useParams();
@@ -187,13 +187,16 @@ const Scan = () => {
               </div>
             </div>
           )} */}
+          <div className="logoSet">
+            <img src={logo} alt="logo" className="img-fluid" />
+          </div>
+
           <div id="scanning" className="hidden">
             <div class="inner">
               <img src={singleProject?.target?.url} alt="lo" />
               <div class="scanline"></div>
             </div>
-
-            <div className="logoNameScane mt-1">
+            {/* <div className="logoNameScane mt-1">
               <span
                 style={{
                   backgroundImage: "linear-gradient(to right, black, pink)",
@@ -214,7 +217,7 @@ const Scan = () => {
               >
                 thegodspeeds
               </span>
-            </div>
+            </div> */}
           </div>
           <div id="container" ref={containerRef}></div>
         </>
@@ -260,10 +263,7 @@ const Scan = () => {
                   <img src={F} alt="" />
                 </div>
               </div>
-              <p className="linkScan">
-                <Link to="/privicy">Privicy & Policy</Link> and{" "}
-                <Link to="/terms"> terms & conditions</Link>
-              </p>
+
               <div className="blurOverlay">
                 <p>Please allow camera access to try the AR experience</p>
                 <button
@@ -274,6 +274,11 @@ const Scan = () => {
                 >
                   continue
                 </button>
+                <p className="linkScan my-2">
+                  By Continuing , you agree to the{" "}
+                  <Link to="/privicy">Privacy Policy</Link> and{" "}
+                  <Link to="/terms"> terms of use</Link>
+                </p>
               </div>
             </div>
           </div>

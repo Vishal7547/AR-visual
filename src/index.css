@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&family=Noto+Sans+JP:wght@100..900&family=Poppins:wght@100;300;400&display=swap');
+
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 span,
@@ -18,9 +23,9 @@ div,
 button,
 span {
 
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
 
-
+  font-family: "Hepta Slab", serif;
 }
 
 nav {
